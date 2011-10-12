@@ -1,13 +1,15 @@
 /*
+
 FAR Style (c) MajestiC <majestic2k@gmail.com>
+
 */
 
-pre {
+pre code {
   display: block; padding: 0.5em;
   background: #000080;
 }
 
-pre,
+pre code,
 .ruby .subst {
   color: #0FF;
 }
@@ -16,6 +18,7 @@ pre .string,
 pre .ruby .string,
 pre .function .title,
 pre .class .title,
+pre .haskell .label,
 pre .ini .title,
 pre .tag .value,
 pre .css .rules .value,
@@ -41,6 +44,7 @@ pre .keyword,
 pre .css .id,
 pre .function .title,
 pre .class .title,
+pre .haskell .label,
 pre .ini .title,
 pre .vbscript .built_in,
 pre .sql .aggregate,
@@ -87,7 +91,8 @@ pre .xml .pi,
 pre .diff .header,
 pre .chunk,
 pre .shebang,
-pre .nginx .built_in {
+pre .nginx .built_in,
+pre .input_number {
   color: #008080;
 }
 
@@ -95,6 +100,7 @@ pre .keyword,
 pre .css .id,
 pre .function .title,
 pre .class .title,
+pre .haskell .label,
 pre .ini .title,
 pre .vbscript .built_in,
 pre .sql .aggregate,
