@@ -1,5 +1,0 @@
-D:\Projects\VisualStudio\megazlo.net\UnidecodeSharp\bin\Release\UnidecodeSharp.dll
-D:\Projects\VisualStudio\megazlo.net\UnidecodeSharp\bin\Release\UnidecodeSharp.pdb
-D:\Projects\VisualStudio\megazlo.net\UnidecodeSharp\obj\Release\ResolveAssemblyReference.cache
-D:\Projects\VisualStudio\megazlo.net\UnidecodeSharp\obj\Release\UnidecodeSharp.dll
-D:\Projects\VisualStudio\megazlo.net\UnidecodeSharp\obj\Release\UnidecodeSharp.pdb
