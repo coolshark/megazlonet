@@ -1,5 +1,0 @@
-D:\Projects\VisualStudio\megazlo.net\XCaptcha\bin\Release\XCaptcha.dll
-D:\Projects\VisualStudio\megazlo.net\XCaptcha\bin\Release\XCaptcha.pdb
-D:\Projects\VisualStudio\megazlo.net\XCaptcha\obj\Release\ResolveAssemblyReference.cache
-D:\Projects\VisualStudio\megazlo.net\XCaptcha\obj\Release\XCaptcha.dll
-D:\Projects\VisualStudio\megazlo.net\XCaptcha\obj\Release\XCaptcha.pdb
