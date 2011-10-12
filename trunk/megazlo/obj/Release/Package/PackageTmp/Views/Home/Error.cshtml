@@ -1,0 +1,11 @@
+﻿<h2 class="entry-title">
+	@ViewBag.Meaasge</h2>
+@if (ViewBag.ErrType == "") { 
+	<img src="@Url.Content(ViewBag.ImagePath)" alt="err"/>
+} else if (ViewBag.ErrType == "html5") {
+	<br />
+	<br />
+	<div style="text-align: center;">
+		<img src="@Url.Content(ViewBag.ImagePath)" alt="err" />
+	</div>
+}

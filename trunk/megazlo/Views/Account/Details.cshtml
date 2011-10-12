@@ -1,0 +1,41 @@
+﻿@model megazlo.Models.User
+<fieldset>
+	<legend>User</legend>
+	<div class="display-label">
+		FirstName</div>
+	<div class="display-field">@Model.FirstName</div>
+	<div class="display-label">
+		SecondName</div>
+	<div class="display-field">@Model.SecondName</div>
+	<div class="display-label">
+		LastName</div>
+	<div class="display-field">@Model.LastName</div>
+	<div class="display-label">
+		NickName</div>
+	<div class="display-field">@Model.NickName</div>
+	<div class="display-label">
+		DateBorn</div>
+	<div class="display-field">@String.Format("{0:g}", Model.DateBorn)</div>
+	<div class="display-label">
+		DateRegister</div>
+	<div class="display-field">@String.Format("{0:g}", Model.DateRegister)</div>
+	<div class="display-label">
+		Email</div>
+	<div class="display-field">@Model.Email</div>
+	<div class="display-label">
+		Avatar</div>
+	<div class="display-field">@Model.Avatar</div>
+	<div class="display-label">
+		IsAdmin</div>
+	<div class="display-field">@Model.IsAdmin</div>
+	<div class="display-label">
+		PassWord</div>
+	<div class="display-field">@Model.PassWord</div>
+	<div class="display-label">
+		ConfirmPassWord</div>
+	<div class="display-field">@Model.ConfirmPassWord</div>
+</fieldset>
+<p>
+	@Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+	@Html.ActionLink("Back to List", "Index")
+</p>

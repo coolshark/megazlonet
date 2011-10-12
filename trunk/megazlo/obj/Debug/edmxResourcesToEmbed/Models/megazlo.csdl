@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="megazlo" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+  <EntityContainer Name="megazloContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Users" EntityType="megazlo.User" />
+    <EntitySet Name="Posts" EntityType="megazlo.Post" />
+    <EntitySet Name="Comments" EntityType="megazlo.Comment" />
+    <AssociationSet Name="PostComment" Association="megazlo.PostComment">
+      <End Role="Post" EntitySet="Posts" />
+      <End Role="Comment" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="UserPost" Association="megazlo.UserPost">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Post" EntitySet="Posts" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="SecondName" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="100" DefaultValue="''" />
+    <Property Type="String" Name="NickName" Nullable="false" MaxLength="100" />
+    <Property Type="DateTime" Name="DateBorn" Nullable="true" />
+    <Property Type="DateTime" Name="DateRegister" Nullable="false" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Avatar" Nullable="false" MaxLength="500" DefaultValue="''" />
+    <Property Type="Boolean" Name="IsAdmin" Nullable="false" DefaultValue="false" />
+    <NavigationProperty Name="Post" Relationship="megazlo.UserPost" FromRole="User" ToRole="Post" />
+    <Property Type="String" Name="PassWord" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="ConfirmPassWord" Nullable="false" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Post">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ParentID" Nullable="false" DefaultValue="0" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="Text" Nullable="false" />
+    <Property Type="Boolean" Name="IsMenu" Nullable="false" DefaultValue="false" />
+    <Property Type="String" Name="TextPreview" Nullable="false" DefaultValue="''" />
+    <Property Type="String" Name="ImagePreview" Nullable="false" DefaultValue="''" />
+    <Property Type="DateTime" Name="DatePost" Nullable="false" />
+    <Property Type="Boolean" Name="IsCommentable" Nullable="false" DefaultValue="true" />
+    <NavigationProperty Name="Comment" Relationship="megazlo.PostComment" FromRole="Post" ToRole="Comment" />
+    <NavigationProperty Name="User" Relationship="megazlo.UserPost" FromRole="Post" ToRole="User" />
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ParentID" Nullable="false" />
+    <Property Type="DateTime" Name="DatePost" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="false" />
+    <Property Type="String" Name="Email" Nullable="false" />
+    <Property Type="String" Name="Text" Nullable="false" />
+    <NavigationProperty Name="Post" Relationship="megazlo.PostComment" FromRole="Comment" ToRole="Post" />
+    <Property Type="Int32" Name="PostID" Nullable="false" />
+  </EntityType>
+  <Association Name="PostComment">
+    <End Type="megazlo.Post" Role="Post" Multiplicity="1" />
+    <End Type="megazlo.Comment" Role="Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="PostID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserPost">
+    <End Type="megazlo.User" Role="User" Multiplicity="1" />
+    <End Type="megazlo.Post" Role="Post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Post">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

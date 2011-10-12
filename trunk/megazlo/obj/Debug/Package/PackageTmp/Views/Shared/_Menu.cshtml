@@ -1,0 +1,15 @@
+﻿@using megazlo.Code;
+<ul id="menus">
+	<li><a class="home" title="Главная" href="/">Главная</a></li>
+	@Html.GetMenuCats()
+	@Html.GetMenuPosts()
+	@if (User.IsInRole("Admin")) {
+		<li><a href="/Admin">Admin</a>
+			<ul>
+				<li><a href="/Admin/AddNews">Добавить пост</a></li>
+				<li><a href="/Admin/AddCategory">Добавить категорию</a></li>
+				<li><a href="/Admin/CategoryList">Категории</a></li>
+			</ul>
+		</li>
+ }
+</ul>

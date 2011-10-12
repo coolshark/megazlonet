@@ -1,0 +1,14 @@
+D:\Projects\VisualStudio\megazlo.net\XCaptcha.Web.Mvc\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\VisualStudio\megazlo.net\XCaptcha.Web.Mvc\bin\Debug\XCaptcha.Web.Mvc.dll
+D:\Projects\VisualStudio\megazlo.net\XCaptcha.Web.Mvc\bin\Debug\XCaptcha.Web.Mvc.pdb
+D:\Projects\VisualStudio\megazlo.net\XCaptcha.Web.Mvc\bin\Debug\XCaptcha.dll
+D:\Projects\VisualStudio\megazlo.net\XCaptcha.Web.Mvc\bin\Debug\XCaptcha.pdb
+D:\Projects\VisualStudio\megazlo.net\XCaptcha.Web.Mvc\obj\Debug\XCaptcha.Web.Mvc.dll
+D:\Projects\VisualStudio\megazlo.net\XCaptcha.Web.Mvc\obj\Debug\XCaptcha.Web.Mvc.pdb
+C:\Users\paradoxfm\Desktop\megazlo.net\XCaptcha.Web.Mvc\bin\Debug\XCaptcha.Web.Mvc.dll
+C:\Users\paradoxfm\Desktop\megazlo.net\XCaptcha.Web.Mvc\bin\Debug\XCaptcha.Web.Mvc.pdb
+C:\Users\paradoxfm\Desktop\megazlo.net\XCaptcha.Web.Mvc\bin\Debug\XCaptcha.dll
+C:\Users\paradoxfm\Desktop\megazlo.net\XCaptcha.Web.Mvc\bin\Debug\XCaptcha.pdb
+C:\Users\paradoxfm\Desktop\megazlo.net\XCaptcha.Web.Mvc\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\paradoxfm\Desktop\megazlo.net\XCaptcha.Web.Mvc\obj\Debug\XCaptcha.Web.Mvc.dll
+C:\Users\paradoxfm\Desktop\megazlo.net\XCaptcha.Web.Mvc\obj\Debug\XCaptcha.Web.Mvc.pdb

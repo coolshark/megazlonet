@@ -1,0 +1,5 @@
+D:\Projects\VisualStudio\megazlo.net\zxing\bin\Release\zxing.dll
+D:\Projects\VisualStudio\megazlo.net\zxing\bin\Release\zxing.pdb
+D:\Projects\VisualStudio\megazlo.net\zxing\obj\Release\ResolveAssemblyReference.cache
+D:\Projects\VisualStudio\megazlo.net\zxing\obj\Release\zxing.dll
+D:\Projects\VisualStudio\megazlo.net\zxing\obj\Release\zxing.pdb
