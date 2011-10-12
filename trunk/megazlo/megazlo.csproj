@@ -102,6 +102,7 @@
     <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
     <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
     <Content Include="Scripts\highlight\highlight.pack.js" />
+    <Content Include="Scripts\highlight\styles\arta.css" />
     <Content Include="Scripts\highlight\styles\ascetic.css" />
     <Content Include="Scripts\highlight\styles\brown_paper.css" />
     <Content Include="Scripts\highlight\styles\brown_papersq.png" />
@@ -114,6 +115,8 @@
     <Content Include="Scripts\highlight\styles\magula.css" />
     <Content Include="Scripts\highlight\styles\school_book.css" />
     <Content Include="Scripts\highlight\styles\school_book.png" />
+    <Content Include="Scripts\highlight\styles\solarized_dark.css" />
+    <Content Include="Scripts\highlight\styles\solarized_light.css" />
     <Content Include="Scripts\highlight\styles\sunburst.css" />
     <Content Include="Scripts\highlight\styles\vs.css" />
     <Content Include="Scripts\highlight\styles\zenburn.css" />
