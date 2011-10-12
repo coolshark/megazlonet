@@ -1,0 +1,56 @@
+﻿<link href="@Url.Content("~/Scripts/Slider/global.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/Slider/slides.min.jquery.js")" type="text/javascript"></script>
+<script type="text/javascript">
+	$(function () {
+		$('#slides').slides({
+			preload: true,
+			play: 5000,
+			pause: 2500,
+			hoverPause: true,
+			animationComplete: function (current) {
+				$('.caption').animate({ bottom: 0 }, 200);
+			},
+			slidesLoaded: function () {
+				$('.caption').animate({ bottom: 0 }, 200);
+			}
+		});
+	});
+</script>
+<h2 class="entry-title">
+	Разработка приложений: <span style="color: Green;">android</span> телефонов и не только...
+</h2>
+<div id="example">
+	<div id="slides">
+		<div class="slides_container">
+			<div class="slide">
+				<a href="http://android.com/" title="Android" target="_blank">
+					<img src="@Url.Content("~/Content/SlideGalery/galery1.jpg")" width="570" height="270" alt="Slide 1" /></a>
+				<div class="caption" style="bottom: 0">
+					<p>
+						Adnroid!</p>
+				</div>
+			</div>
+			<div class="slide">
+				<a href="@Url.Action("Post", "Home", new { id = "Fast File" })" title="Fast File" target="_blank">
+					<img src="@Url.Content("~/Content/SlideGalery/galery2.png")" width="570" height="270" alt="Slide 1" /></a>
+				<div class="caption">
+					<p>
+						Fast File быстрый файловый менеджер</p>
+				</div>
+			</div>
+			<div class="slide">
+				<a href="@Url.Action("Post", "Home", new { id = "Fast Notes" })" title="Fast Notes" target="_blank">
+					<img src="@Url.Content("~/Content/SlideGalery/galery3.png")" width="570" height="270" alt="Slide 1" /></a>
+				<div class="caption">
+					<p>
+						Fast Notes быстрые заметки скоро в маркете</p>
+				</div>
+			</div>
+		</div>
+		<a href="#" class="prev">
+			<img src="@Url.Content("~/Content/styles/images/arrow-prev.png")" width="24" height="43" alt="Arrow Prev" /></a> <a href="#"
+				class="next">
+				<img src="@Url.Content("~/Content/styles/images/arrow-next.png")" width="24" height="43" alt="Arrow Next" /></a>
+	</div>
+	<img src="@Url.Content("~/Content/styles/images/example-frame.png")" width="739" height="341" alt="Example Frame" id="frame" />
+</div>

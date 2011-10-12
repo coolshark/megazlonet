@@ -1,0 +1,71 @@
+﻿@using XCaptcha.Web.Mvc
+@model megazlo.Models.Post
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/tiny_mce/jquery.tinymce.js")" type="text/javascript"></script>
+<script type="text/javascript">
+	$(function () {
+		$('textarea.tinymce').tinymce({
+			// Location of TinyMCE script
+			script_url: '@Url.Content("~/Scripts/tiny_mce/tiny_mce.js")',
+			// General options
+			theme: "advanced",
+			plugins: "style,advhr,advimage,advlink,inlinepopups,preview,media,searchreplace,print,directionality,noneditable,visualchars,nonbreaking,xhtmlxtras",
+			// Theme options
+			theme_advanced_buttons1: "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,formatselect,fontselect,fontsizeselect,|,sub,sup,|,forecolor,backcolor,|,removeformat,visualaid",
+			theme_advanced_buttons2: "search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,hr,nonbreaking,charmap,link,unlink,anchor,image,media,code,preview,print,|,cite,abbr,acronym,del,ins,attribs",
+			theme_advanced_buttons3: "",
+			theme_advanced_toolbar_location: "top",
+			theme_advanced_toolbar_align: "left",
+			theme_advanced_statusbar_location: "bottom",
+			theme_advanced_resizing: true,
+			// Example content CSS (should be your site CSS)
+			content_css: "@Url.Content("~/Content/styles/style.css")"
+		});
+	});
+</script>
+<style type="text/css">
+	input[type="text"]
+	{
+		width: 300px;
+	}
+</style>
+@using (Html.BeginForm()) {
+	@Html.ValidationSummary(true)
+	<div class="post">
+		<h2 class="entry-title">
+			Редактирование статьи</h2>
+		@Html.HiddenFor(model => model.UserId)
+		<div class="editor-label">
+			@Html.LabelFor(model => model.Title)
+			<br />
+			@Html.EditorFor(model => model.Title)
+			@Html.ValidationMessageFor(model => model.Title)
+		</div>
+		<div class="editor-label">
+			@Html.LabelFor(model => model.Cat)
+			<br />
+			@Html.DropDownListFor(model => model.CategoryId, Model.Cat, "Без категории", new { style = "width: 170px;" })
+			@Html.EditorFor(model => model.InCatMenu)
+			@Html.LabelFor(model => model.InCatMenu)
+		</div>
+		<div class="editor-label">
+			@Html.LabelFor(model => model.Text)
+		</div>
+		<div class="editor-field">
+			@Html.TextAreaFor(model => model.Text, new { style = "width: 100%;", rows = "23", Class = "tinymce" })
+			@Html.ValidationMessageFor(model => model.Text)
+		</div>
+		<div class="editor-field">
+			@Html.EditorFor(model => model.IsCommentable)
+			@Html.LabelFor(model => model.IsCommentable)
+		</div>
+		<div class="editor-field">
+			@Html.EditorFor(model => model.IsShowInfo)
+			@Html.LabelFor(model => model.IsShowInfo)
+		</div>
+		@Html.AntiForgeryToken()
+	</div>
+	<br />
+	<input type="submit" value=" @ViewBag.ButtonOk " />
+}

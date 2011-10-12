@@ -1,0 +1,7 @@
+D:\Projects\VisualStudio\megazlo.net\XCaptcha.Web.Mvc\bin\Release\XCaptcha.Web.Mvc.dll
+D:\Projects\VisualStudio\megazlo.net\XCaptcha.Web.Mvc\bin\Release\XCaptcha.Web.Mvc.pdb
+D:\Projects\VisualStudio\megazlo.net\XCaptcha.Web.Mvc\bin\Release\XCaptcha.dll
+D:\Projects\VisualStudio\megazlo.net\XCaptcha.Web.Mvc\bin\Release\XCaptcha.pdb
+D:\Projects\VisualStudio\megazlo.net\XCaptcha.Web.Mvc\obj\Release\ResolveAssemblyReference.cache
+D:\Projects\VisualStudio\megazlo.net\XCaptcha.Web.Mvc\obj\Release\XCaptcha.Web.Mvc.dll
+D:\Projects\VisualStudio\megazlo.net\XCaptcha.Web.Mvc\obj\Release\XCaptcha.Web.Mvc.pdb

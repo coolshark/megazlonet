@@ -1,0 +1,28 @@
+﻿@model megazlo.Models.User
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+@using (Html.BeginForm()) {
+	@Html.ValidationSummary(true)	
+	<h2 class="entry-title">
+		Авторизация</h2>
+	<div class="editor-label">
+		@Html.LabelFor(model => model.NickName)
+	</div>
+	<div class="editor-field">
+		@Html.EditorFor(model => model.NickName)
+		@Html.ValidationMessageFor(model => model.NickName)
+	</div>
+	<div class="editor-label">
+		@Html.LabelFor(model => model.PassWord)
+	</div>
+	<div class="editor-field">
+		@Html.EditorFor(model => model.PassWord)
+		@Html.ValidationMessageFor(model => model.PassWord)
+	</div>
+	if (ViewBag.ErrMessage != null && ViewBag.ErrMessage.Length > 0) {
+	<div>
+		@ViewBag.ErrMessage</div>
+	}
+	<br />
+	<input type="submit" value=" Вход " />
+}

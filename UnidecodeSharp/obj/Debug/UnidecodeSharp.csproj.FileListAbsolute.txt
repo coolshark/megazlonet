@@ -1,0 +1,5 @@
+D:\Projects\VisualStudio\megazlo.net\UnidecodeSharp\bin\Debug\UnidecodeSharp.dll
+D:\Projects\VisualStudio\megazlo.net\UnidecodeSharp\bin\Debug\UnidecodeSharp.pdb
+D:\Projects\VisualStudio\megazlo.net\UnidecodeSharp\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\VisualStudio\megazlo.net\UnidecodeSharp\obj\Debug\UnidecodeSharp.dll
+D:\Projects\VisualStudio\megazlo.net\UnidecodeSharp\obj\Debug\UnidecodeSharp.pdb

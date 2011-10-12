@@ -1,0 +1,10 @@
+D:\Projects\VisualStudio\megazlo.net\zxing\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\VisualStudio\megazlo.net\zxing\bin\Debug\zxing.dll
+D:\Projects\VisualStudio\megazlo.net\zxing\bin\Debug\zxing.pdb
+D:\Projects\VisualStudio\megazlo.net\zxing\obj\Debug\zxing.dll
+D:\Projects\VisualStudio\megazlo.net\zxing\obj\Debug\zxing.pdb
+C:\Users\paradoxfm\Desktop\megazlo.net\zxing\bin\Debug\zxing.dll
+C:\Users\paradoxfm\Desktop\megazlo.net\zxing\bin\Debug\zxing.pdb
+C:\Users\paradoxfm\Desktop\megazlo.net\zxing\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\paradoxfm\Desktop\megazlo.net\zxing\obj\Debug\zxing.dll
+C:\Users\paradoxfm\Desktop\megazlo.net\zxing\obj\Debug\zxing.pdb

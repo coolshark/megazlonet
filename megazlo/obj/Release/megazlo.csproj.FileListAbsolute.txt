@@ -1,0 +1,12 @@
+D:\Projects\VisualStudio\megazlo.net\megazlo\bin\megazlo.dll
+D:\Projects\VisualStudio\megazlo.net\megazlo\bin\megazlo.pdb
+D:\Projects\VisualStudio\megazlo.net\megazlo\bin\zxing.dll
+D:\Projects\VisualStudio\megazlo.net\megazlo\bin\zxing.pdb
+D:\Projects\VisualStudio\megazlo.net\megazlo\obj\Release\ResolveAssemblyReference.cache
+D:\Projects\VisualStudio\megazlo.net\megazlo\obj\Release\megazlo.dll
+D:\Projects\VisualStudio\megazlo.net\megazlo\obj\Release\megazlo.pdb
+D:\Projects\VisualStudio\megazlo.net\megazlo\bin\UnidecodeSharp.dll
+D:\Projects\VisualStudio\megazlo.net\megazlo\bin\UnidecodeSharp.pdb
+D:\Projects\VisualStudio\megazlo.net\megazlo\bin\EntityFramework.dll
+D:\Projects\VisualStudio\megazlo.net\megazlo\bin\EntityFramework.xml
+D:\Projects\VisualStudio\megazlo.net\megazlo\bin\Upload\img\43b89b01-ded2-4d4f-924f-b5967076e9f0
