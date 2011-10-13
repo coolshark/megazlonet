@@ -52,26 +52,24 @@ namespace megazlo.Controllers {
 		}
 
 		[HttpPost]
-		public ActionResult LogOn(User user, string returnUrl) {
+		public ActionResult LogOn([Bind(Include = "NickName, PassWord")]User user, string returnUrl) {
 			ViewBag.Title = "Авторизация";
 			if (user != null && user.NickName != null && user.PassWord != null) {
 				if (MembershipService.ValidateUser(user.NickName, user.PassWord)) {
 					FormsService.SignIn(user.NickName, true);
-					if (!Roles.RoleExists("Admin"))
-						Roles.CreateRole("Admin");
-					using (ZloContext con = new ZloContext()) {
-						User us = con.Users.Where(u => u.NickName == user.NickName).First();
-						Roles.AddUserToRole(us.NickName, "Admin");
-					}
+					//if (!Roles.RoleExists("Admin"))
+					//  Roles.CreateRole("Admin");
+					//using (ZloContext con = new ZloContext()) {
+					//  User us = con.Users.Where(u => u.NickName == user.NickName).First();
+					//  Roles.AddUserToRole(us.NickName, "Admin");
+					//}
 					if (Url.IsLocalUrl(returnUrl))
 						return Redirect(returnUrl);
 					else
 						return RedirectToAction("Index", "Home");
-				} else {
-					ModelState.AddModelError("", "The user name or password provided is incorrect.");
 				}
+				ModelState.AddModelError("", "Неверное имя пользователя или пароль.");
 			}
-			// If we got this far, something failed, redisplay form
 			return View(user);
 		}
 		#endregion

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Security;
+using megazlo.Code;
 
 namespace megazlo.Models {
 	public interface IMembershipService {
@@ -35,7 +36,7 @@ namespace megazlo.Models {
 		}
 
 		public bool ValidateUser(string userName, string password) {
-			return DAO.AutoriseUser(new User() { NickName = userName, PassWord = password });
+			return DAO.AutoriseUser(new User() { NickName = userName, PassWord = Hash.CreateHash(password) });
 		}
 
 		public MembershipCreateStatus CreateUser(string userName, string password, string email) {

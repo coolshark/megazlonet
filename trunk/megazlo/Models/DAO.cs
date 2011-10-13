@@ -1,32 +1,24 @@
 ﻿using System.Linq;
 
-namespace megazlo.Models
-{
-	public class DAO
-	{
-		public static void InsertUser(User user)
-		{
-			using (ZloContext cont = new ZloContext())
-			{
+namespace megazlo.Models {
+	public class DAO {
+		public static void InsertUser(User user) {
+			using (ZloContext cont = new ZloContext()) {
 				cont.Users.Add(user);
 				cont.SaveChanges();
 			}
 		}
 
-		public static bool AutoriseUser(User user)
-		{
+		public static bool AutoriseUser(User user) {
 			bool rez = false;
-			using (ZloContext cont = new ZloContext())
-			{
+			using (ZloContext cont = new ZloContext()) {
 				rez = cont.Users.Where(u => u.NickName == user.NickName).Where(u => u.PassWord == user.PassWord).Count() > 0;
 			}
 			return rez;
 		}
 
-		public static void EditUser(User user)
-		{
-			using (ZloContext cont = new ZloContext())
-			{
+		public static void EditUser(User user) {
+			using (ZloContext cont = new ZloContext()) {
 				User usr2 = new User() { NickName = user.NickName };
 				cont.Users.Attach(usr2);
 				usr2.Avatar = user.Avatar;
@@ -38,20 +30,16 @@ namespace megazlo.Models
 			}
 		}
 
-		public static void DeleteUser(User user)
-		{
-			using (ZloContext cont = new ZloContext())
-			{
+		public static void DeleteUser(User user) {
+			using (ZloContext cont = new ZloContext()) {
 				cont.Users.Attach(user);
 				cont.Users.Remove(user);
 				cont.SaveChanges();
 			}
 		}
 
-		public static void InsertPost(Post post, User user)
-		{
-			using (ZloContext cont = new ZloContext())
-			{
+		public static void InsertPost(Post post, User user) {
+			using (ZloContext cont = new ZloContext()) {
 				User usr = cont.Users.Where(u => u.NickName == user.NickName).First();
 				post.UserId = usr != null ? usr.Id : 0;
 				cont.Posts.Add(post);
