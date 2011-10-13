@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using megazlo.Models;
+using System.ComponentModel.DataAnnotations;
+using megazlo.Code;
+using System.Data.Entity.Validation;
 
 namespace megazlo.Controllers {
 	public class HomeController : Controller {
@@ -70,6 +73,20 @@ namespace megazlo.Controllers {
 			//return RedirectToAction("Index");
 		}
 
+		public ActionResult Install() {
+			ViewBag.Title = "Установка";
+			return View("Install");
+		}
 
+		[HttpPost]
+		public ActionResult Install(User usr) {
+			if (ModelState.IsValid) {
+				usr.ConfirmPassWord = usr.PassWord = Hash.CreateHash(usr.PassWord);
+				con.Users.Add(usr);
+				con.SaveChanges();
+				return RedirectToAction("LogOn", "Account");
+			}
+			return View("Install", usr);
+		}
 	}
 }

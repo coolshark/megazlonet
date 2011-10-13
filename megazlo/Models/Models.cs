@@ -79,13 +79,17 @@ namespace megazlo.Models {
 		public int Id { get; set; }
 		[Required]
 		[Display(Name = "Имя")]
+		[MaxLength(100)]
 		public string FirstName { get; set; }
 		[Display(Name = "Фамилия")]
+		[MaxLength(100)]
 		public string SecondName { get; set; }
 		[Display(Name = "Отчество")]
+		[MaxLength(100)]
 		public string LastName { get; set; }
 		[Required]
 		[Display(Name = "Ник")]
+		[MaxLength(100)]
 		public string NickName { get; set; }
 		[DataType(DataType.Date)]
 		[Display(Name = "Дата рождения")]
@@ -95,6 +99,7 @@ namespace megazlo.Models {
 		[Required]
 		[DataType(DataType.EmailAddress)]
 		[Display(Name = "Адрес Email")]
+		[MaxLength(200)]
 		public string Email { get; set; }
 		[Display(Name = "Аватара")]
 		[DataType(DataType.ImageUrl)]
@@ -104,11 +109,12 @@ namespace megazlo.Models {
 		[Required]
 		[Display(Name = "Пароль")]
 		[DataType(DataType.Password)]
+		[StringLength(32, MinimumLength = 6)]
 		public string PassWord { get; set; }
 		[Required]
 		[Display(Name = "Подтверждение пароля")]
 		[DataType(DataType.Password)]
-		[Compare("Password", ErrorMessage = "Пароль и подтверждение не совпадают!")]
+		[Compare("PassWord", ErrorMessage = "Пароль и подтверждение не совпадают!")]
 		[NotMapped]
 		public string ConfirmPassWord { get; set; }
 		public virtual ICollection<Post> Post { get; set; }
@@ -126,14 +132,17 @@ namespace megazlo.Models {
 		public DateTime DatePost { get; set; }
 		[Required]
 		[Display(Name = "Имя*")]
+		[StringLength(50)]
 		public string FirstName { get; set; }
 		[Required]
 		[Display(Name = "Email*")]
 		[DataType(DataType.EmailAddress)]
+		[StringLength(150, MinimumLength = 5)]
 		public string Email { get; set; }
 		[Required]
 		[Display(Name = "Текст*")]
 		[DataType(DataType.MultilineText)]
+		[StringLength(1000, MinimumLength = 5, ErrorMessage = "Нефиг постить смайлики и поэмы.")]
 		public string Text { get; set; }
 		public int PostId { get; set; }
 		public virtual Post Post { get; private set; }

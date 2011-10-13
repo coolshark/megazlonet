@@ -1,5 +1,9 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
+#if DEBUG
+using megazlo.Models;
+using System.Data.Entity;
+#endif
 
 namespace megazlo {
 
@@ -28,6 +32,9 @@ namespace megazlo {
 		}
 
 		protected void Application_Start() {
+#if DEBUG
+			Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ZloContext>());
+#endif
 			AreaRegistration.RegisterAllAreas();
 			RegisterGlobalFilters(GlobalFilters.Filters);
 			RegisterRoutes(RouteTable.Routes);

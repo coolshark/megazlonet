@@ -1202,6 +1202,14 @@ li li .comment-meta, li li .comment-author
 	float: left;
 }
 
+div.validation-summary-errors li, .field-validation-error
+{
+	border: 1px solid #cd0a0a;
+	background: #fef1ec;
+	color: #cd0a0a;
+	border-radius: 2px;
+}
+
 
 /*-----------------------------------------------------------------------------------*/
 /*	9.	Footer Styles
