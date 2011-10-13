@@ -18,7 +18,7 @@
 				@Html.Raw(item.TextPreview)
 				<p>
 					<a href="@Url.RouteUrl("Post", new RouteValueDictionary { { "id", item.WebLink } })" class="more-link">Полностью &rarr;</a></p>
-				@if (User.IsInRole("Admin")) {
+				@if (Request.IsAuthenticated /*User.IsInRole("Admin")*/) {
 					<div>
 						@Html.ActionLink("Редактировать", "EditNews", "Admin", new { id = item.Id }, new { Class = "title" })
 						|

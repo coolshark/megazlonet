@@ -5,7 +5,8 @@ using megazlo.Code;
 using megazlo.Models;
 
 namespace megazlo.Controllers {
-	[Authorize(Roles = "Admin")]
+
+	[Authorize]
 	public class AdminController : Controller {
 		string view = "Post";
 		ZloContext con = new ZloContext();

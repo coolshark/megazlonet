@@ -316,7 +316,7 @@ h6
 {
 	width: 940px;
 	margin: 0 auto;
-	padding: 30px 0 0 0;
+	height: 100%;
 }
 
 #primary
@@ -376,6 +376,7 @@ h6
 
 #upper-wrap
 {
+	padding-top: 30px;
 	border-bottom: 1px solid #efefef;
 }
 
@@ -1208,7 +1209,7 @@ li li .comment-meta, li li .comment-author
 
 #footer-container
 {
-	margin: 80px 0 0 0;
+	margin-top: -130px;
 }
 
 .single #footer-container
