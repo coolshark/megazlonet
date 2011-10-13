@@ -3,7 +3,7 @@
 	<li><a class="home" title="Главная" href="/">Главная</a></li>
 	@Html.GetMenuCats()
 	@Html.GetMenuPosts()
-	@if (User.IsInRole("Admin")) {
+	@if (Request.IsAuthenticated/*User.IsInRole("Admin")*/) {
 		<li><a href="/Admin">Admin</a>
 			<ul>
 				<li><a href="/Admin/AddNews">Добавить пост</a></li>

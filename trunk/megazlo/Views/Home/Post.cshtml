@@ -19,7 +19,7 @@
 	}
 		<div class="@Html.GetClassPost(Model.IsShowInfo)">
 			@Html.Raw(Model.Text)
-			@if (User.IsInRole("Admin")) {
+			@if (Request.IsAuthenticated /*User.IsInRole("Admin")*/) {
 				<div>
 					@Html.ActionLink("Редактировать", "EditNews", "Admin", new { id = Model.Id }, new { })
 					|
