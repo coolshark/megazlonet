@@ -73,7 +73,6 @@ namespace megazlo.Models {
 	public class User {
 		public User() {
 			DateRegister = DateTime.Now;
-			//Post = new List<Post>();
 		}
 		[Key]
 		public int Id { get; set; }
