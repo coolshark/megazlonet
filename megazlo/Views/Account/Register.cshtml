@@ -1,15 +1,16 @@
 ﻿@{ViewBag.Title = "Регистрация";}
 @model megazlo.Models.User
-<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+@{
+	SquishIt.JavaScript.Add("~/Scripts/jquery.validate.unobtrusive.min.js");
+	SquishIt.JavaScript.Add("~/Scripts/jquery.validate.min.js");
+}
 <style type="text/css">
 	.editor-field input
 	{
 		width: 300px;
 	}
 </style>
-@using (Html.BeginForm())
-{
+@using (Html.BeginForm()) {
 	@Html.ValidationSummary(true)
 	<fieldset style="padding: 10px 10px 10px 20px;">
 		<legend>Регистрация пользователя</legend>

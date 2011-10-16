@@ -32,10 +32,7 @@
 -----------------------------------------------------------------------------------*/
 
 
-/*-----------------------------------------------------------------------------------*/
-/*	0.	CSS Reset & Clearfix - http://meyerweb.com/eric/tools/css/reset/
-/*-----------------------------------------------------------------------------------*/
-
+/*#region CSS Reset & Clearfix - http://meyerweb.com/eric/tools/css/reset/ */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td
 {
 	margin: 0;
@@ -102,11 +99,9 @@ table
 	display: none;
 }
 /* End Clearfix */
+/*#endregion*/
 
-
-/*-----------------------------------------------------------------------------------*/
-/*	1.	Document Setup (body, common classes, vertical rhythm, structure etc)
-/*-----------------------------------------------------------------------------------*/
+/*#region	1 Document Setup (body, common classes, vertical rhythm, structure etc)*/
 
 body
 {
@@ -369,11 +364,9 @@ h6
 {
 	display: block;
 }
+/*#endregion*/
 
-/*-----------------------------------------------------------------------------------*/
-/*	3.	Header Styles
-/*-----------------------------------------------------------------------------------*/
-
+/*#region	3 Header Styles*/
 #upper-wrap
 {
 	padding-top: 30px;
@@ -405,10 +398,9 @@ h6
 	line-height: 20px;
 	font-weight: normal;
 }
+/*#endregion*/
 
-/*-----------------------------------------------------------------------------------*/
-/*	4.	Navigation & Menus
-/*-----------------------------------------------------------------------------------*/
+/*#region	4 Navigation & Menus*/
 #navigation
 {
 	float: right;
@@ -463,11 +455,9 @@ h6
 	width: 150px;
 }
 /* submenu end */
+/*#endregion*/
 
-/*-----------------------------------------------------------------------------------*/
-/*	5.	Main Content Styles
-/*-----------------------------------------------------------------------------------*/
-
+/*#region	5 Main Content Styles */
 address
 {
 	font-style: italic;
@@ -794,12 +784,9 @@ select:focus, input:focus, textarea:focus, button:hover
 {
 	padding-bottom: 40px;
 }
+/*#endregion*/
 
-
-/*-----------------------------------------------------------------------------------*/
-/*	6.	Post Content Styles
-/*-----------------------------------------------------------------------------------*/
-
+/*#region	6 Post Content Styles*/
 #primary .entry-meta
 {
 	float: left;
@@ -885,12 +872,9 @@ select:focus, input:focus, textarea:focus, button:hover
 {
 	list-style-type: decimal;
 }
+/*#endregion*/
 
-
-/*-----------------------------------------------------------------------------------*/
-/*	7.	Comments
-/*-----------------------------------------------------------------------------------*/
-
+/*#region 7 Comments*/
 .comments-sidebar
 {
 	width: 140px;
@@ -1163,12 +1147,9 @@ li li .comment-meta, li li .comment-author
 	font-family: "Droid Serif" , Georgia, Times, serif;
 	font-size: 11px;
 }
+/*#endregion*/
 
-
-/*-----------------------------------------------------------------------------------*/
-/*	8.	Pagination
-/*-----------------------------------------------------------------------------------*/
-
+/*#region 8 Pagination*/
 .page-navigation
 {
 	margin: 56px 0 0 0;
@@ -1209,12 +1190,9 @@ div.validation-summary-errors li, .field-validation-error
 	color: #cd0a0a;
 	border-radius: 2px;
 }
+/*#endregion*/
 
-
-/*-----------------------------------------------------------------------------------*/
-/*	9.	Footer Styles
-/*-----------------------------------------------------------------------------------*/
-
+/*#region 9 Footer Styles*/
 #footer-container
 {
 	margin-top: -130px;
@@ -1291,12 +1269,9 @@ div.validation-summary-errors li, .field-validation-error
 {
 	color: #666666;
 }
+/*#endregion*/
 
-
-/*-----------------------------------------------------------------------------------*/
-/*	10.	Page Templates
-/*-----------------------------------------------------------------------------------*/
-
+/*#region 10 Page Templates*/
 .archive-lists .children
 {
 	margin-bottom: 0;
@@ -1350,12 +1325,9 @@ label.error
 {
 	color: red;
 }
+/*#endregion*/
 
-
-/*-----------------------------------------------------------------------------------*/
-/*	11.	Widgets
-/*-----------------------------------------------------------------------------------*/
-
+/*#region 11 Widgets*/
 .widget
 {
 	margin-bottom: 20px;
@@ -1545,12 +1517,9 @@ label.error
 {
 	margin-bottom: 10px;
 }
+/*#endregion*/
 
-
-/*-----------------------------------------------------------------------------------*/
-/*	12.	Shortcode Styles
-/*-----------------------------------------------------------------------------------*/
-
+/*#region 12 Shortcode Styles*/
 /* Columns */
 .one_half
 {
@@ -1610,11 +1579,9 @@ label.error
 	margin-right: 0 !important;
 	clear: right;
 }
+/*#endregion*/
 
-/*-----------------------------------------------------------------------------------*/
-/*	12.	Homepage Elements
-/*-----------------------------------------------------------------------------------*/
-
+/*#region 13 Homepage Elements*/
 #home-message h2
 {
 	font-family: "Droid Serif" , Georgia, Times, serif;
@@ -1857,12 +1824,9 @@ label.error
 {
 	margin-left: 5px;
 }
+/*#endregion*/
 
-
-/*-----------------------------------------------------------------------------------*/
-/*	14.	Portfolio Sorter, MANDATORY styling
-/*-----------------------------------------------------------------------------------*/
-
+/*#region 14 Portfolio Sorter, MANDATORY styling*/
 .recent-wrap
 {
 	position: relative;
@@ -1908,11 +1872,9 @@ label.error
 	overflow: hidden;
 	margin-bottom: 20px;
 }
+/*#endregion*/
 
-/*-----------------------------------------------------------------------------------*/
-/*	15.	MokaSocial Add-Ons
-/*-----------------------------------------------------------------------------------*/
-
+/*#region 15 MokaSocial Add-Ons*/
 .page-title h1
 {
 	font-size: 22px;
@@ -2005,9 +1967,9 @@ a, .tz_tweet_widget ul li span a
 {
 	color: #2987b3;
 }
-/*==========================================================================================	
-This file contains styles related to the colour scheme of the theme
-==========================================================================================*/
+/*#endregion*/
+
+/*#region This file contains styles related to the colour scheme of the theme*/
 a:hover, #commentform small span, .tz_blog .entry-title a:hover, .tz_tweet_widget ul li span a:hover, #primary .entry-meta a:hover, .recent-wrap .entry-title a:hover, .tab-comments h3 a:hover, .author-tag
 {
 	color: #f26535;
@@ -2024,3 +1986,4 @@ a:hover, #commentform small span, .tz_blog .entry-title a:hover, .tz_tweet_widge
 	background: #f26535;
 	color: #fff;
 }
+/*#endregion*/

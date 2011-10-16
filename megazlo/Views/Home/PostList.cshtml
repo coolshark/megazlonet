@@ -6,7 +6,7 @@
 			<a href="@Url.RouteUrl("Post", new RouteValueDictionary { { "id", item.WebLink } })" rel="bookmark">@item.Title</a></h2>
 		<div class="clearfix">
 			<div class="entry-meta entry-header">
-				<span class="published">Автор <strong>@item.User.NickName</strong></span> <span class="published">От <strong>@item.DatePost.ToShortDateString()</strong></span>
+				<span class="published">Автор <strong>@item.User.FirstName @item.User.SecondName</strong></span> <span class="published">От <strong>@item.DatePost.ToShortDateString()</strong></span>
 				@if (item.IsCommentable) {
 					<span class="comment-count">Комментарии <a href="@Url.RouteUrl("Post", new RouteValueDictionary { { "id", item.WebLink } })#comments">
 						@item.Comment.Count</a></span>

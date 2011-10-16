@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using megazlo.Models;
-using System.ComponentModel.DataAnnotations;
 using megazlo.Code;
-using System.Data.Entity.Validation;
+using megazlo.Models;
 
 namespace megazlo.Controllers {
 	public class HomeController : Controller {
@@ -23,7 +21,7 @@ namespace megazlo.Controllers {
 		public ActionResult Error(string id) {
 			ViewBag.Title = "Упс!";
 			ViewBag.ErrType = "";
-			ViewBag.Meaasge = "Упс!";
+			ViewBag.Meaasge = "Упс, мы ее теряем!";
 			ViewBag.ImagePath = "~/Content/styles/images/404.png";
 			if (id == "html5") {
 				ViewBag.ErrType = "html5";
@@ -37,10 +35,13 @@ namespace megazlo.Controllers {
 			Post pst = null;
 			if (con.Posts.Where(p => p.WebLink == id).Count() > 0)
 				pst = con.Posts.Where(p => p.WebLink == id).First();
-			if (pst != null)
+			if (pst != null) {
+				ViewBag.Title = pst.Title;
 				return View("Post", pst);
+			}
 			return RedirectToAction("Error");
 		}
+
 
 		public ActionResult Category(string id, int page = 0) {
 			if (page < 0)
