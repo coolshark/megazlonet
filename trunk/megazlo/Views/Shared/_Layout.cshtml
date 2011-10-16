@@ -1,4 +1,14 @@
-﻿<!DOCTYPE html>
+﻿@{
+	SquishIt.Css.Add("~/Content/styles/main.css");
+	SquishIt.Css.Add("~/Content/redmond/jquery-ui-1.8.16.custom.css");
+	SquishIt.Css.Add("~/Scripts/highlight/styles/vs.css");
+	SquishIt.Css.Add("~/Content/styles/style.css");
+
+	SquishIt.JavaScript.Add("~/Scripts/jquery.slidemenu.js");
+	SquishIt.JavaScript.Add("~/Scripts/highlight/highlight.pack.js");
+	SquishIt.JavaScript.Add("~/Scripts/jquery-1.6.4.min.js");
+}
+<!DOCTYPE html>
 <html>
 <head>
 	<script type="text/javascript">
@@ -9,19 +19,14 @@
 	<title>@ViewBag.Title</title>
 	<meta name="WebsiteSpark" content="8ULOjiq6zK" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link href="@Url.Content("~/Content/styles/main.css")" rel="stylesheet" type="text/css" />
-	<link href="@Url.Content("~/Content/styles/style.css")" rel="stylesheet" type="text/css" />
-	<link href="@Url.Content("~/Content/redmond/jquery-ui-1.8.16.custom.css")" rel="stylesheet" type="text/css" />
 	<link href="@Url.Content("~/Content/styles/images/favicon.ico")" rel="icon" type="image/ico" />
-	<script src="@Url.Content("~/Scripts/jquery-1.6.4.min.js")" type="text/javascript"></script>
-	<script src="@Url.Content("~/Scripts/jquery.slidemenu.js")" type="text/javascript"></script>
-	<script src="@Url.Content("~/Scripts/highlight/highlight.pack.js")" type="text/javascript"></script>
+	@SquishIt.Css.Render("~/Content/Site.min_#.css")
+	@SquishIt.JavaScript.Render("~/Scripts/Site.min_#.js")
 	<script type="text/javascript">
 		$(document).ready(function () {
 			$('pre').each(function (i, e) { hljs.highlightBlock(e, '  ', true) });
 		});
 	</script>
-	<link href="@Url.Content("~/Scripts/highlight/styles/vs.css")" rel="stylesheet" type="text/css" />
 </head>
 <body class="blog">
 	<div id="container">
@@ -29,7 +34,7 @@
 			<div id="upper-wrap" class="clearfix">
 				<div id="logo">
 					<a href="/">
-						<img src="@Url.Content("~/Content/styles/images/logoweb.png")" alt="megazlo" /></a>
+						<img src="@Url.Content("~/Content/styles/images/logoweb.jpg")" alt="megazlo" /></a>
 				</div>
 				<div id="navigation" class="jqueryslidemenu">
 					@Html.Partial("_Menu")
@@ -66,11 +71,11 @@
 			</p>
 			<p class="credit">
 				<a id="spark" href="http://www.microsoft.com/web/websitespark/" title="При поддержке">
-					<img src="@Url.Content("~/Content/styles/images/_spark_.png")" alt="WebSiteSpark" /></a> <a id="mvc" href="http://www.asp.net/mvc"
-						title="Технологии">
-						<img src="@Url.Content("~/Content/styles/images/_asp-net-mvc-3_.gif")" alt="ASP.NET MVC 3" /></a> <a id="html5" href="http://www.w3.org/html/"
-							title="Технологии">
-							<img src="@Url.Content("~/Content/styles/images/_HTML5_Logo.png")" alt="html5" /></a>
+					<img src="@Url.Content("~/Content/styles/images/_spark_.png")" alt="WebSiteSpark" /></a>
+				<a id="mvc" href="http://www.asp.net/mvc" title="Технологии">
+					<img src="@Url.Content("~/Content/styles/images/_asp-net-mvc-3_.gif")" alt="ASP.NET MVC 3" /></a>
+				<a id="html5" href="http://www.w3.org/html/" title="Технологии">
+					<img src="@Url.Content("~/Content/styles/images/_HTML5_Logo.png")" alt="html5" /></a>
 			</p>
 			<br />
 			<br />
