@@ -87,7 +87,7 @@ namespace megazlo.Models {
 		[MaxLength(100)]
 		public string LastName { get; set; }
 		[Required]
-		[Display(Name = "Ник")]
+		[Display(Name = "Ник (требуется для авторизации)")]
 		[MaxLength(100)]
 		public string NickName { get; set; }
 		[DataType(DataType.Date)]
@@ -99,6 +99,7 @@ namespace megazlo.Models {
 		[DataType(DataType.EmailAddress)]
 		[Display(Name = "Адрес Email")]
 		[MaxLength(200)]
+		[RegularExpression(@"^([A-Za-z0-9]|[A-Za-z0-9](([a-zA-Z0-9,=\.!\-#|\$%\^&*\+/\?_`\{\}~]+)*)[a-zA-Z0-9,=!\-#|\$%\^&*\+/\?_`\{\}~])@(?:[0-9a-zA-Z-]+\.)+[a-zA-Z]{2,9}$", ErrorMessage = "Необходимо ввести email адрес")]
 		public string Email { get; set; }
 		[Display(Name = "Аватара")]
 		[DataType(DataType.ImageUrl)]
@@ -145,6 +146,30 @@ namespace megazlo.Models {
 		public string Text { get; set; }
 		public int PostId { get; set; }
 		public virtual Post Post { get; private set; }
+	}
+
+	public class LoginUser {
+		public LoginUser() {
+			Login = Password = string.Empty;
+			IsRemember = false;
+		}
+		[Required]
+		[Display(Name = "Ник")]
+		[MaxLength(100)]
+		public string Login { get; set; }
+		[Required]
+		[Display(Name = "Пароль")]
+		[DataType(DataType.Password)]
+		[StringLength(32, MinimumLength = 6)]
+		public string Password { get; set; }
+		[Display(Name = "Зпомнить")]
+		public bool IsRemember { get; set; }
+	}
+
+	public class RestorePass {
+		[Required]
+		[RegularExpression(@"^([A-Za-z0-9]|[A-Za-z0-9](([a-zA-Z0-9,=\.!\-#|\$%\^&*\+/\?_`\{\}~]+)*)[a-zA-Z0-9,=!\-#|\$%\^&*\+/\?_`\{\}~])@(?:[0-9a-zA-Z-]+\.)+[a-zA-Z]{2,9}$", ErrorMessage = "Необходимо ввести email адрес")]
+		public string Email { get; set; }
 	}
 
 	public class ZloContext : DbContext {

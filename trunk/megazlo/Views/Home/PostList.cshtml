@@ -1,17 +1,21 @@
 ﻿@using megazlo.Code;
 @model IEnumerable<megazlo.Models.Post>
+@{
+	SquishIt.JavaScript.Add("~/Scripts/jquery.vtip.js");
+}
 @foreach (var item in Model) {
 	<div class="post hentry">
 		<h2 class="entry-title">
 			<a href="@Url.RouteUrl("Post", new RouteValueDictionary { { "id", item.WebLink } })" rel="bookmark">@item.Title</a></h2>
 		<div class="clearfix">
 			<div class="entry-meta entry-header">
-				<span class="published">Автор <strong>@item.User.FirstName @item.User.SecondName</strong></span> <span class="published">От <strong>@item.DatePost.ToShortDateString()</strong></span>
+				<span class="published">Автор <strong>@item.User.FirstName @item.User.SecondName</strong></span> <span class="published">От
+					<strong>@item.DatePost.ToShortDateString()</strong></span>
 				@if (item.IsCommentable) {
 					<span class="comment-count">Комментарии <a href="@Url.RouteUrl("Post", new RouteValueDictionary { { "id", item.WebLink } })#comments">
 						@item.Comment.Count</a></span>
 		}
-				<span class="permalink">→ <a title="@item.Title" href="@Url.RouteUrl("Post", new RouteValueDictionary { { "id", item.WebLink } })">
+				<span class="permalink">→ <a href="@Url.RouteUrl("Post", new RouteValueDictionary { { "id", item.WebLink } })" class="vtip" title="@item.Title">
 					Ссылка</a></span>
 			</div>
 			<div class="entry-content">

@@ -3,11 +3,14 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using megazlo.Models;
+using System;
+using megazlo.Code;
 
 namespace megazlo.Controllers {
 	public class AccountController : Controller {
 		public IFormsAuthenticationService FormsService { get; set; }
 		public IMembershipService MembershipService { get; set; }
+		ZloContext con = new ZloContext();
 
 		protected override void Initialize(RequestContext requestContext) {
 			if (FormsService == null)
@@ -45,38 +48,57 @@ namespace megazlo.Controllers {
 		}
 		#endregion
 
-		#region LogOn
-		public ActionResult LogOn() {
-			ViewBag.Title = "Авторизация";
+		public ActionResult Login() {
+			ViewBag.Title = "Вход";
 			return View();
 		}
 
 		[HttpPost]
-		public ActionResult LogOn([Bind(Include = "NickName, PassWord")]User user, string returnUrl) {
-			ViewBag.Title = "Авторизация";
-			if (user != null && user.NickName != null && user.PassWord != null) {
-				if (MembershipService.ValidateUser(user.NickName, user.PassWord)) {
-					FormsService.SignIn(user.NickName, true);
-					//if (!Roles.RoleExists("Admin"))
-					//  Roles.CreateRole("Admin");
-					//using (ZloContext con = new ZloContext()) {
-					//  User us = con.Users.Where(u => u.NickName == user.NickName).First();
-					//  Roles.AddUserToRole(us.NickName, "Admin");
-					//}
-					if (Url.IsLocalUrl(returnUrl))
-						return Redirect(returnUrl);
-					else
-						return RedirectToAction("Index", "Home");
+		public ActionResult Login(LoginUser usr, string returnUrl) {
+			ViewBag.Title = "Вход";
+			if (ModelState.IsValid) {
+				if (MembershipService.ValidateUser(usr.Login, usr.Password)) {
+					FormsService.SignIn(usr.Login, true);
+					return Url.IsLocalUrl(returnUrl) ? Redirect(returnUrl) : Redirect("/");
 				}
 				ModelState.AddModelError("", "Неверное имя пользователя или пароль.");
 			}
-			return View(user);
+			usr.Password = string.Empty;
+			return View(usr);
 		}
-		#endregion
 
 		public ActionResult LogOff() {
 			FormsService.SignOut();
 			return RedirectToAction("Index", "Home");
+		}
+
+		public ActionResult RestorePassword() {
+			ViewBag.Title = "Востановление пароля";
+			return View();
+		}
+
+		[HttpPost]
+		public ActionResult RestorePassword(RestorePass rest) {
+			ViewBag.Title = "Востановление пароля";
+			if (ModelState.IsValid) {
+				IQueryable<User> usrs = con.Users.Where(u => u.Email == rest.Email);//.Count();
+				if (usrs.Count() > 0) {
+					User usr = usrs.First();
+					if (usr != null) {
+						Random rnd = new Random();
+						string newpas = string.Empty;
+						for (int i = 0; i < 7; i++)
+							newpas += (char)rnd.Next(33, 126);
+						//usr.PassWord = Hash.CreateHash(newpas);
+						//con.Entry(usr).State = System.Data.EntityState.Modified;
+						//con.SaveChanges();
+						// send email
+					}
+				} else {
+					ModelState.AddModelError("", "Нет пользователя с таким адресом.");
+				}
+			}
+			return View();
 		}
 	}
 }
