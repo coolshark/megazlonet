@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zxing", "zxing\zxing.csproj", "{45CB769A-712F-42FE-B23F-BFCB7E0AE6D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpJExcel", "CSharpJExcel\CSharpJExcel.csproj", "{2206F618-10D6-451E-8F05-F7E49FE1BDCF}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XCaptcha", "XCaptcha\XCaptcha.csproj", "{7D89735B-2EA5-4BA1-A37B-CD0346B527E4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XCaptcha.Web.Mvc", "XCaptcha.Web.Mvc\XCaptcha.Web.Mvc.csproj", "{D0299BC2-36C2-4B40-900C-84D14007C672}"
@@ -23,10 +21,6 @@ Global
 		{45CB769A-712F-42FE-B23F-BFCB7E0AE6D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45CB769A-712F-42FE-B23F-BFCB7E0AE6D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45CB769A-712F-42FE-B23F-BFCB7E0AE6D9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2206F618-10D6-451E-8F05-F7E49FE1BDCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2206F618-10D6-451E-8F05-F7E49FE1BDCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2206F618-10D6-451E-8F05-F7E49FE1BDCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2206F618-10D6-451E-8F05-F7E49FE1BDCF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7D89735B-2EA5-4BA1-A37B-CD0346B527E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7D89735B-2EA5-4BA1-A37B-CD0346B527E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D89735B-2EA5-4BA1-A37B-CD0346B527E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
