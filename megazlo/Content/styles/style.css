@@ -734,7 +734,7 @@ img.aligncenter
 	width: 11%;
 }
 
-input, textarea, button, select
+input, textarea, button, select, fieldset
 {
 	border: 1px solid #b7d6df;
 }
@@ -1186,6 +1186,7 @@ li li .comment-meta, li li .comment-author
 div.validation-summary-errors li, .field-validation-error
 {
 	border: 1px solid #cd0a0a;
+	padding: 2px 10px 2px 10px;
 	background: #fef1ec;
 	color: #cd0a0a;
 	border-radius: 2px;
@@ -1511,6 +1512,21 @@ label.error
 {
 	border-color: #d5d5d5;
 }
+
+form fieldset, fieldset.for_forms
+{
+	margin-top: 30px;
+	padding: 10px;
+	border-radius: 4px;
+}
+
+legend
+{
+	font-size: 20px;
+	font-family: "Droid Serif" , Georgia, Times, serif;
+	font-style: italic;
+}
+
 
 /* Video Widget */
 .tz_video
@@ -1987,3 +2003,15 @@ a:hover, #commentform small span, .tz_blog .entry-title a:hover, .tz_tweet_widge
 	color: #fff;
 }
 /*#endregion*/
+
+p#vtip
+{
+	display: none;
+	position: absolute;
+	padding: 5px;
+	left: 5px;
+	background-color: #DDDDDD;
+	border: solid #AAAAAA 1px;
+	z-index: 9999;
+	border-radius: 5px;
+}

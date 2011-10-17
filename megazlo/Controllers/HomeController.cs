@@ -75,8 +75,12 @@ namespace megazlo.Controllers {
 		}
 
 		public ActionResult Install() {
+			int cnt = con.Users.Count();
+			if (cnt > 0)
+				return RedirectToAction("Index");
 			ViewBag.Title = "Установка";
-			return View("Install");
+			User usr = new User() { IsAdmin = true, NickName = "admin" };
+			return View(usr);
 		}
 
 		[HttpPost]
@@ -85,7 +89,7 @@ namespace megazlo.Controllers {
 				usr.ConfirmPassWord = usr.PassWord = Hash.CreateHash(usr.PassWord);
 				con.Users.Add(usr);
 				con.SaveChanges();
-				return RedirectToAction("LogOn", "Account");
+				return RedirectToAction("Login", "Account");
 			}
 			return View("Install", usr);
 		}

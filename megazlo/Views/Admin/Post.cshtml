@@ -23,16 +23,12 @@
 			// Example content CSS (should be your site CSS)
 			content_css: '@Url.Content("~/Content/styles/style.css")'
 		});
-		$('input:submit').bind('click', function (e) {
-			$('textarea.tinymce').tinymce().save(); // writes content back to the textarea
-		});
+		ы
 	});
 </script>
 @using (Html.BeginForm()) {
-	@Html.ValidationSummary(true)
-	<div class="post">
-		<h2 class="entry-title">
-			Редактирование статьи</h2>
+	<fieldset>
+		<legend>Редактирование статьи</legend>
 		@Html.HiddenFor(model => model.UserId)
 		<div class="editor-label">
 			@Html.LabelFor(model => model.Title)
@@ -63,7 +59,7 @@
 			@Html.LabelFor(model => model.IsShowInfo)
 		</div>
 		@Html.AntiForgeryToken()
-	</div>
-	<br />
+		@Html.ValidationSummary(true)
+	</fieldset>
 	<input id="sbmtform" type="submit" value=" @ViewBag.ButtonOk " />
 }
