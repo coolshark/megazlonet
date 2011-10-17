@@ -15,9 +15,8 @@
 */
 using System;
 using Result = com.google.zxing.Result;
-namespace com.google.zxing.client.result
-{
-	
+namespace com.google.zxing.client.result {
+
 	/// <summary> Partially implements the iCalendar format's "VEVENT" format for specifying a
 	/// calendar event. See RFC 2445. This supports SUMMARY, DTSTART and DTEND fields.
 	/// 
@@ -26,40 +25,31 @@ namespace com.google.zxing.client.result
 	/// </author>
 	/// <author>www.Redivivus.in (suraj.supekar@redivivus.in) - Ported from ZXING Java Source 
 	/// </author>
-	sealed class VEventResultParser:ResultParser
-	{
-		
-		private VEventResultParser()
-		{
+	sealed class VEventResultParser : ResultParser {
+
+		private VEventResultParser() {
 		}
-		
-		public static CalendarParsedResult parse(Result result)
-		{
+
+		public static CalendarParsedResult parse(Result result) {
 			System.String rawText = result.Text;
-			if (rawText == null)
-			{
+			if (rawText == null) {
 				return null;
 			}
 			int vEventStart = rawText.IndexOf("BEGIN:VEVENT");
-			if (vEventStart < 0)
-			{
+			if (vEventStart < 0) {
 				return null;
 			}
 			int vEventEnd = rawText.IndexOf("END:VEVENT");
-			if (vEventEnd < 0)
-			{
+			if (vEventEnd < 0) {
 				return null;
 			}
-			
+
 			System.String summary = VCardResultParser.matchSingleVCardPrefixedField("SUMMARY", rawText, true);
 			System.String start = VCardResultParser.matchSingleVCardPrefixedField("DTSTART", rawText, true);
 			System.String end = VCardResultParser.matchSingleVCardPrefixedField("DTEND", rawText, true);
-			try
-			{
+			try {
 				return new CalendarParsedResult(summary, start, end, null, null, null);
-			}
-			catch (System.ArgumentException iae)
-			{
+			} catch (System.ArgumentException iae) {
 				return null;
 			}
 		}
