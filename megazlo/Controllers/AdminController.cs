@@ -30,9 +30,11 @@ namespace megazlo.Controllers {
 			ViewBag.ButtonOk = "Создать";
 			post.Text = PostXml.Parce(post.Text);
 			post.WebLink = PostXml.ParceLink(post.Title);
-			string name = User.Identity.Name;
-			DAO.InsertPost(post, new User() { NickName = name });
-			return RedirectToAction("AddNews", "Admin");
+			User usr = con.Users.Where(u => u.NickName == User.Identity.Name).First();
+			post.UserId = usr != null ? usr.Id : 0;
+			con.Posts.Add(post);
+			con.SaveChanges();
+			return RedirectToAction("Post", "Home", new { id = post.WebLink });
 		}
 
 		public ActionResult EditNews(int id) {

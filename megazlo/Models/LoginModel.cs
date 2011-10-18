@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Security;
+using System.Linq;
 using megazlo.Code;
 
 namespace megazlo.Models {
@@ -36,7 +37,12 @@ namespace megazlo.Models {
 		}
 
 		public bool ValidateUser(string userName, string password) {
-			return DAO.AutoriseUser(new User() { NickName = userName, PassWord = Hash.CreateHash(password) });
+			using (ZloContext cont = new ZloContext()) {
+				return cont.Users
+					.Where(u => u.NickName == userName)
+					.Where(u => u.PassWord == Hash.CreateHash(password))
+					.Count() > 0;
+			}
 		}
 
 		public MembershipCreateStatus CreateUser(string userName, string password, string email) {
