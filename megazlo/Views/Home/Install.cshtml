@@ -5,74 +5,74 @@
 	<fieldset>
 		<legend>Регистрация админитратора</legend>
 		<div class="editor-label">
-			@Html.LabelFor(model => model.FirstName)
+			@Html.LabelFor(m => m.Name)
 		</div>
 		<div class="editor-field">
-			@Html.EditorFor(model => model.FirstName)
-			@Html.ValidationMessageFor(model => model.FirstName)
+			@Html.EditorFor(m => m.Name)
+			@Html.ValidationMessageFor(m => m.Name)
 		</div>
 		<div class="editor-label">
-			@Html.LabelFor(model => model.SecondName)
+			@Html.LabelFor(m => m.Family)
 		</div>
 		<div class="editor-field">
-			@Html.EditorFor(model => model.SecondName)
-			@Html.ValidationMessageFor(model => model.SecondName)
+			@Html.EditorFor(m => m.Family)
+			@Html.ValidationMessageFor(m => m.Family)
 		</div>
 		<div class="editor-label">
-			@Html.LabelFor(model => model.LastName)
+			@Html.LabelFor(m => m.LastName)
 		</div>
 		<div class="editor-field">
-			@Html.EditorFor(model => model.LastName)
-			@Html.ValidationMessageFor(model => model.LastName)
+			@Html.EditorFor(m => m.LastName)
+			@Html.ValidationMessageFor(m => m.LastName)
 		</div>
 		<div class="editor-label">
-			@Html.LabelFor(model => model.NickName)
+			@Html.LabelFor(m => m.NickName)
 		</div>
 		<div class="editor-field">
-			@Html.EditorFor(model => model.NickName)
-			@Html.ValidationMessageFor(model => model.NickName)
+			@Html.EditorFor(m => m.NickName)
+			@Html.ValidationMessageFor(m => m.NickName)
 		</div>
 		<div class="editor-label">
-			@Html.LabelFor(model => model.DateBorn)
+			@Html.LabelFor(m => m.DateBorn)
 		</div>
 		<div class="editor-field">
-			@Html.EditorFor(model => model.DateBorn)
-			@Html.ValidationMessageFor(model => model.DateBorn)
+			@Html.EditorFor(m => m.DateBorn)
+			@Html.ValidationMessageFor(m => m.DateBorn)
 		</div>
 		<div class="editor-label">
-			@Html.LabelFor(model => model.Email)
+			@Html.LabelFor(m => m.Email)
 		</div>
 		<div class="editor-field">
-			@Html.EditorFor(model => model.Email)
-			@Html.ValidationMessageFor(model => model.Email)
+			@Html.EditorFor(m => m.Email)
+			@Html.ValidationMessageFor(m => m.Email)
 		</div>
 		<div class="editor-label">
-			@Html.LabelFor(model => model.Avatar)
+			@Html.LabelFor(m => m.Avatar)
 		</div>
 		<div class="editor-field">
-			@Html.EditorFor(model => model.Avatar)
-			@Html.ValidationMessageFor(model => model.Avatar)
+			@Html.EditorFor(m => m.Avatar)
+			@Html.ValidationMessageFor(m => m.Avatar)
 		</div>
 		<div class="editor-label">
-			@Html.LabelFor(model => model.IsAdmin)
+			@Html.LabelFor(m => m.IsAdmin)
 		</div>
 		<div class="editor-field">
-			@Html.EditorFor(model => model.IsAdmin)
-			@Html.ValidationMessageFor(model => model.IsAdmin)
+			@Html.EditorFor(m => m.IsAdmin)
+			@Html.ValidationMessageFor(m => m.IsAdmin)
 		</div>
 		<div class="editor-label">
-			@Html.LabelFor(model => model.PassWord)
+			@Html.LabelFor(m => m.PassWord)
 		</div>
 		<div class="editor-field">
-			@Html.EditorFor(model => model.PassWord)
-			@Html.ValidationMessageFor(model => model.PassWord)
+			@Html.EditorFor(m => m.PassWord)
+			@Html.ValidationMessageFor(m => m.PassWord)
 		</div>
 		<div class="editor-label">
-			@Html.LabelFor(model => model.ConfirmPassWord)
+			@Html.LabelFor(m => m.ConfirmPassWord)
 		</div>
 		<div class="editor-field">
-			@Html.EditorFor(model => model.ConfirmPassWord)
-			@Html.ValidationMessageFor(model => model.ConfirmPassWord)
+			@Html.EditorFor(m => m.ConfirmPassWord)
+			@Html.ValidationMessageFor(m => m.ConfirmPassWord)
 		</div>
 		@Html.ValidationSummary(true)
 	</fieldset>

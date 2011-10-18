@@ -12,7 +12,7 @@
 	<div class="clearfix">
 		@if (Model.IsShowInfo) {
 			<div class="entry-meta entry-header">
-				<span class="published">Автор <strong>@Model.User.FirstName @Model.User.SecondName</strong></span> <span class="published">
+				<span class="published">Автор <strong>@Model.User.Name @Model.User.Family</strong></span> <span class="published">
 					От <strong>@Model.DatePost.ToShortDateString()</strong></span>
 				@if (Model.IsCommentable) {
 					<span class="comment-count">Комментарии <a href="@Url.RouteUrl("Post", new RouteValueDictionary { { "id", Model.WebLink } })#comments">
@@ -69,7 +69,7 @@
 						<div id="comment-@item.Id">
 							<div class="line">
 							</div>
-							<img class="avatar avatar-35 photo" width="35" height="35" src="@Url.Content("~/Content/styles/images/usr_logo.jpg")" alt="">
+							<img class="avatar avatar-35 photo" width="35" height="35" src="@Url.Content("~/Content/styles/images/usr_logo.jpg")" alt="" />
 							<div class="comment-author vcard">
 								<cite class="fn"><a class="url" rel="external nofollow" 
 									href="@Url.Action("Post", new { id = Model.WebLink })/#comment-@item.Id">@item.FirstName</a> </cite><span class="says">says:</span>
