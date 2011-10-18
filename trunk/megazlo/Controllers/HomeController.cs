@@ -81,7 +81,7 @@ namespace megazlo.Controllers {
 				return RedirectToAction("Index");
 			ViewBag.Title = "Установка";
 #if(DEBUG)
-			User usr = new User() { IsAdmin = true, NickName = "admin", Email = "paradoxfm@mail.ru", DateBorn = new DateTime(1984, 11, 11), FirstName = "Иван", LastName = "Гуркин", SecondName = "Александрович" };
+			User usr = new User() { IsAdmin = true, NickName = "admin", Email = "paradoxfm@mail.ru", DateBorn = new DateTime(1984, 11, 11), Name = "Иван", LastName = "Гуркин", Family = "Александрович" };
 #else
 			User usr = new User() { IsAdmin = true, NickName = "admin" };
 #endif

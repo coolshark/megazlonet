@@ -13,10 +13,10 @@ namespace megazlo.Models {
 		[Required]
 		[Display(Name = "Имя")]
 		[MaxLength(100)]
-		public string FirstName { get; set; }
+		public string Name { get; set; }
 		[Display(Name = "Фамилия")]
 		[MaxLength(100)]
-		public string SecondName { get; set; }
+		public string Family { get; set; }
 		[Display(Name = "Отчество")]
 		[MaxLength(100)]
 		public string LastName { get; set; }
