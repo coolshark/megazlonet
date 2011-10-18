@@ -15,7 +15,7 @@ namespace megazlo.Models {
 		[DataType(DataType.Password)]
 		[StringLength(32, MinimumLength = 6)]
 		public string Password { get; set; }
-		[Display(Name = "Зпомнить")]
+		[Display(Name = "Запомнить")]
 		public bool IsRemember { get; set; }
 	}
 }

@@ -17,15 +17,16 @@
 		<div class="editor-field">
 			@Html.EditorFor(model => model.Password)
 			@Html.ValidationMessageFor(model => model.Password)
+			<br />
+			@Html.ActionLink("Забыли пароль?", "RestorePassword")
 		</div>
 		<br />
 		<div class="editor-field">
 			@Html.EditorFor(model => model.IsRemember)
 			@Html.LabelFor(model => model.IsRemember)
 		</div>
-		<div class="editor-field">
-			@Html.ActionLink("Забыли пароль?", "RestorePassword")
-		</div>
+		<br />
+		@Html.ValidationSummary(true)
 	</fieldset>
 	<p>
 		<input type="submit" value="Вход" />
