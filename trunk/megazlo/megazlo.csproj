@@ -86,9 +86,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\DAO.cs" />
     <Compile Include="Models\LoginModel.cs" />
-    <Compile Include="Models\Models.cs" />
+    <Compile Include="Models\LoginUser.cs" />
+    <Compile Include="Models\RestorePass.cs" />
+    <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\ZloContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -393,6 +399,8 @@
     <Content Include="Scripts\tiny_mce\utils\validate.js" />
     <Content Include="Scripts\xcaptcha-2.0.js" />
     <Content Include="SquishIt.Contrib.MvcReadMe.txt" />
+    <Content Include="Upload\img\readme.txt" />
+    <Content Include="Upload\StyleScript\readme.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -466,7 +474,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="packages.config" />
-    <None Include="Upload\img\43b89b01-ded2-4d4f-924f-b5967076e9f0" />
     <Content Include="Views\Home\Install.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\RestorePassword.cshtml" />
