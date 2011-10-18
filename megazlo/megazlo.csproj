@@ -88,7 +88,6 @@
     </Compile>
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Comment.cs" />
-    <Compile Include="Models\DAO.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\LoginUser.cs" />
     <Compile Include="Models\RestorePass.cs" />
@@ -104,6 +103,7 @@
     <Content Include="Content\SlideGalery\galery3.jpg" />
     <Content Include="Content\styles\images\html5_1.png" />
     <Content Include="Content\styles\images\logoweb.jpg" />
+    <Content Include="Content\styles\images\usr_logo.jpg" />
     <Content Include="Content\themes\base\images\ui-bg_diagonals-thick_75_f3d8d8_40x40.png" />
     <Content Include="Content\themes\base\images\ui-bg_dots-small_65_a6a6a6_2x2.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_333333_40x100.png" />
@@ -131,6 +131,7 @@
     <Content Include="Content\redmond\images\ui-icons_d8e7f3_256x240.png" />
     <Content Include="Content\redmond\images\ui-icons_f9bd01_256x240.png" />
     <Content Include="Content\redmond\jquery-ui-1.8.16.custom.css" />
+    <Content Include="Scripts\Ajax\SendComment.js" />
     <Content Include="Scripts\highlight\highlight.pack.js" />
     <Content Include="Scripts\highlight\styles\arta.css" />
     <Content Include="Scripts\highlight\styles\ascetic.css" />
@@ -477,6 +478,9 @@
     <Content Include="Views\Home\Install.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\RestorePassword.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\NewComment.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

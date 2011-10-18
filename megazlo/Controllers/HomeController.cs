@@ -58,20 +58,21 @@ namespace megazlo.Controllers {
 		}
 
 		[HttpPost]
-		public ActionResult AddComment(Post post, int postid) {
+		public JsonResult AddComment(Comment cmt) {
+			JsonResult rez = new JsonResult();
 			if (ModelState.IsValid) {
-
+				try {
+					con.Comments.Add(cmt);
+					con.SaveChanges();
+					rez.Data = true;
+				} catch (Exception e) {
+					rez.Data = e.Message;
+				}
 			} else
-				return RedirectToAction("Error");
-			Post pst = con.Posts.Find(postid);
-			post.NewComment.PostId = postid;
-			pst.Comment.Add(post.NewComment);
-			//Comment cmn = post.NewComment;
-			//cmn.PostId = post.Id;
-			//con.Comments.Add(cmn);
-			con.SaveChanges();
-			return RedirectToAction("Post", new { id = pst.WebLink });
-			//return RedirectToAction("Index");
+				foreach (var item in ModelState.Keys)
+					for (int i = 0; i < ModelState[item].Errors.Count; i++)
+						rez.Data += ModelState[item].Errors[i].ErrorMessage + "\r\n";
+			return rez;
 		}
 
 		public ActionResult Install() {
@@ -79,7 +80,11 @@ namespace megazlo.Controllers {
 			if (cnt > 0)
 				return RedirectToAction("Index");
 			ViewBag.Title = "Установка";
+#if(DEBUG)
+			User usr = new User() { IsAdmin = true, NickName = "admin", Email = "paradoxfm@mail.ru", DateBorn = new DateTime(1984, 11, 11), FirstName = "Иван", LastName = "Гуркин", SecondName = "Александрович" };
+#else
 			User usr = new User() { IsAdmin = true, NickName = "admin" };
+#endif
 			return View(usr);
 		}
 

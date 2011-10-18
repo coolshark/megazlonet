@@ -15,7 +15,7 @@ namespace megazlo.Models {
 			base.OnModelCreating(modelBuilder);
 
 			// место для вызовов Entity Framework Fluent API
-			modelBuilder.Entity<Category>().HasMany(c => c.Posts).WithRequired().WillCascadeOnDelete();
+			modelBuilder.Entity<Category>().HasMany(c => c.Posts).WithOptional(pc => pc.Category).WillCascadeOnDelete();
 		}
 	}
 }

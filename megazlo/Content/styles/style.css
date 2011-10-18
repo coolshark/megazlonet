@@ -899,8 +899,7 @@ select:focus, input:focus, textarea:focus, button:hover
 
 .commentlist
 {
-	margin: 10px 0 40px 0;
-	padding-top: 50px;
+	margin: 0px 0 40px 0;
 	list-style-type: none;
 	width: 500px;
 	float: left;
@@ -990,9 +989,9 @@ select:focus, input:focus, textarea:focus, button:hover
 
 #commentform
 {
-	margin-top: 30px;
+	/*margin-top: 30px;*/
 	float: left;
-	width: 71%;
+	/*width: 71%;*/
 }
 
 li li .cancel-comment-reply
@@ -1073,12 +1072,12 @@ li li .avatar
 
 .comment-meta, .comment-author
 {
-	padding-left: 10px;
+	padding-left: 50px;
 }
 
 li li .comment-meta, li li .comment-author
 {
-	padding-left: 30px;
+	padding-left: 80px;
 }
 
 .comment-author a
