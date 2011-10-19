@@ -9,7 +9,8 @@
 			<a href="@Url.RouteUrl("Post", new RouteValueDictionary { { "id", item.WebLink } })" rel="bookmark">@item.Title</a></h2>
 		<div class="clearfix">
 			<div class="entry-meta entry-header">
-				<span class="published">Автор <strong>@item.User.Name @item.User.Family</strong></span> <span class="published">От <strong>@item.DatePost.ToShortDateString()</strong></span>
+				<span class="published">Автор <strong>@item.User.Name @item.User.Family</strong></span>
+				<span class="published">От <strong>@item.DatePost.ToShortDateString()</strong></span>
 				@if (item.IsCommentable) {
 					<span class="comment-count">Комментарии <a href="@Url.RouteUrl("Post", new RouteValueDictionary { { "id", item.WebLink } })#comments">
 						@item.Comment.Count</a></span>
@@ -20,7 +21,8 @@
 			<div class="entry-content">
 				@Html.Raw(item.TextPreview)
 				<p>
-					<a href="@Url.RouteUrl("Post", new RouteValueDictionary { { "id", item.WebLink } })" class="more-link">Полностью &rarr;</a></p>
+					<a href="@Url.RouteUrl("Post", new RouteValueDictionary { { "id", item.WebLink } })" class="more-link">
+						Полностью &rarr;</a></p>
 				@if (Request.IsAuthenticated /*User.IsInRole("Admin")*/) {
 					<div>
 						@Html.ActionLink("Редактировать", "EditNews", "Admin", new { id = item.Id }, new { Class = "title" })

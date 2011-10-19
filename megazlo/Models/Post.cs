@@ -55,5 +55,6 @@ namespace megazlo.Models {
 		public bool IsShowInfo { get; set; }
 		[NotMapped]
 		public Comment NewComment { get; set; }
+		public virtual ICollection<Tag> Tags { get; set; }
 	}
 }

@@ -10,6 +10,8 @@ namespace megazlo.Models {
 		public DbSet<Post> Posts { get; set; }
 		/// <summary>Список пользователей</summary>
 		public DbSet<User> Users { get; set; }
+		/// <summary>Список тегов</summary>
+		public DbSet<Tag> Tags { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder) {
 			base.OnModelCreating(modelBuilder);

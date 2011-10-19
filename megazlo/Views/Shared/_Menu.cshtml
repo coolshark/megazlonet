@@ -1,8 +1,7 @@
 ﻿@using megazlo.Code;
 <ul id="menus">
 	<li><a class="home" title="Главная" href="/">Главная</a></li>
-	@Html.GetMenuCats()
-	@Html.GetMenuPosts()
+	@Html.GetMenu()
 	@if (Request.IsAuthenticated/*User.IsInRole("Admin")*/) {
 		<li><a href="/Admin">Admin</a>
 			<ul>

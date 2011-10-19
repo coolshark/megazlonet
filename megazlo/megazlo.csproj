@@ -94,6 +94,7 @@
     <Compile Include="Models\LoginUser.cs" />
     <Compile Include="Models\RestorePass.cs" />
     <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\ZloContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
