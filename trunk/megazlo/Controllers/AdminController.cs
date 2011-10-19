@@ -35,6 +35,8 @@ namespace megazlo.Controllers {
 			post.UserId = User.Identity.Name;
 			con.Posts.Add(post);
 			con.SaveChanges();
+			if (post.CategoryId == null && post.InCatMenu)
+				MenuHelper.UpdateCache();
 			return RedirectToAction("Post", "Home", new { id = post.WebLink });
 		}
 
@@ -63,6 +65,8 @@ namespace megazlo.Controllers {
 			con.Entry(post).State = System.Data.EntityState.Deleted;
 			con.SaveChanges();
 			ViewBag.Title = "Удалено";
+			if (post.CategoryId == null && post.InCatMenu)
+				MenuHelper.UpdateCache();
 			return RedirectToAction("Index");
 		}
 
@@ -76,6 +80,7 @@ namespace megazlo.Controllers {
 			ViewBag.Title = "Добавить категорию";
 			con.Categorys.Add(cat);
 			con.SaveChanges();
+			MenuHelper.UpdateCache();
 			return RedirectToAction("CategoryList");
 		}
 
@@ -96,6 +101,7 @@ namespace megazlo.Controllers {
 			Category cat = new Category() { Id = id };
 			con.Entry(cat).State = System.Data.EntityState.Deleted;//.Categorys.Remove(cat);
 			con.SaveChanges();
+			MenuHelper.UpdateCache();
 			return RedirectToAction("CategoryList");
 		}
 
