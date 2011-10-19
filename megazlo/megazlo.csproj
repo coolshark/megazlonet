@@ -480,7 +480,7 @@
     <Content Include="Views\Account\RestorePassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\NewComment.cshtml" />
+    <Content Include="Views\Home\CommentNew.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\CommentRead.cshtml" />

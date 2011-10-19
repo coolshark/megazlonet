@@ -1,0 +1,31 @@
+﻿@model megazlo.Models.Comment
+@using (Ajax.BeginForm("AddComment", "Home", null)) {
+	<fieldset>
+		<legend>Новый коментарий</legend>
+		<div class="editor-label">
+			@Html.LabelFor(m => m.Email)
+		</div>
+		<div class="editor-field">
+			@Html.EditorFor(m => m.Email)
+			@Html.ValidationMessageFor(m => m.Email)
+		</div>
+		<div class="editor-label">
+			@Html.LabelFor(m => m.FirstName)
+		</div>
+		<div class="editor-field">
+			@Html.EditorFor(m => m.FirstName)
+			@Html.ValidationMessageFor(m => m.FirstName)
+		</div>
+		<div class="editor-label">
+			@Html.LabelFor(m => m.Text)
+		</div>
+		<div class="editor-field">
+			@Html.TextAreaFor(m => m.Text, new { rows = "3", style = "width: 100%;" })
+			@Html.ValidationMessageFor(m => m.Text)
+		</div>
+		<p>
+			<input id="Submit_Comment" type="submit" value="Запостить" />
+		</p>
+		<input type="hidden" id="PostID" value="@Model.PostId" />
+	</fieldset>
+}
