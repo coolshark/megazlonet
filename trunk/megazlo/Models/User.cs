@@ -9,7 +9,10 @@ namespace megazlo.Models {
 			DateRegister = DateTime.Now;
 		}
 		[Key]
-		public int Id { get; set; }
+		[Required]
+		[Display(Name = "Ник (требуется для авторизации)")]
+		[MaxLength(100)]
+		public string Id { get; set; }
 		[Required]
 		[Display(Name = "Имя")]
 		[MaxLength(100)]
@@ -20,10 +23,6 @@ namespace megazlo.Models {
 		[Display(Name = "Отчество")]
 		[MaxLength(100)]
 		public string LastName { get; set; }
-		[Required]
-		[Display(Name = "Ник (требуется для авторизации)")]
-		[MaxLength(100)]
-		public string NickName { get; set; }
 		[DataType(DataType.Date)]
 		[Display(Name = "Дата рождения")]
 		public DateTime DateBorn { get; set; }

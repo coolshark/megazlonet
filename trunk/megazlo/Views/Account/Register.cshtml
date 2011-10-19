@@ -12,35 +12,35 @@
 </style>
 @using (Html.BeginForm()) {
 	@Html.ValidationSummary(true)
-	<fieldset style="padding: 10px 10px 10px 20px;">
+	<fieldset>
 		<legend>Регистрация пользователя</legend>
 		<div class="editor-label">
-			@Html.LabelFor(model => model.UserName)
+			@Html.LabelFor(m => m.Name)
 		</div>
 		<div class="editor-field">
-			@Html.EditorFor(model => model.UserName)
-			@Html.ValidationMessageFor(model => model.UserName)
+			@Html.EditorFor(m => m.Name)
+			@Html.ValidationMessageFor(m => m.Name)
 		</div>
 		<div class="editor-label">
-			@Html.LabelFor(model => model.Email)
+			@Html.LabelFor(m => m.Email)
 		</div>
 		<div class="editor-field">
-			@Html.EditorFor(model => model.Email)
-			@Html.ValidationMessageFor(model => model.Email)
+			@Html.EditorFor(m => m.Email)
+			@Html.ValidationMessageFor(m => m.Email)
 		</div>
 		<div class="editor-label">
-			@Html.LabelFor(model => model.Password)
+			@Html.LabelFor(m => m.PassWord)
 		</div>
 		<div class="editor-field">
-			@Html.EditorFor(model => model.Password)
-			@Html.ValidationMessageFor(model => model.Password)
+			@Html.EditorFor(m => m.PassWord)
+			@Html.ValidationMessageFor(m => m.PassWord)
 		</div>
 		<div class="editor-label">
-			@Html.LabelFor(model => model.ConfirmPassword)
+			@Html.LabelFor(m => m.ConfirmPassWord)
 		</div>
 		<div class="editor-field">
-			@Html.EditorFor(model => model.ConfirmPassword)
-			@Html.ValidationMessageFor(model => model.ConfirmPassword)
+			@Html.EditorFor(m => m.ConfirmPassWord)
+			@Html.ValidationMessageFor(m => m.ConfirmPassWord)
 		</div>
 	</fieldset>
 	<br />

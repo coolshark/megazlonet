@@ -13,9 +13,6 @@ namespace megazlo.Controllers {
 
 		public ActionResult Index() {
 			ViewBag.Title = "megazlo.net";
-			//foreach (var item in con.Posts)
-			//  item.Text = megazlo.Code.PostXml.Parce(item.Text.Replace("/Content/Upload/img/", "/Upload/img/"));
-			//con.SaveChanges();
 			return View();
 		}
 
@@ -43,7 +40,6 @@ namespace megazlo.Controllers {
 			return RedirectToAction("Error");
 		}
 
-
 		public ActionResult Category(string id, int page = 0) {
 			if (page < 0)
 				return RedirectToAction("Error");
@@ -58,9 +54,15 @@ namespace megazlo.Controllers {
 			return View("PostList", mod);
 		}
 
+		#region Comments
 		[HttpPost]
 		public JsonResult AddComment(Comment cmt) {
 			JsonResult rez = new JsonResult();
+			if (User.Identity.IsAuthenticated) {
+				int cnt = con.Posts.Where(p => p.Id == cmt.PostId).Where(p => p.UserId == User.Identity.Name).Count();
+				if (cnt > 0)
+					cmt.IsAutor = true;
+			}
 			if (ModelState.IsValid) {
 				try {
 					con.Comments.Add(cmt);
@@ -76,9 +78,23 @@ namespace megazlo.Controllers {
 			return rez;
 		}
 
+		[HttpPost]
+		public JsonResult DelComment(int id) {
+			JsonResult rez = new JsonResult();
+			try {
+				Comment cmn = new Comment() { Id = id };
+				con.Entry(cmn).State = System.Data.EntityState.Deleted;
+				con.SaveChanges();
+				rez.Data = id;
+			} catch {
+				rez.Data = false;
+			}
+			return rez;
+		}
+
 		protected string RenderPartialViewToString(string viewName, object model) {
 			if (string.IsNullOrEmpty(viewName))
-				return "";
+				return string.Empty;
 			ViewData.Model = model;
 			using (StringWriter sw = new StringWriter()) {
 				ViewEngineResult viewResult = ViewEngines.Engines.FindPartialView(ControllerContext, viewName);
@@ -87,16 +103,18 @@ namespace megazlo.Controllers {
 				return sw.GetStringBuilder().ToString();
 			}
 		}
+		#endregion
 
+		#region Installation
 		public ActionResult Install() {
 			int cnt = con.Users.Count();
 			if (cnt > 0)
 				return RedirectToAction("Index");
 			ViewBag.Title = "Установка";
 #if(DEBUG)
-			User usr = new User() { IsAdmin = true, NickName = "admin", Email = "paradoxfm@mail.ru", DateBorn = new DateTime(1984, 11, 11), Name = "Иван", LastName = "Гуркин", Family = "Александрович" };
+			User usr = new User() { IsAdmin = true, Id = "admin", Email = "paradoxfm@mail.ru", DateBorn = new DateTime(1984, 11, 11), Name = "Иван", Family = "Гуркин", LastName = "Александрович" };
 #else
-			User usr = new User() { IsAdmin = true, NickName = "admin" };
+			User usr = new User() { IsAdmin = true, Id = "admin" };
 #endif
 			return View(usr);
 		}
@@ -111,5 +129,6 @@ namespace megazlo.Controllers {
 			}
 			return View("Install", usr);
 		}
+		#endregion
 	}
 }

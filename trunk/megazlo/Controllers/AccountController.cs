@@ -1,10 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using System.Web.Routing;
-using System.Web.Security;
 using megazlo.Models;
-using System;
-using megazlo.Code;
 
 namespace megazlo.Controllers {
 	public class AccountController : Controller {
@@ -61,6 +59,7 @@ namespace megazlo.Controllers {
 					FormsService.SignIn(usr.Login, true);
 					return Url.IsLocalUrl(returnUrl) ? Redirect(returnUrl) : Redirect("/");
 				}
+				usr.Password = string.Empty;
 				ModelState.AddModelError("", "Неверное имя пользователя или пароль.");
 			}
 			usr.Password = string.Empty;

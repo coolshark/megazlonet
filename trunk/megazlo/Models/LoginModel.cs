@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Web.Security;
 using System.Linq;
+using System.Web.Security;
 using megazlo.Code;
 
 namespace megazlo.Models {
@@ -40,7 +40,7 @@ namespace megazlo.Models {
 			string hash = Hash.CreateHash(password);
 			using (ZloContext cont = new ZloContext()) {
 				return cont.Users
-					.Where(u => u.NickName == userName)
+					.Where(u => u.Id == userName)
 					.Where(u => u.PassWord == hash)
 					.Count() > 0;
 			}

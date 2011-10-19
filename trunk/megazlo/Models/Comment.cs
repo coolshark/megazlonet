@@ -9,6 +9,7 @@ namespace megazlo.Models {
 		[Key]
 		public int Id { get; set; }
 		public int ParentId { get; set; }
+		public bool IsAutor { get; set; }
 		[Display(Name = "Дата")]
 		[DataType(DataType.DateTime)]
 		public DateTime DatePost { get; set; }

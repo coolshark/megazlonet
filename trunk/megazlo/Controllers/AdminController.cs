@@ -30,8 +30,7 @@ namespace megazlo.Controllers {
 			ViewBag.ButtonOk = "Создать";
 			post.Text = PostXml.Parce(post.Text);
 			post.WebLink = PostXml.ParceLink(post.Title);
-			User usr = con.Users.Where(u => u.NickName == User.Identity.Name).First();
-			post.UserId = usr != null ? usr.Id : 0;
+			post.UserId = User.Identity.Name;
 			con.Posts.Add(post);
 			con.SaveChanges();
 			return RedirectToAction("Post", "Home", new { id = post.WebLink });
@@ -84,17 +83,6 @@ namespace megazlo.Controllers {
 			ViewBag.Title = "Редактирование категории: " + cat.Title;
 			return View("Category", cat);
 		}
-
-		//[HttpPost]
-		//public ActionResult EditCategory(Category cat)
-		//{
-		//  Category cat = null;
-		//  using (ZloContext con = new ZloContext())
-		//    cat = con.Categorys.Where(p => p.Id == id).First();
-		//  ViewBag.ButtonOk = "Изменить";
-		//  ViewBag.Title = "Редактирование категории: " + cat.Title;
-		//  return View("Category", cat);
-		//}
 
 		public ActionResult CategoryList() {
 			ViewBag.Title = "Категории";
