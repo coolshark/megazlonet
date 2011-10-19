@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Linq;
+using System.Net.Mail;
 using System.Web.Mvc;
 using System.Web.Routing;
+using megazlo.Code;
 using megazlo.Models;
 
 namespace megazlo.Controllers {
@@ -66,6 +68,7 @@ namespace megazlo.Controllers {
 			return View(usr);
 		}
 
+		[Authorize]
 		public ActionResult LogOff() {
 			FormsService.SignOut();
 			return RedirectToAction("Index", "Home");
@@ -77,27 +80,29 @@ namespace megazlo.Controllers {
 		}
 
 		[HttpPost]
-		public ActionResult RestorePassword(RestorePass rest) {
+		public JsonResult RestorePassword(RestorePass rest) {
+			JsonResult rez = new JsonResult();
 			ViewBag.Title = "Востановление пароля";
 			if (ModelState.IsValid) {
-				IQueryable<User> usrs = con.Users.Where(u => u.Email == rest.Email);//.Count();
+				IQueryable<User> usrs = con.Users.Where(u => u.Id == rest.Name);
 				if (usrs.Count() > 0) {
 					User usr = usrs.First();
-					if (usr != null) {
-						Random rnd = new Random();
-						string newpas = string.Empty;
-						for (int i = 0; i < 7; i++)
-							newpas += (char)rnd.Next(33, 126);
-						//usr.PassWord = Hash.CreateHash(newpas);
-						//con.Entry(usr).State = System.Data.EntityState.Modified;
-						//con.SaveChanges();
-						// send email
-					}
+					Random rnd = new Random();
+					string newpas = string.Empty;
+					for (int i = 0; i < 7; i++)
+						newpas += (char)rnd.Next(33, 126);
+					if (Mail.Send(usr.Email, newpas)) {
+						usr.PassWord = Hash.CreateHash(newpas);
+						con.Entry(usr).State = System.Data.EntityState.Modified;
+						con.SaveChanges();
+						rez.Data = "Пароль отправлен на почтовый адрес, указанный при регистрации.";
+					} else
+						rez.Data = "Возникла ошибка при востановлении.";
 				} else {
-					ModelState.AddModelError("", "Нет пользователя с таким адресом.");
+					rez.Data = "Нет пользователя с таким логином.";
 				}
 			}
-			return View();
+			return rez;
 		}
 	}
 }

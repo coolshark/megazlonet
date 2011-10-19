@@ -3,6 +3,8 @@ using System.Linq;
 using System.Web.Mvc;
 using megazlo.Code;
 using megazlo.Models;
+using System.Configuration;
+using System.Web.Configuration;
 
 namespace megazlo.Controllers {
 

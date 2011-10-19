@@ -75,10 +75,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Code\Hash.cs" />
+    <Compile Include="Code\Mail.cs" />
     <Compile Include="Code\PageHelper.cs" />
     <Compile Include="Code\PostXmlParser.cs" />
     <Compile Include="Code\RoleChecker.cs" />
     <Compile Include="Code\MenuHelper.cs" />
+    <Compile Include="Code\Sets.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HelpController.cs" />
@@ -131,6 +133,7 @@
     <Content Include="Content\redmond\images\ui-icons_d8e7f3_256x240.png" />
     <Content Include="Content\redmond\images\ui-icons_f9bd01_256x240.png" />
     <Content Include="Content\redmond\jquery-ui-1.8.16.custom.css" />
+    <Content Include="Scripts\Ajax\Account.js" />
     <Content Include="Scripts\Ajax\Comments.js" />
     <Content Include="Scripts\highlight\highlight.pack.js" />
     <Content Include="Scripts\highlight\styles\arta.css" />
