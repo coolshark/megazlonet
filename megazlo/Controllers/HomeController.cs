@@ -12,7 +12,7 @@ namespace megazlo.Controllers {
 		ZloContext con = new ZloContext();
 
 		public ActionResult Index() {
-			ViewBag.Title = "megazlo.net";
+			ViewBag.Title = Sets.SiteName;//"megazlo.net";
 			return View();
 		}
 
