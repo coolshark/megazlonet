@@ -12,8 +12,7 @@
 	<div class="clearfix">
 		@if (Model.IsShowInfo) {
 			<div class="entry-meta entry-header">
-				<span class="published">Автор <strong>@Model.User.Name @Model.User.Family</strong></span> <span class="published">
-					От <strong>@Model.DatePost.ToShortDateString()</strong></span>
+				<span class="published">Автор <strong>@Model.User.Name @Model.User.Family</strong></span> <span class="published">От <strong>@Model.DatePost.ToShortDateString()</strong></span>
 				@if (Model.IsCommentable) {
 					<span class="comment-count">Комментарии <a href="@Url.RouteUrl("Post", new RouteValueDictionary { { "id", Model.WebLink } })#comments">
 						@Model.Comment.Count</a></span>
@@ -42,47 +41,10 @@
 				Есть что сказать? <span class="continue-reading"><a href="#newcomm">Оставьте комментарий</a></span></p>
 		</div>
 		<div class="commentlist">
-			@using (Ajax.BeginForm("AddComment", "Home", null)) {
-				<fieldset>
-					<legend>Новый коментарий</legend>
-					<p>
-						@Html.LabelFor(model => model.NewComment.Email)
-						@Html.EditorFor(model => model.NewComment.Email)
-					</p>
-					<p>
-						@Html.LabelFor(model => model.NewComment.FirstName)
-						@Html.EditorFor(model => model.NewComment.FirstName)
-					</p>
-					<p>
-						@Html.LabelFor(model => model.NewComment.Text)
-						@Html.TextAreaFor(model => model.NewComment.Text, new { rows = "3", cols = "100" })
-					</p>
-					<p>
-						<input id="Submit_Comment" type="submit" value="Запостить" />
-					</p>
-					<input type="hidden" id="NewComment_PostID" value="@Model.Id" />
-				</fieldset>
-	 }
+			@Html.Partial("CommentNew", new megazlo.Models.Comment() { PostId = Model.Id })
 			<ol class="commentlist">
 				@foreach (var item in Model.Comment) {
-					<li id="li-comment-@item.Id" class="comment even thread-even depth-1">
-						<div id="comment-@item.Id">
-							<div class="line">
-							</div>
-							<img class="avatar avatar-35 photo" width="35" height="35" src="@Url.Content("~/Content/styles/images/usr_logo.jpg")" alt="" />
-							<div class="comment-author vcard">
-								<cite class="fn"><a class="url" rel="external nofollow" 
-									href="@Url.Action("Post", new { id = Model.WebLink })/#comment-@item.Id">@item.FirstName</a> </cite><span class="says">says:</span>
-							</div>
-							<div class="comment-meta commentmetadata">
-								<a href="@Url.Action("Post", new { id = Model.WebLink })/#comment-@item.Id">@item.DatePost.ToString()</a>
-							</div>
-							<div class="comment-body">
-								@item.Text
-							</div>
-							<br />
-						</div>
-					</li>
+					@Html.Partial("CommentRead", item)
 		}
 			</ol>
 		</div>

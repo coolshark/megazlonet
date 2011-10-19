@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web.Mvc;
 using megazlo.Code;
 using megazlo.Models;
+using System.IO;
 
 namespace megazlo.Controllers {
 	public class HomeController : Controller {
@@ -64,7 +65,7 @@ namespace megazlo.Controllers {
 				try {
 					con.Comments.Add(cmt);
 					con.SaveChanges();
-					rez.Data = true;
+					rez.Data = RenderPartialViewToString("CommentRead", cmt);
 				} catch (Exception e) {
 					rez.Data = e.Message;
 				}
@@ -73,6 +74,18 @@ namespace megazlo.Controllers {
 					for (int i = 0; i < ModelState[item].Errors.Count; i++)
 						rez.Data += ModelState[item].Errors[i].ErrorMessage + "\r\n";
 			return rez;
+		}
+
+		protected string RenderPartialViewToString(string viewName, object model) {
+			if (string.IsNullOrEmpty(viewName))
+				return "";
+			ViewData.Model = model;
+			using (StringWriter sw = new StringWriter()) {
+				ViewEngineResult viewResult = ViewEngines.Engines.FindPartialView(ControllerContext, viewName);
+				ViewContext viewContext = new ViewContext(ControllerContext, viewResult.View, ViewData, TempData, sw);
+				viewResult.View.Render(viewContext, sw);
+				return sw.GetStringBuilder().ToString();
+			}
 		}
 
 		public ActionResult Install() {
