@@ -1,11 +1,19 @@
 ﻿@using megazlo.Code
 @model megazlo.Models.Post
 @{
+	SquishIt.Css.Add("~/Content/redmond/jquery-ui-1.8.16.custom.css");
 	SquishIt.JavaScript.Add("~/Scripts/jquery.validate.unobtrusive.min.js");
 	SquishIt.JavaScript.Add("~/Scripts/jquery.validate.min.js");
+	SquishIt.JavaScript.Add("~/Scripts/jquery-ui-1.8.16.custom.min.js");
 	SquishIt.JavaScript.Add("~/Scripts/jquery.vtip.js");
-	SquishIt.JavaScript.Add("~/Scripts/Ajax/SendComment.js");
+	SquishIt.JavaScript.Add("~/Scripts/Ajax/Comments.js");
 }
+<div id="confirmDialog" title="Удалить" style="display: none;">
+	<p style="font-size: 14px;">
+		Вы действительно хотите удалить коментарий?
+		<br /><br />
+		После удаления его уже невозможно будет востановить!</p>
+</div>
 <div class="post hentry">
 	<h2 class="entry-title">
 		<a href="@Url.RouteUrl("Post", new RouteValueDictionary { { "id", Model.WebLink } })" rel="bookmark">@Model.Title</a></h2>

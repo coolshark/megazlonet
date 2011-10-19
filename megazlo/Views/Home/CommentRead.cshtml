@@ -6,8 +6,10 @@
 		<img class="avatar avatar-35 photo" width="35" height="35" src="@Url.Content("~/Content/styles/images/usr_logo.jpg")" alt="" />
 		<div class="comment-author vcard">
 			<cite class="fn"><a class="url" rel="external nofollow" 
-									href="#comment-@Model.Id">@Model.FirstName</a>
-			</cite><span class="says">says:</span>
+									href="#comment-@Model.Id">@Model.FirstName</a> </cite><span class="says">says:</span>
+			@if (Model.IsAutor) {
+				<span class="author-tag">(Author)</span>
+	 }
 		</div>
 		<div class="comment-meta commentmetadata">
 			<a href="#comment-@Model.Id">@Model.DatePost.ToString()</a>
@@ -15,6 +17,10 @@
 		<div class="comment-body">
 			@Model.Text
 		</div>
-		<br />
+		<div style="text-align: right;">
+			@if (User.Identity.IsAuthenticated) {
+				@Ajax.ActionLink("Удалить", "DelComment", "Home", new { id = @Model.Id }, new AjaxOptions(), new { Class = "del_comment" });
+	 }
+		</div>
 	</div>
 </li>
