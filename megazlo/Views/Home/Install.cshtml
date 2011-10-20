@@ -18,7 +18,7 @@
 </script>
 @using (Html.BeginForm()) {
 	<fieldset>
-		<legend>Регистрация админитратора</legend>
+		<legend>Регистрация админитратора @DateTime.Now</legend>
 		<div class="editor-label">
 			@Html.LabelFor(m => m.Name)
 		</div>
