@@ -281,7 +281,7 @@ h6
 #primary .entry-content
 {
 	float: left;
-	width: 680px;
+	width: 700px;
 	min-height: 130px;
 	padding-bottom: 20px;
 }
@@ -317,7 +317,7 @@ h6
 #primary
 {
 	float: left;
-	width: 680px;
+	width: 700px;
 }
 
 .page-template-template-full-width-php #primary
@@ -745,10 +745,10 @@ button
 	cursor: pointer;
 }
 
-select:focus, input:focus, textarea:focus, button:hover
+select:focus, input:focus, textarea:focus, button:hover, select:hover, input:hover, textarea:hover
 {
 	border: 1px solid #b7d6df;
-	box-shadow: 0 0 4px #a7d6e3;
+	box-shadow: 0 0 5px #a7d6e3;
 }
 
 #commentform #submit, .contactform #submit, input[type="submit"], button, input[type="button"]
@@ -1224,6 +1224,7 @@ div.validation-summary-errors li, .field-validation-error
 #footer-widgets .widget
 {
 	font-style: normal;
+	text-align: center;
 	color: #444444;
 }
 
@@ -1331,6 +1332,7 @@ label.error
 .widget
 {
 	margin-bottom: 20px;
+	text-align: center;
 }
 
 .widget:last-child
@@ -1343,7 +1345,7 @@ label.error
 	text-transform: uppercase;
 	font-size: 9px;
 	color: #999;
-	margin: 0 0 20px 0;
+	margin: 0 0 0px 0;
 	font-style: normal;
 	font-family: "Droid Sans" , "Helvetica Neue" , Helvetica, Arial, sans-serif;
 	letter-spacing: 1px;

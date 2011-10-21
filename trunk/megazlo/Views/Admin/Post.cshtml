@@ -1,12 +1,16 @@
 ﻿@model megazlo.Models.Post
 @{
+	SquishIt.Css.Add("~/Content/redmond/jquery-ui-1.8.16.custom.css");
+
+	SquishIt.JavaScript.Add("~/Scripts/Ajax/AdminPost.js");
+	SquishIt.JavaScript.Add("~/Scripts/jquery-ui-1.8.16.custom.min.js");
 	SquishIt.JavaScript.Add("~/Scripts/jquery.validate.unobtrusive.min.js");
 	SquishIt.JavaScript.Add("~/Scripts/tiny_mce/jquery.tinymce.js");
 	SquishIt.JavaScript.Add("~/Scripts/jquery.validate.min.js");
 }
 <script type="text/javascript">
 	$(function () {
-		$('textarea.tinymce').tinymce({
+		$('textarea#Text').tinymce({
 			// Location of TinyMCE script
 			script_url: '@Url.Content("~/Scripts/tiny_mce/tiny_mce.js")',
 			// General options
@@ -23,7 +27,6 @@
 			// Example content CSS (should be your site CSS)
 			content_css: '@Url.Content("~/Content/styles/style.css")'
 		});
-		ы
 	});
 </script>
 @using (Html.BeginForm()) {
@@ -51,6 +54,12 @@
 			@Html.ValidationMessageFor(model => model.Text)
 		</div>
 		<div class="editor-field">
+			Теги:
+			@foreach (var item in Model.Tags) {
+				@Html.Partial("Tag", item);
+	 }
+		</div>
+		<div class="editor-field">
 			@Html.EditorFor(model => model.IsCommentable)
 			@Html.LabelFor(model => model.IsCommentable)
 		</div>
@@ -58,7 +67,6 @@
 			@Html.EditorFor(model => model.IsShowInfo)
 			@Html.LabelFor(model => model.IsShowInfo)
 		</div>
-		@Html.AntiForgeryToken()
 		@Html.ValidationSummary(true)
 	</fieldset>
 	<input id="sbmtform" type="submit" value=" @ViewBag.ButtonOk " />

@@ -5,6 +5,11 @@
 	SquishIt.JavaScript.Add("~/Scripts/jquery.vtip.js");
 	SquishIt.JavaScript.Add("~/Scripts/highlight/highlight.pack.js");
 }
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('pre').each(function (i, e) { hljs.highlightBlock(e, '  ', true) });
+	});
+</script>
 @foreach (var item in Model) {
 	<div class="post hentry">
 		<h2 class="entry-title">

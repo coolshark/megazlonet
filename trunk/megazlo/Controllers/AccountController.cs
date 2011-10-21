@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Net.Mail;
 using System.Web.Mvc;
 using System.Web.Routing;
 using megazlo.Code;
@@ -49,22 +48,24 @@ namespace megazlo.Controllers {
 		#endregion
 
 		public ActionResult Login() {
-			ViewBag.Title = "Вход";
+#if DEBUG
+			return View(new LoginUser() { Login = "admin", Password = "qwepoi" });
+#else
 			return View();
+#endif
 		}
 
 		[HttpPost]
 		public ActionResult Login(LoginUser usr, string returnUrl) {
-			ViewBag.Title = "Вход";
 			if (ModelState.IsValid) {
-				if (MembershipService.ValidateUser(usr.Login, usr.Password)) {
-					FormsService.SignIn(usr.Login, true);
+				User usrs = MembershipService.ValidateUser(usr.Login, usr.Password);
+				if (usrs != null) {
+					FormsService.SignIn(usr.Login, usr.IsRemember);
 					return Url.IsLocalUrl(returnUrl) ? Redirect(returnUrl) : Redirect("/");
 				}
-				usr.Password = string.Empty;
-				ModelState.AddModelError("", "Неверное имя пользователя или пароль.");
 			}
 			usr.Password = string.Empty;
+			ModelState.AddModelError("", "Неверное имя пользователя или пароль.");
 			return View(usr);
 		}
 
