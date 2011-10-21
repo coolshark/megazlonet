@@ -53,8 +53,14 @@ namespace megazlo.Models {
 		public bool InCatMenu { get; set; }
 		[Display(Name = "Отображать сведения")]
 		public bool IsShowInfo { get; set; }
-		[NotMapped]
-		public Comment NewComment { get; set; }
 		public virtual ICollection<Tag> Tags { get; set; }
+
+		internal void InitTags() {
+			if (Tags == null)
+				Tags = new List<Tag>();
+			Tags.Add(new Tag() { Title = "" });
+			Tags.Add(new Tag() { Title = "" });
+			Tags.Add(new Tag() { Title = "" });
+		}
 	}
 }

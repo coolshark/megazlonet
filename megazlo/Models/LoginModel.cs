@@ -7,7 +7,7 @@ namespace megazlo.Models {
 	public interface IMembershipService {
 		int MinPasswordLength { get; }
 
-		bool ValidateUser(string userName, string password);
+		User ValidateUser(string userName, string password);
 		MembershipCreateStatus CreateUser(string userName, string password, string email);
 		bool ChangePassword(string userName, string oldPassword, string newPassword);
 	}
@@ -36,13 +36,12 @@ namespace megazlo.Models {
 			get { return maipas; }
 		}
 
-		public bool ValidateUser(string userName, string password) {
+		public User ValidateUser(string userName, string password) {
 			string hash = Hash.CreateHash(password);
 			using (ZloContext cont = new ZloContext()) {
 				return cont.Users
 					.Where(u => u.Id == userName)
-					.Where(u => u.PassWord == hash)
-					.Count() > 0;
+					.Where(u => u.PassWord == hash).FirstOrDefault();
 			}
 		}
 

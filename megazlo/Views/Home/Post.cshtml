@@ -10,6 +10,11 @@
 	SquishIt.JavaScript.Add("~/Scripts/Ajax/Comments.js");
 	SquishIt.JavaScript.Add("~/Scripts/highlight/highlight.pack.js");
 }
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('pre').each(function (i, e) { hljs.highlightBlock(e, '  ', true) });
+	});
+</script>
 <div id="confirmDialog" title="Удалить" style="display: none;">
 	<p style="font-size: 14px;">
 		Вы действительно хотите удалить коментарий?

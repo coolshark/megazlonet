@@ -4,9 +4,10 @@ using System.Net;
 using System.Text;
 using System.Xml;
 using BinaryAnalysis.UnidecodeSharp;
+using System.Web;
 
 namespace megazlo.Code {
-	public static class PostXml {
+	public static class Uploader {
 		public static string UploadPath = AppDomain.CurrentDomain.BaseDirectory + "Upload\\img\\";
 
 		public static string ParceLink(string link) {

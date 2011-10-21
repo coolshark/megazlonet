@@ -34,9 +34,9 @@ namespace megazlo.Models {
 		[MaxLength(200)]
 		[RegularExpression(@"^([A-Za-z0-9]|[A-Za-z0-9](([a-zA-Z0-9,=\.!\-#|\$%\^&*\+/\?_`\{\}~]+)*)[a-zA-Z0-9,=!\-#|\$%\^&*\+/\?_`\{\}~])@(?:[0-9a-zA-Z-]+\.)+[a-zA-Z]{2,9}$", ErrorMessage = "Необходимо ввести email адрес")]
 		public string Email { get; set; }
-		[Display(Name = "Аватара")]
-		[DataType(DataType.ImageUrl)]
-		public string Avatar { get; set; }
+		[Display(Name = "Аватара (максимальный размер изображения 200Кб)")]
+		[NotMapped]
+		public bool HaveAvatar { get; set; }
 		[Display(Name = "Администратор")]
 		public bool IsAdmin { get; set; }
 		[Required]

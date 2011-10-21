@@ -74,10 +74,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\AvatarUploader.cs" />
     <Compile Include="Code\Hash.cs" />
     <Compile Include="Code\Mail.cs" />
     <Compile Include="Code\PageHelper.cs" />
-    <Compile Include="Code\PostXmlParser.cs" />
+    <Compile Include="Code\Uploader.cs" />
     <Compile Include="Code\RoleChecker.cs" />
     <Compile Include="Code\MenuHelper.cs" />
     <Compile Include="Code\Sets.cs" />
@@ -106,6 +107,8 @@
     <Content Include="Content\SlideGalery\galery3.jpg" />
     <Content Include="Content\styles\images\html5_1.png" />
     <Content Include="Content\styles\images\logoweb.jpg" />
+    <Content Include="Content\styles\images\staffMan.gif" />
+    <Content Include="Content\styles\images\tags.png" />
     <Content Include="Content\styles\images\usr_logo.jpg" />
     <Content Include="Content\themes\base\images\ui-bg_diagonals-thick_75_f3d8d8_40x40.png" />
     <Content Include="Content\themes\base\images\ui-bg_dots-small_65_a6a6a6_2x2.png" />
@@ -135,6 +138,7 @@
     <Content Include="Content\redmond\images\ui-icons_f9bd01_256x240.png" />
     <Content Include="Content\redmond\jquery-ui-1.8.16.custom.css" />
     <Content Include="Scripts\Ajax\Account.js" />
+    <Content Include="Scripts\Ajax\AdminPost.js" />
     <Content Include="Scripts\Ajax\Comments.js" />
     <Content Include="Scripts\highlight\highlight.pack.js" />
     <Content Include="Scripts\highlight\styles\arta.css" />
@@ -404,6 +408,7 @@
     <Content Include="Scripts\tiny_mce\utils\validate.js" />
     <Content Include="Scripts\xcaptcha-2.0.js" />
     <Content Include="SquishIt.Contrib.MvcReadMe.txt" />
+    <Content Include="Upload\Avatars\readme.txt" />
     <Content Include="Upload\img\readme.txt" />
     <Content Include="Upload\StyleScript\readme.txt" />
     <Content Include="Web.config">
@@ -450,9 +455,6 @@
   <ItemGroup>
     <Folder Include="Scripts\tiny_mce\plugins\spellchecker\classes\utils\" />
     <Folder Include="Scripts\tiny_mce\plugins\spellchecker\includes\" />
-    <Folder Include="Upload\News\" />
-    <Folder Include="Upload\Other\" />
-    <Folder Include="Upload\Users\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Account\Details.cshtml" />
@@ -485,6 +487,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\CommentRead.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\Tag.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

@@ -21,7 +21,9 @@ namespace megazlo.Controllers {
 		public ActionResult AddNews() {
 			ViewBag.Title = "Добавление статей";
 			ViewBag.ButtonOk = "Создать";
-			return View(view, new Post());
+			Post pst = new Post();
+			pst.InitTags();
+			return View(view, pst);
 		}
 
 		[HttpPost]
@@ -30,8 +32,8 @@ namespace megazlo.Controllers {
 				return RedirectToAction("Post", "Home", new { id = post.WebLink });
 			ViewBag.Title = "Добавление статей";
 			ViewBag.ButtonOk = "Создать";
-			post.Text = PostXml.Parce(post.Text);
-			post.WebLink = PostXml.ParceLink(post.Title);
+			post.Text = Uploader.Parce(post.Text);
+			post.WebLink = Uploader.ParceLink(post.Title);
 			post.UserId = User.Identity.Name;
 			con.Posts.Add(post);
 			con.SaveChanges();
@@ -51,8 +53,8 @@ namespace megazlo.Controllers {
 		public ActionResult EditNews(Post post) {
 			if (!ModelState.IsValid)
 				return View(view, post);
-			post.Text = PostXml.Parce(post.Text);
-			post.WebLink = PostXml.ParceLink(post.Title);
+			post.Text = Uploader.Parce(post.Text);
+			post.WebLink = Uploader.ParceLink(post.Title);
 			con.Entry(post).State = System.Data.EntityState.Modified;
 			con.SaveChanges();
 			ViewBag.ButtonOk = "Изменить";
@@ -103,6 +105,16 @@ namespace megazlo.Controllers {
 			con.SaveChanges();
 			MenuHelper.UpdateCache();
 			return RedirectToAction("CategoryList");
+		}
+
+		public JsonResult LoadTags(string test) {
+			JsonResult rez = new JsonResult();
+			Tag[] tg = con.Tags.ToArray();
+			string[] arr = new string[tg.Count()];
+			for (int i = 0; i < arr.Length; i++)
+				arr[i] = tg[i].Title;
+			rez.Data = arr;
+			return rez;
 		}
 
 	}

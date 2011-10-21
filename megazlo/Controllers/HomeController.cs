@@ -5,6 +5,8 @@ using System.Web.Mvc;
 using megazlo.Code;
 using megazlo.Models;
 using System.IO;
+using System.Web;
+using System.Threading;
 
 namespace megazlo.Controllers {
 	public class HomeController : Controller {
@@ -107,10 +109,11 @@ namespace megazlo.Controllers {
 
 		#region Installation
 		public ActionResult Install() {
+#if !DEBUG
 			int cnt = con.Users.Count();
 			if (cnt > 0)
 				return RedirectToAction("Index");
-			ViewBag.Title = "Установка";
+#endif
 #if(DEBUG)
 			User usr = new User() { IsAdmin = true, Id = "admin", Email = "paradoxfm@mail.ru", DateBorn = new DateTime(1984, 11, 11), Name = "Иван", Family = "Гуркин", LastName = "Александрович" };
 #else
@@ -120,9 +123,16 @@ namespace megazlo.Controllers {
 		}
 
 		[HttpPost]
-		public ActionResult Install(User usr) {
-			if (ModelState.IsValid) {
+		public ActionResult Install(User usr, HttpPostedFileBase ava) {
+			usr.IsAdmin = true;
+			bool imVald = ava.ContentLength < 204800;
+			if (!imVald)
+				ModelState.AddModelError("", "Слишком большой размер изображения.");
+			if (imVald && ModelState.IsValid) {
 				usr.ConfirmPassWord = usr.PassWord = Hash.CreateHash(usr.PassWord);
+				AvatarUploader upl = new AvatarUploader();
+				Thread t = new Thread(upl.LoadAvatar);
+				t.Start(new object[] { ava, usr.Id });
 				con.Users.Add(usr);
 				con.SaveChanges();
 				return RedirectToAction("Login", "Account");

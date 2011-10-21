@@ -1,97 +1,90 @@
 ﻿@model megazlo.Models.User
 @{	
+	ViewBag.Title = "Установка";
 	SquishIt.Css.Add("~/Content/redmond/jquery-ui-1.8.16.custom.css");
 
-	SquishIt.JavaScript.Add("~/Scripts/jquery.validate.min.js");
-	SquishIt.JavaScript.Add("~/Scripts/jquery.validate.unobtrusive.min.js");
 	SquishIt.JavaScript.Add("~/Scripts/jquery-ui-1.8.16.custom.min.js");
 	SquishIt.JavaScript.Add("~/Scripts/jquery.ui.datepicker-ru.js");
+	SquishIt.JavaScript.Add("~/Scripts/jquery.validate.unobtrusive.min.js");
+	SquishIt.JavaScript.Add("~/Scripts/jquery.validate.min.js");
 }
 <script type="text/javascript">
 	$(function () {
-		$('#DateBorn').datepicker({
+		$('#DateBorn').attr('readonly', 'readonly').datepicker({
 			changeMonth: true,
 			changeYear: true,
 			yearRange: "1950:2000"
 		});
 	});
 </script>
-@using (Html.BeginForm()) {
-	<fieldset>
-		<legend>Регистрация админитратора @DateTime.Now</legend>
-		<div class="editor-label">
-			@Html.LabelFor(m => m.Name)
-		</div>
-		<div class="editor-field">
-			@Html.EditorFor(m => m.Name)
-			@Html.ValidationMessageFor(m => m.Name)
-		</div>
-		<div class="editor-label">
-			@Html.LabelFor(m => m.Family)
-		</div>
-		<div class="editor-field">
-			@Html.EditorFor(m => m.Family)
-			@Html.ValidationMessageFor(m => m.Family)
-		</div>
-		<div class="editor-label">
-			@Html.LabelFor(m => m.LastName)
-		</div>
-		<div class="editor-field">
-			@Html.EditorFor(m => m.LastName)
-			@Html.ValidationMessageFor(m => m.LastName)
-		</div>
-		<div class="editor-label">
-			@Html.LabelFor(m => m.Id)
-		</div>
-		<div class="editor-field">
-			@Html.EditorFor(m => m.Id)
-			@Html.ValidationMessageFor(m => m.Id)
-		</div>
-		<div class="editor-label">
-			@Html.LabelFor(m => m.DateBorn)
-		</div>
-		<div class="editor-field">
-			@Html.EditorFor(m => m.DateBorn)
-			@Html.ValidationMessageFor(m => m.DateBorn)
-		</div>
-		<div class="editor-label">
-			@Html.LabelFor(m => m.Email)
-		</div>
-		<div class="editor-field">
-			@Html.EditorFor(m => m.Email)
-			@Html.ValidationMessageFor(m => m.Email)
-		</div>
-		<div class="editor-label">
-			@Html.LabelFor(m => m.Avatar)
-		</div>
-		<div class="editor-field">
-			@Html.EditorFor(m => m.Avatar)
-			@Html.ValidationMessageFor(m => m.Avatar)
-		</div>
-		<div class="editor-label">
-			@Html.LabelFor(m => m.IsAdmin)
-		</div>
-		<div class="editor-field">
-			@Html.EditorFor(m => m.IsAdmin)
-			@Html.ValidationMessageFor(m => m.IsAdmin)
-		</div>
-		<div class="editor-label">
-			@Html.LabelFor(m => m.PassWord)
-		</div>
-		<div class="editor-field">
-			@Html.EditorFor(m => m.PassWord)
-			@Html.ValidationMessageFor(m => m.PassWord)
-		</div>
-		<div class="editor-label">
-			@Html.LabelFor(m => m.ConfirmPassWord)
-		</div>
-		<div class="editor-field">
-			@Html.EditorFor(m => m.ConfirmPassWord)
-			@Html.ValidationMessageFor(m => m.ConfirmPassWord)
-		</div>
-		@Html.ValidationSummary(true)
-	</fieldset>
-	<p>
-		<input type="submit" value="Установить" />
-	</p>
-}
+<form method="post" action="/Home/Install" novalidate="novalidate" enctype="multipart/form-data">
+<fieldset>
+	<legend>Администратор</legend>
+	<div class="editor-label">
+		@Html.LabelFor(m => m.Name)
+	</div>
+	<div class="editor-field">
+		@Html.EditorFor(m => m.Name)
+		@Html.ValidationMessageFor(m => m.Name)
+	</div>
+	<div class="editor-label">
+		@Html.LabelFor(m => m.Family)
+	</div>
+	<div class="editor-field">
+		@Html.EditorFor(m => m.Family)
+		@Html.ValidationMessageFor(m => m.Family)
+	</div>
+	<div class="editor-label">
+		@Html.LabelFor(m => m.LastName)
+	</div>
+	<div class="editor-field">
+		@Html.EditorFor(m => m.LastName)
+		@Html.ValidationMessageFor(m => m.LastName)
+	</div>
+	<div class="editor-label">
+		@Html.LabelFor(m => m.Id)
+	</div>
+	<div class="editor-field">
+		@Html.EditorFor(m => m.Id)
+		@Html.ValidationMessageFor(m => m.Id)
+	</div>
+	<div class="editor-label">
+		@Html.LabelFor(m => m.DateBorn)
+	</div>
+	<div class="editor-field">
+		@Html.EditorFor(m => m.DateBorn)
+		@Html.ValidationMessageFor(m => m.DateBorn)
+	</div>
+	<div class="editor-label">
+		@Html.LabelFor(m => m.Email)
+	</div>
+	<div class="editor-field">
+		@Html.EditorFor(m => m.Email)
+		@Html.ValidationMessageFor(m => m.Email)
+	</div>
+	<div class="editor-label">
+		@Html.LabelFor(m => m.HaveAvatar)
+	</div>
+	<div class="editor-field">
+		<input type="file" id="ava" name="ava" />
+	</div>
+	<div class="editor-label">
+		@Html.LabelFor(m => m.PassWord)
+	</div>
+	<div class="editor-field">
+		@Html.EditorFor(m => m.PassWord)
+		@Html.ValidationMessageFor(m => m.PassWord)
+	</div>
+	<div class="editor-label">
+		@Html.LabelFor(m => m.ConfirmPassWord)
+	</div>
+	<div class="editor-field">
+		@Html.EditorFor(m => m.ConfirmPassWord)
+		@Html.ValidationMessageFor(m => m.ConfirmPassWord)
+	</div>
+</fieldset>
+	@Html.ValidationSummary(true)
+<p>
+	<input type="submit" value="Установить" />
+</p>
+</form>
