@@ -29,7 +29,7 @@ namespace megazlo.Controllers {
 		[HttpPost]
 		public ActionResult AddNews(Post post) {
 			if (!ModelState.IsValid)
-				return RedirectToAction("Post", "Home", new { id = post.WebLink });
+				return View(view, post);
 			ViewBag.Title = "Добавление статей";
 			ViewBag.ButtonOk = "Создать";
 			post.Text = Uploader.Parce(post.Text);
@@ -37,7 +37,7 @@ namespace megazlo.Controllers {
 			post.UserId = User.Identity.Name;
 			con.Posts.Add(post);
 			con.SaveChanges();
-			if (post.CategoryId == null && post.InCatMenu)
+			if (post.InCatMenu)
 				MenuHelper.UpdateCache();
 			return RedirectToAction("Post", "Home", new { id = post.WebLink });
 		}
@@ -63,11 +63,11 @@ namespace megazlo.Controllers {
 		}
 
 		public ActionResult DeleteNews(int id) {
-			Post post = new Post() { Id = id };
+			Post post = con.Posts.Where(p => p.Id == id).FirstOrDefault();
 			con.Entry(post).State = System.Data.EntityState.Deleted;
 			con.SaveChanges();
 			ViewBag.Title = "Удалено";
-			if (post.CategoryId == null && post.InCatMenu)
+			if (post.InCatMenu)
 				MenuHelper.UpdateCache();
 			return RedirectToAction("Index");
 		}

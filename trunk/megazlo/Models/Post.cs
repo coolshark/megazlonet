@@ -58,9 +58,9 @@ namespace megazlo.Models {
 		internal void InitTags() {
 			if (Tags == null)
 				Tags = new List<Tag>();
-			Tags.Add(new Tag() { Title = "" });
-			Tags.Add(new Tag() { Title = "" });
-			Tags.Add(new Tag() { Title = "" });
+			Tags.Add(new Tag() { Title = "C#" });
+			Tags.Add(new Tag() { Title = "asp.net" });
+			Tags.Add(new Tag() { Title = "Ajax" });
 		}
 	}
 }
