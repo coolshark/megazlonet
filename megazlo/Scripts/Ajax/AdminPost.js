@@ -2,7 +2,7 @@
 /// <reference path="../jquery-ui-1.8.16.custom.min.js" />
 var arr;
 $(function () {
-
+	var fort = $("input.fortags");
 	$.ajax({
 		url: "/Admin/LoadTags",
 		type: "POST",
@@ -10,7 +10,7 @@ $(function () {
 		data: JSON.stringify(""),
 		success: function (data) {
 			arr = data;
-			$("input.fortags").autocomplete({
+			fort.autocomplete({
 				delay: 0,
 				minLength: 0,
 				source: arr,
@@ -19,7 +19,7 @@ $(function () {
 		}
 	});
 
-	$("input.fortags").focus(function (e) {
+	fort.focus(function (e) {
 		$(this).autocomplete('search', '');
 	});
 

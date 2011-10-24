@@ -30,9 +30,9 @@
 	});
 </script>
 @using (Html.BeginForm()) {
+	@Html.AntiForgeryToken()
 	<fieldset>
 		<legend>Редактирование статьи</legend>
-		@Html.HiddenFor(model => model.UserId)
 		<div class="editor-label">
 			@Html.LabelFor(model => model.Title)
 			<br />
