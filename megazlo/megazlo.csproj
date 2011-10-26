@@ -139,6 +139,7 @@
     <Content Include="Content\redmond\jquery-ui-1.8.16.custom.css" />
     <Content Include="Scripts\Ajax\Account.js" />
     <Content Include="Scripts\Ajax\AdminPost.js" />
+    <Content Include="Scripts\Ajax\AdminTag.js" />
     <Content Include="Scripts\Ajax\Comments.js" />
     <Content Include="Scripts\highlight\highlight.pack.js" />
     <Content Include="Scripts\highlight\styles\arta.css" />

@@ -131,5 +131,38 @@ namespace megazlo.Controllers {
 			return View(rez);
 		}
 
+		public JsonResult DelTag(int id) {
+			JsonResult rez = new JsonResult();
+			con.Entry(new Tag() { Id = id }).State = System.Data.EntityState.Deleted;
+			con.SaveChanges();
+			rez.Data = "Тег удален";
+			return rez;
+		}
+
+		public JsonResult AddTag(string title) {
+			JsonResult rez = new JsonResult();
+			int cnt = con.Tags.Where(t => t.Title == title).Count();
+			if (cnt > 0)
+				rez.Data = "Такой тег уже существует";
+			else {
+				con.Tags.Add(new Tag() { Title = title });
+				con.SaveChanges();
+				rez.Data = "тег добавлен в базу.";
+			}
+			return rez;
+		}
+
+		public JsonResult AddTag(int id, string title) {
+			JsonResult rez = new JsonResult();
+			Tag tg = con.Tags.Where(t => t.Id == id).FirstOrDefault();
+			if (tg != null) {
+				tg.Title = title;
+				con.Entry(tg).State = System.Data.EntityState.Modified;
+				con.SaveChanges();
+				rez.Data = "тег изменен.";
+			} else rez.Data = "Такой тег не найден!";
+			return rez;
+		}
+
 	}
 }
