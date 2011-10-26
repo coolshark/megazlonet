@@ -124,10 +124,12 @@ namespace megazlo.Controllers {
 
 		[HttpPost]
 		public ActionResult Install(User usr, HttpPostedFileBase ava) {
-			usr.IsAdmin = true;
-			bool imVald = ava.ContentLength < 204800;
-			if (!imVald)
-				ModelState.AddModelError("", "Слишком большой размер изображения.");
+			bool imVald = usr.IsAdmin = true;
+			if (ava != null) {
+				imVald = ava.ContentLength < 204800;
+				if (!imVald)
+					ModelState.AddModelError("", "Слишком большой размер изображения.");
+			}
 			if (imVald && ModelState.IsValid) {
 				usr.ConfirmPassWord = usr.PassWord = Hash.CreateHash(usr.PassWord);
 				AvatarUploader upl = new AvatarUploader();
