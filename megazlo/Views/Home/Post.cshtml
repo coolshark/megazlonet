@@ -10,6 +10,7 @@
 	SquishIt.JavaScript.Add("~/Scripts/Ajax/Comments.js");
 	SquishIt.JavaScript.Add("~/Scripts/highlight/highlight.pack.js");
 }
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
 <script type="text/javascript">
 	$(document).ready(function () {
 		$('pre').each(function (i, e) { hljs.highlightBlock(e, '  ', true) });
@@ -38,8 +39,20 @@
 	}
 		<div class="@Html.GetClassPost(Model.IsShowInfo)">
 			@Html.Raw(Model.Text)
+			<div style="float: left; width: 50px;">
+				<g:plusone></g:plusone>
+			</div>
+			@if (Model.Tags.Count > 0) {
+				<ul class="tags">
+					@for (int i = 0; i < Model.Tags.Count; i++) {
+						<li>Model.Tags[i].Title &nbsp;</li>
+		 }
+					<li><a>C# &nbsp;</a></li>
+					<li><a>Asp.net &nbsp;</a></li>
+				</ul>
+	 }
 			@if (Request.IsAuthenticated /*User.IsInRole("Admin")*/) {
-				<div>
+				<div style="float: right;">
 					@Html.ActionLink("Редактировать", "EditNews", "Admin", new { id = Model.Id }, new { })
 					|
 					@Html.ActionLink("Удалить", "DeleteNews", "Admin", new { id = Model.Id }, new { })

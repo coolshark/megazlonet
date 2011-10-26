@@ -9,6 +9,7 @@ namespace megazlo.Models {
 		public Post() {
 			DatePost = DateTime.Now;
 			WebLink = string.Empty;
+			Tags = new List<Tag>();
 		}
 		[Key]
 		public int Id { get; set; }
@@ -54,13 +55,7 @@ namespace megazlo.Models {
 		[Display(Name = "Отображать сведения")]
 		public bool IsShowInfo { get; set; }
 		public virtual ICollection<Tag> Tags { get; set; }
-
-		internal void InitTags() {
-			if (Tags == null)
-				Tags = new List<Tag>();
-			Tags.Add(new Tag() { Title = "C#" });
-			Tags.Add(new Tag() { Title = "asp.net" });
-			Tags.Add(new Tag() { Title = "Ajax" });
-		}
+		[NotMapped]
+		public string TagList { get; set; }
 	}
 }

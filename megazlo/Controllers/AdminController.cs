@@ -21,8 +21,7 @@ namespace megazlo.Controllers {
 		public ActionResult AddNews() {
 			ViewBag.Title = "Добавление статей";
 			ViewBag.ButtonOk = "Создать";
-			Post pst = new Post();
-			pst.InitTags();
+			Post pst = new Post() { IsCommentable = true, IsShowInfo = true };
 			return View(view, pst);
 		}
 
@@ -115,6 +114,21 @@ namespace megazlo.Controllers {
 				arr[i] = tg[i].Title;
 			rez.Data = arr;
 			return rez;
+		}
+
+		public ActionResult ShortUrl(string cod) {
+			// TODO: Short ru ССылки
+			// TODO: Короткие ru ССылки
+			Response.StatusCode = 301;
+			Response.StatusDescription = "Moved Permanently";
+			Response.AddHeader("Location", "/Home");
+			return null;
+		}
+
+		public ActionResult TagList() {
+			ViewBag.Title = "Список тегов";
+			List<Tag> rez = con.Tags.ToList();
+			return View(rez);
 		}
 
 	}

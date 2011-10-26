@@ -1,0 +1,16 @@
+﻿@model IEnumerable<megazlo.Models.Tag>
+<fieldset class="for_forms">
+	<legend>Список тегов</legend>
+	<table>
+		@foreach (var item in Model) {
+			<tr>
+				<td>@item.Title
+				</td>
+				<td>
+					@Html.ActionLink("Ред.", "EditTag", new { id = item.Id }) |
+					@Html.ActionLink("Удалить", "DeleteTag", new { id = item.Id })
+				</td>
+			</tr>
+	}
+	</table>
+</fieldset>

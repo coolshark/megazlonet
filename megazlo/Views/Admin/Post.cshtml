@@ -3,10 +3,11 @@
 	SquishIt.Css.Add("~/Content/redmond/jquery-ui-1.8.16.custom.css");
 
 	SquishIt.JavaScript.Add("~/Scripts/Ajax/AdminPost.js");
+	SquishIt.JavaScript.Add("~/Scripts/tiny_mce/jquery.tinymce.js");
 	SquishIt.JavaScript.Add("~/Scripts/jquery-ui-1.8.16.custom.min.js");
 	SquishIt.JavaScript.Add("~/Scripts/jquery.validate.unobtrusive.min.js");
-	SquishIt.JavaScript.Add("~/Scripts/tiny_mce/jquery.tinymce.js");
 	SquishIt.JavaScript.Add("~/Scripts/jquery.validate.min.js");
+
 }
 <script type="text/javascript">
 	$(function () {
@@ -53,11 +54,10 @@
 			@Html.TextAreaFor(model => model.Text, new { style = "width: 100%;", rows = "23", Class = "tinymce" })
 			@Html.ValidationMessageFor(model => model.Text)
 		</div>
-		<div class="editor-field">
+		<div id="tag-container" class="editor-field">
+			@Html.HiddenFor(m => m.TagList)
 			Теги:
-			@foreach (var item in Model.Tags) {
-				@Html.Partial("Tag", item);
-	 }
+			<input type="text" class="fortags" />
 		</div>
 		<div class="editor-field">
 			@Html.EditorFor(model => model.IsCommentable)

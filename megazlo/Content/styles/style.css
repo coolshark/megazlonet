@@ -990,8 +990,7 @@ select:focus, input:focus, textarea:focus, button:hover, select:hover, input:hov
 #commentform
 {
 	/*margin-top: 30px;*/
-	float: left;
-	/*width: 71%;*/
+	float: left; /*width: 71%;*/
 }
 
 li li .cancel-comment-reply
@@ -2015,4 +2014,20 @@ p#vtip
 	border: solid #AAAAAA 1px;
 	z-index: 9999;
 	border-radius: 5px;
+}
+
+ul.tags
+{
+	background: url("images/tags.png") no-repeat scroll 0 50% transparent;
+	float: left;
+	font-size: 1.0em;
+	line-height: 1.75em;
+	list-style: none outside none;
+	overflow: hidden;
+	padding: 0 0 0 22px;
+	vertical-align: middle;
+}
+ul.tags li
+{
+	display: inline;
 }
