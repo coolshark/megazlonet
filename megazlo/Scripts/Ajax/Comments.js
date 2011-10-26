@@ -3,25 +3,25 @@
 /// <reference path="../jquery.validate.unobtrusive.min.js" />
 
 $(function () {
-	$("#confirmDialog").dialog({
+	var dlg = $("#confirmDialog");
+	dlg.dialog({
 		autoOpen: false,
 		resizable: false,
 		height: 180,
 		width: 400,
 		buttons: {
 			"OK": function () {
-				$(this).dialog("close");
+				dlg.dialog("close");
 				deleteComment();
 			},
 			Cancel: function () {
-				$(this).dialog("close");
+				dlg.dialog("close");
 			}
 		}
 	});
-
-	$("form:first").submit(function (e) {
-		//$.validator.unobtrusive.parse(this)
-		if (!$(this).valid())
+	var frm = $("form:first");
+	frm.submit(function (e) {
+		if (!frm.valid())
 			return false;
 		e.preventDefault();
 		var comment = {
@@ -32,14 +32,14 @@ $(function () {
 		};
 
 		$.ajax({
-			url: $(this).attr("action"),
+			url: frm.attr("action"),
 			type: "POST",
 			data: JSON.stringify(comment),
 			dataType: "json",
 			contentType: "application/json; charset=utf-8",
 			success: function (data) {
 				if (data.indexOf('<') > -1) {
-					$('form:first').each(function () {
+					frm.each(function () {
 						$('ol.commentlist').append(data);
 						bindA();
 						this.reset();
@@ -58,7 +58,7 @@ var btn;
 function bindA() {
 	$('a.del_comment').click(function (e) {
 		btn = $(this);
-		$("#confirmDialog").dialog('open');
+		dlg.dialog('open');
 		return false;
 	});
 }
@@ -67,7 +67,6 @@ function deleteComment() {
 	$.ajax({
 		url: btn.attr("href"),
 		type: "POST",
-		//data: JSON.stringify(comment),
 		dataType: "json",
 		contentType: "application/json; charset=utf-8",
 		success: function (data) {

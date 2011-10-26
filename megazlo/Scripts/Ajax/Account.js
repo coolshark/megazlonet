@@ -4,12 +4,13 @@
 /// <reference path="../jquery-ui-1.8.16.custom.min.js" />
 
 $(function () {
-	$('#dialogResult').dialog({
+	var dlg = $('#dialogResult');
+	dlg.dialog({
 		autoOpen: false,
 		resizable: false,
 		buttons: {
 			"OK": function () {
-				$(this).dialog("close");
+				dlg.dialog("close");
 			}
 		}
 	});
@@ -29,7 +30,7 @@ $(function () {
 			contentType: "application/json; charset=utf-8",
 			success: function (data) {
 				$('#restoreRez').html(data);
-				$('#dialogResult').dialog('open');
+				dlg.dialog('open');
 			}
 		});
 	});
