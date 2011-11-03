@@ -1,6 +1,9 @@
 ﻿/** Vertigo Tip Requires jQuery */
 this.vtip = function () {
 	this.yOffset = this.xOffset = 10;
+
+
+
 	$('body').append('<p id="vtip"><input id="vp_in" type=text style="width: 100%;" /></p>');
 
 	$("input#vp_in").bind('click', function (e) {
@@ -11,6 +14,9 @@ this.vtip = function () {
 		$("p#vtip").hide();
 	});
 
+};
+
+vtip.reinit = function (n) {
 	$("a.vtip").bind('click', function (e) {
 		$("input#vp_in").attr('value', this.href);
 		this.top = (e.pageY + yOffset);
@@ -23,4 +29,4 @@ this.vtip = function () {
 		return false;
 	});
 };
-jQuery(document).ready(function ($) { vtip(); });
+jQuery(document).ready(function ($) { vtip(); vtip.reinit(); });

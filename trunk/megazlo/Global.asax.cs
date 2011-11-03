@@ -18,6 +18,9 @@ namespace megazlo {
 			routes.MapRoute("Post", "Home/Post/{id}",
 				new { controller = "Home", action = "Post", id = UrlParameter.Optional });
 
+			routes.MapRoute("AjaxPost", "Home/AjaxPost/{id}",
+				new { controller = "Home", action = "AjaxPost", id = UrlParameter.Optional });
+
 			routes.MapRoute("Pages", // Route name
 				"{controller}/{action}/{id}/{page}", // URL with parameters
 				new { controller = "Home", action = "Index", id = UrlParameter.Optional, page = UrlParameter.Optional }); // Parameter defaults
