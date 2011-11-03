@@ -15,6 +15,7 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>false</UseIISExpress>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -60,22 +61,30 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="Yahoo.Yui.Compressor">
       <HintPath>..\packages\YUICompressor.NET.1.5.0.0\lib\NET35\Yahoo.Yui.Compressor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\AjaxHelpers.cs" />
     <Compile Include="Code\AvatarUploader.cs" />
+    <Compile Include="Code\ControllerBase.cs" />
     <Compile Include="Code\Hash.cs" />
+    <Compile Include="Code\HtmlHelpers.cs" />
     <Compile Include="Code\Mail.cs" />
     <Compile Include="Code\PageHelper.cs" />
     <Compile Include="Code\Uploader.cs" />
@@ -140,6 +149,7 @@
     <Content Include="Scripts\Ajax\Account.js" />
     <Content Include="Scripts\Ajax\AdminPost.js" />
     <Content Include="Scripts\Ajax\AdminTag.js" />
+    <Content Include="Scripts\Ajax\ajaxnavigation.js" />
     <Content Include="Scripts\Ajax\Comments.js" />
     <Content Include="Scripts\highlight\highlight.pack.js" />
     <Content Include="Scripts\highlight\styles\arta.css" />

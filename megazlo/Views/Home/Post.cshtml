@@ -10,6 +10,7 @@
 	SquishIt.JavaScript.Add("~/Scripts/Ajax/Comments.js");
 	SquishIt.JavaScript.Add("~/Scripts/highlight/highlight.pack.js");
 }
+@Html.PageInfo(new { title = Model.Title, value = @Url.RouteUrl("Post", new { id = Model.WebLink }) })
 <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
 <script type="text/javascript">
 	$(document).ready(function () {
@@ -25,7 +26,7 @@
 </div>
 <div class="post hentry">
 	<h2 class="entry-title">
-		<a href="@Url.RouteUrl("Post", new RouteValueDictionary { { "id", Model.WebLink } })" rel="bookmark">@Model.Title</a></h2>
+		<a href="@Url.RouteUrl("Post", new { id = Model.WebLink })" class="ajax">@Model.Title</a></h2>
 	<div class="clearfix">
 		@if (Model.IsShowInfo) {
 			<div class="entry-meta entry-header">

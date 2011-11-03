@@ -5,6 +5,7 @@
 	SquishIt.JavaScript.Add("~/Scripts/jquery.vtip.js");
 	SquishIt.JavaScript.Add("~/Scripts/highlight/highlight.pack.js");
 }
+@Html.PageInfo(new { title = ViewBag.Title, value = @Url.Action("Category", new { id = ViewBag.PageNum }) })
 <script type="text/javascript">
 	$(document).ready(function () {
 		$('pre').each(function (i, e) { hljs.highlightBlock(e, '  ', true) });
@@ -13,7 +14,8 @@
 @foreach (var item in Model) {
 	<div class="post hentry">
 		<h2 class="entry-title">
-			<a href="@Url.RouteUrl("Post", new RouteValueDictionary { { "id", item.WebLink } })" rel="bookmark">@item.Title</a></h2>
+			<a href="@Url.RouteUrl("Post", new { id = item.WebLink })" class="ajax">@item.Title</a>
+			@*<a href="@Url.RouteUrl("Post", new RouteValueDictionary { { "id", item.WebLink } })" rel="bookmark">@item.Title</a>*@</h2>
 		<div class="clearfix">
 			<div class="entry-meta entry-header">
 				<span class="published">Автор <strong>@item.User.Name @item.User.Family</strong></span> <span class="published">От <strong>@item.DatePost.ToShortDateString()</strong></span>

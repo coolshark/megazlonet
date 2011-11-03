@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Threading;
+using System.Web;
 using System.Web.Mvc;
 using megazlo.Code;
 using megazlo.Models;
-using System.IO;
-using System.Web;
-using System.Threading;
 
 namespace megazlo.Controllers {
 	public class HomeController : Controller {
@@ -40,6 +40,17 @@ namespace megazlo.Controllers {
 				return View("Post", pst);
 			}
 			return RedirectToAction("Error");
+		}
+
+		[HttpPost]
+		public JsonResult Post(string id, string dop) {
+			JsonResult rez = new JsonResult();
+			Post pst = null;
+			if (con.Posts.Where(p => p.WebLink == id).Count() > 0)
+				pst = con.Posts.Where(p => p.WebLink == id).First();
+			if (pst != null)
+				rez.Data = RenderPartialViewToString("Post", pst);
+			return rez;
 		}
 
 		public ActionResult Category(string id, int page = 0) {

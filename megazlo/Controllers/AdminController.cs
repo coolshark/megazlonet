@@ -54,6 +54,7 @@ namespace megazlo.Controllers {
 				return View(view, post);
 			post.Text = Uploader.Parce(post.Text);
 			post.WebLink = Uploader.ParceLink(post.Title);
+			post.UserId = User.Identity.Name;
 			con.Entry(post).State = System.Data.EntityState.Modified;
 			con.SaveChanges();
 			ViewBag.ButtonOk = "Изменить";

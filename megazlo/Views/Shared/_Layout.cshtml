@@ -2,9 +2,9 @@
 	SquishIt.Css.Add("~/Content/styles/main.css");
 	SquishIt.Css.Add("~/Content/styles/style.css");
 
+	SquishIt.JavaScript.Add("~/Scripts/Ajax/ajaxnavigation.js");
 	SquishIt.JavaScript.Add("~/Scripts/jquery.slidemenu.js");
 	SquishIt.JavaScript.Add("~/Scripts/jquery-1.6.4.min.js");
-
 }
 <!DOCTYPE html>
 <html>
@@ -40,6 +40,7 @@
 			</div>
 			<div id="sidebar" class="aside">
 				<div class="widget widget_categories">
+					<h2 class="widget-title">@DateTime.Now.ToString()</h2>
 					<div class="widget">
 						@if (Request.IsAuthenticated) {
 							<h2 class="widget-title">
