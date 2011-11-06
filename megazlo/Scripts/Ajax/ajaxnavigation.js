@@ -1,32 +1,42 @@
-﻿/// <reference path="../jquery-1.6.4.min.js" />
+﻿/// <reference path="../jquery-1.7.min.js" />
 /// <reference path="../jquery-ui-1.8.16.custom.min.js" />
 
 $(function () {
-	function initDoc() {
-		$('.ajax').click(function (e) {
-			$.ajax({
-				url: $(this).attr('href'),
-				type: "POST",
-				data: JSON.stringify(""),
-				dataType: "json",
-				contentType: "application/json; charset=utf-8",
-				success: function (data) {
-					ajaxComplete(data);
-				}
-			});
-			return false;
+	var labl = '';
+	var lin = '';
+	var prim = $("#primary");
+	$(document).on('click', 'a.ajax', function (e) {
+		labl = $(this).attr('href');
+		setlin(labl);
+		$.ajax({
+			url: $(this).attr('href'),
+			type: "POST",
+			data: JSON.stringify(""),
+			dataType: "json",
+			contentType: "application/json; charset=utf-8",
+			success: function (data) {
+				ajaxComplete(data);
+			}
 		});
-		vtip.reinit();
+		return false;
+	});
+
+	function setlin(tm) {
+		if (tm.lastIndexOf("#") > 0)
+			lin = tm.substring(tm.lastIndexOf("#"), tm.length);
+		else
+			lin = '';
 	}
 
 	function ajaxComplete(data) {
-		$("#primary").empty();
 		if (data != null)
-			$("#primary").append(data);
+			prim.html(data);
 		var url = $('#pageInfo').attr('value').replace("&", "&");
 		window.history.pushState("ajax", document.title, url);
+		if (lin.length > 0)
+			$('html, body').scrollTop($(lin).offset().top);
+		$('#qrcode').attr('src', '/Help/QR?data=' + document.location);
 		document.title = $("#pageInfo").attr('title');
-		initDoc();
 	}
 
 	// Метод выполняется при загрузке документа
@@ -41,8 +51,6 @@ $(function () {
 		};
 		// Устанавливаем новый заголовок страницы
 		document.title = $("#pageInfo").attr('title');
-		initDoc();
 	});
 
 })
-

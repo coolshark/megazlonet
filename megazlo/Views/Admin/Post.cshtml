@@ -1,5 +1,5 @@
 ﻿@model megazlo.Models.Post
-@{
+@*@{
 	SquishIt.Css.Add("~/Content/redmond/jquery-ui-1.8.16.custom.css");
 
 	SquishIt.JavaScript.Add("~/Scripts/Ajax/AdminPost.js");
@@ -8,7 +8,8 @@
 	SquishIt.JavaScript.Add("~/Scripts/jquery.validate.unobtrusive.min.js");
 	SquishIt.JavaScript.Add("~/Scripts/jquery.validate.min.js");
 
-}
+}*@
+<script type="text/javascript" src="~/Scripts/tiny_mce/jquery.tinymce.js"></script>
 <script type="text/javascript">
 	$(function () {
 		$('textarea#Text').tinymce({

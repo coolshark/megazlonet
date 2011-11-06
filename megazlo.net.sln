@@ -3,13 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zxing", "zxing\zxing.csproj", "{45CB769A-712F-42FE-B23F-BFCB7E0AE6D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XCaptcha", "XCaptcha\XCaptcha.csproj", "{7D89735B-2EA5-4BA1-A37B-CD0346B527E4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XCaptcha.Web.Mvc", "XCaptcha.Web.Mvc\XCaptcha.Web.Mvc.csproj", "{D0299BC2-36C2-4B40-900C-84D14007C672}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "megazlo", "megazlo\megazlo.csproj", "{FBD4A2E1-A884-4007-B103-469DB66C3879}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnidecodeSharp", "UnidecodeSharp\UnidecodeSharp.csproj", "{B268B199-851B-4326-BB4C-F054FCFBA4D4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{27F12566-EEC1-4E92-966E-3DEBBF513E83}"
+	ProjectSection(SolutionItems) = preProject
+		libs\EntityFramework.dll = libs\EntityFramework.dll
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaptchaMVC", "CaptchaMVC\CaptchaMVC.csproj", "{6F685F9E-6667-40B5-9502-CCBEE2021070}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,14 +24,6 @@ Global
 		{45CB769A-712F-42FE-B23F-BFCB7E0AE6D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45CB769A-712F-42FE-B23F-BFCB7E0AE6D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45CB769A-712F-42FE-B23F-BFCB7E0AE6D9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7D89735B-2EA5-4BA1-A37B-CD0346B527E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7D89735B-2EA5-4BA1-A37B-CD0346B527E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7D89735B-2EA5-4BA1-A37B-CD0346B527E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7D89735B-2EA5-4BA1-A37B-CD0346B527E4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D0299BC2-36C2-4B40-900C-84D14007C672}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D0299BC2-36C2-4B40-900C-84D14007C672}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D0299BC2-36C2-4B40-900C-84D14007C672}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D0299BC2-36C2-4B40-900C-84D14007C672}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FBD4A2E1-A884-4007-B103-469DB66C3879}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FBD4A2E1-A884-4007-B103-469DB66C3879}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBD4A2E1-A884-4007-B103-469DB66C3879}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -37,6 +32,10 @@ Global
 		{B268B199-851B-4326-BB4C-F054FCFBA4D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B268B199-851B-4326-BB4C-F054FCFBA4D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B268B199-851B-4326-BB4C-F054FCFBA4D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F685F9E-6667-40B5-9502-CCBEE2021070}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F685F9E-6667-40B5-9502-CCBEE2021070}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F685F9E-6667-40B5-9502-CCBEE2021070}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F685F9E-6667-40B5-9502-CCBEE2021070}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

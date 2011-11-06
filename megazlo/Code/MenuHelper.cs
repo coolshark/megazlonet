@@ -7,8 +7,8 @@ using System;
 
 namespace megazlo.Code {
 	public static class MenuHelper {
-		private static string tmplC = "<li><a href=\"/Home/Category/{0}\">{0}</a>{1}</li>";
-		private static string tmplP = "<li><a href=\"/Home/Post/{0}\">{1}</a></li>";
+		private static string tmplC = "<li><a href=\"/Home/Category/{0}\" class=\"ajax\">{0}</a>{1}</li>";
+		private static string tmplP = "<li><a href=\"/Home/Post/{0}\" class=\"ajax\">{1}</a></li>";
 		private static MvcHtmlString Cashe;
 
 		private static DateTime TimeCashe = new DateTime(1900, 1, 1);

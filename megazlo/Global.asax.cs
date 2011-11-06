@@ -3,6 +3,7 @@ using System.Web.Routing;
 #if DEBUG
 using megazlo.Models;
 using System.Data.Entity;
+using SquishIt.Framework;
 #endif
 
 namespace megazlo {
@@ -37,6 +38,28 @@ namespace megazlo {
 			AreaRegistration.RegisterAllAreas();
 			RegisterGlobalFilters(GlobalFilters.Filters);
 			RegisterRoutes(RouteTable.Routes);
+
+			Bundle.Css()
+				.Add("~/Content/styles/main.css",
+				"~/Content/styles/style.css",
+				"~/Scripts/Slider/global.css",
+				"~/Scripts/highlight/styles/vs.css",
+				"~/Content/redmond/jquery-ui-1.8.16.custom.css")
+				.ForceRelease()
+				.AsNamed("main_cs", "~/Upload/StyleScript/Site.min_#.css");
+
+			Bundle.JavaScript()
+				.Add("~/Scripts/jquery.slidemenu.js",
+				"~/Scripts/jquery-ui-1.8.16.custom.min.js",
+				"~/Scripts/Ajax/ajaxnavigation.js",
+				"~/Scripts/Ajax/Comments.js",
+				//"~/Scripts/jquery.validate.min.js",
+				//"~/Scripts/jquery.validate.unobtrusive.min.js",
+				"~/Scripts/jquery.vtip.js",
+				"~/Scripts/highlight/highlight.pack.js",
+				"~/Scripts/Slider/slides.min.jquery.js")
+				.ForceRelease()
+				.AsNamed("main_js", "~/Upload/StyleScript/Site.min_#.js");
 		}
 	}
 }
