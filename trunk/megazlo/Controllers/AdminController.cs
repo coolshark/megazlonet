@@ -57,6 +57,8 @@ namespace megazlo.Controllers {
 			post.UserId = User.Identity.Name;
 			con.Entry(post).State = System.Data.EntityState.Modified;
 			con.SaveChanges();
+			if (post.InCatMenu)
+				MenuHelper.UpdateCache();
 			ViewBag.ButtonOk = "Изменить";
 			ViewBag.Title = "Редактирование статьи: " + post.Title;
 			return RedirectToAction("Post", "Home", new { id = post.WebLink });

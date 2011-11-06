@@ -1,11 +1,4 @@
-﻿@{
-	SquishIt.Css.Add("~/Content/styles/main.css");
-	SquishIt.Css.Add("~/Content/styles/style.css");
-
-	SquishIt.JavaScript.Add("~/Scripts/Ajax/ajaxnavigation.js");
-	SquishIt.JavaScript.Add("~/Scripts/jquery.slidemenu.js");
-	SquishIt.JavaScript.Add("~/Scripts/jquery-1.6.4.min.js");
-}
+﻿@using SquishIt.Framework;
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,8 +11,10 @@
 	<meta name="WebsiteSpark" content="8ULOjiq6zK" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link href="@Url.Content("~/Content/styles/images/favicon.ico")" rel="icon" type="image/ico" />
-	@SquishIt.Css.Render("~/Upload/StyleScript/Site.min_#.css")
-	@SquishIt.JavaScript.Render("~/Upload/StyleScript/Site.min_#.js")
+	@Html.Raw(Bundle.Css().RenderNamed("main_cs"))
+	<script type="text/javascript" src="/Scripts/jquery-1.7.min.js"></script>
+	@Html.Raw(Bundle.JavaScript().RenderNamed("main_js"))
+	<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
 </head>
 <body class="blog">
 	<div id="container">
@@ -52,22 +47,8 @@
 					<div class="widget">
 						<h2 class="widget-title">
 							QR Code</h2>
-						<a href="@Request.Url">
-							<img src="@Url.Action("QR", "Help", new { data = Request.Url })" alt="Постоянный адрес страницы" width="150px" height="150px" class="qrimg" />
-						</a>
+						<img id="qrcode" src="@Url.Action("QR", "Help", new { data = Request.Url })" alt="Постоянный адрес страницы" width="150px" height="150px" class="qrimg" />
 					</div>
-					@*<div class="widget">
-						<h2 class="widget-title">
-							Облако тегов</h2>
-						<div style="text-align: left;">
-							<div style="margin-left: 3px;">
-							<span style="background-color: #cdcccc; font-size: large; padding: 0;">ASP.NET</span><span style="background-color: #cdcccc; font-size: small; padding: 0;">AJAX</span>
-								<br />
-							<span style="background-color: #cdcccc; font-size: medium; margin: 0;">C#</span>
-							</div>
-							<img alt="" src="@Url.Content("~/Content/styles/images/staffMan.gif")" width="81" height="154" />
-						</div>
-					</div>*@
 				</div>
 			</div>
 		</div>
@@ -89,39 +70,6 @@
 	alt="ASP.NET MVC 3" /></a> <a id="html5" href="http://www.w3.org/html/" title="Технологии">
 		<img src="@Url.Content("~/Content/styles/images/_HTML5_Logo.png")"
 	alt="html5" /></a>
-			</p>
-			<br />
-			<br />
-			<p class="credit">@*
-				<!-- Yandex.Metrika informer -->
-				<a href="http://metrika.yandex.ru/stat/?id=6520006&amp;from=informer" target="_blank" rel="nofollow">
-					<img src="//bs.yandex.ru/informer/6520006/1_0_FFFFFFFF_FFFFFFFF_0_pageviews" style="width: 80px; height: 15px; border: 0;"
-						alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры)" /></a>
-				<!-- /Yandex.Metrika informer -->
-				<!-- Yandex.Metrika counter -->
-				<div style="display: none;">
-					<script type="text/javascript">
-						(function (w, c) {
-							(w[c] = w[c] || []).push(function () {
-								try {
-									w.yaCounter6520006 = new Ya.Metrika({ id: 6520006,
-										clickmap: true,
-										trackLinks: true,
-										accurateTrackBounce: true
-									});
-								}
-								catch (e) { }
-							});
-						})(window, 'yandex_metrika_callbacks');
-					</script>
-				</div>
-				<script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript" defer="defer"></script>
-				<noscript>
-					<div>
-						<img src="//mc.yandex.ru/watch/6520006" style="position: absolute; left: -9999px;" alt="" />
-					</div>
-				</noscript>
-				<!-- /Yandex.Metrika counter -->*@
 			</p>
 		</div>
 	</div>

@@ -7,6 +7,8 @@ using System.Web;
 using System.Web.Mvc;
 using megazlo.Code;
 using megazlo.Models;
+using CaptchaMVC.Attribute;
+using CaptchaMVC.HtmlHelpers;
 
 namespace megazlo.Controllers {
 	public class HomeController : Controller {
@@ -14,8 +16,14 @@ namespace megazlo.Controllers {
 		ZloContext con = new ZloContext();
 
 		public ActionResult Index() {
-			ViewBag.Title = Sets.SiteName;//"megazlo.net";
 			return View();
+		}
+
+		[HttpPost]
+		public JsonResult Index(string arg) {
+			JsonResult rez = new JsonResult();
+			rez.Data = RenderPartialViewToString("Index", null);
+			return rez;
 		}
 
 		public ActionResult Error(string id) {
@@ -67,10 +75,30 @@ namespace megazlo.Controllers {
 			return View("PostList", mod);
 		}
 
+		[HttpPost]
+		public JsonResult Category(string id, string test, int page = 0) {
+			JsonResult rez = new JsonResult();
+			if (page < 0)
+				return rez;
+			ViewBag.Title = id;
+			ViewBag.PageNum = page;
+			ViewBag.PageSize = pageSize;
+			ViewBag.PostCount = con.Categorys.Where(c => c.Title == id).First().Posts.Count;
+			ICollection<Post> mod = con.Categorys.Where(c => c.Title == id).First().Posts.OrderByDescending(p => p.Id).Skip(page * pageSize).Take(pageSize).ToList();
+			int pgCount = (int)Math.Ceiling((double)ViewBag.PostCount / pageSize);
+			if (page < 0 || page > pgCount)
+				return rez;
+			rez.Data = RenderPartialViewToString("PostList", mod);
+			return rez;
+		}
+
 		#region Comments
 		[HttpPost]
 		public JsonResult AddComment(Comment cmt) {
 			JsonResult rez = new JsonResult();
+			if (this.IsCaptchaVerify("Captcha is not valid")) {
+				rez.Data = "Валидная.";
+			}
 			if (User.Identity.IsAuthenticated) {
 				int cnt = con.Posts.Where(p => p.Id == cmt.PostId).Where(p => p.UserId == User.Identity.Name).Count();
 				if (cnt > 0)

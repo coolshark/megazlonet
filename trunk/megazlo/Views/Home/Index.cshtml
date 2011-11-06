@@ -1,9 +1,5 @@
 ﻿@using megazlo.Code
-@{
-	SquishIt.Css.Add("~/Scripts/Slider/global.css");
-	SquishIt.JavaScript.Add("~/Scripts/Slider/slides.min.jquery.js");
-}
-@Html.PageInfo(new { title = "megazlo.net", value = "/" })
+@Html.PageInfo(new { title = Sets.SiteName, value = "/" })
 <script type="text/javascript">
 	$(function () {
 		$('#slides').slides({
@@ -21,8 +17,9 @@
 	});
 </script>
 <h2 class="entry-title">
-	Разработка приложений: <span style="color: Green;">android</span>,<span style="color: Blue;"> WPF</span>, <span style="color: Orange;">
-		ASP.NET MVC</span>, интерфейсов и не только...
+	Разработка приложений: <span style="color: Green;">android</span>,<span style="color: Blue;">
+		WPF</span>, <span style="color: Orange;">ASP.NET MVC</span>, интерфейсов и не
+	только...
 </h2>
 <div id="example">
 	<div id="slides">
@@ -53,9 +50,9 @@
 			</div>
 		</div>
 		<a href="#" class="prev">
-			<img src="@Url.Content("~/Content/styles/images/arrow-prev.png")" width="24" height="43" alt="Arrow Prev" /></a> <a href="#"
-				class="next">
-				<img src="@Url.Content("~/Content/styles/images/arrow-next.png")" width="24" height="43" alt="Arrow Next" /></a>
+			<img src="@Url.Content("~/Content/styles/images/arrow-prev.png")" width="24" height="43" alt="Arrow Prev" /></a>
+		<a href="#" class="next">
+			<img src="@Url.Content("~/Content/styles/images/arrow-next.png")" width="24" height="43" alt="Arrow Next" /></a>
 	</div>
 	<img src="@Url.Content("~/Content/styles/images/example-frame.png")" width="739" height="341" alt="Example Frame" id="frame" />
 </div>

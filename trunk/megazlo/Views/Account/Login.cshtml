@@ -1,9 +1,6 @@
 ﻿@model megazlo.Models.LoginUser
-@{
-	ViewBag.Title = "Вход";
-	SquishIt.JavaScript.Add("~/Scripts/jquery.validate.unobtrusive.min.js");
-	SquishIt.JavaScript.Add("~/Scripts/jquery.validate.min.js");
-}
+@using megazlo.Code
+@Html.PageInfo(new { title = "Вход", value = Request.RawUrl })
 @using (Html.BeginForm()) {
 	<fieldset>
 		<legend>Вход</legend>

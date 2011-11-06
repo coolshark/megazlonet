@@ -1,79 +1,80 @@
-﻿/// <reference path="../jquery-1.6.4.min.js" />
+﻿/// <reference path="../jquery-1.7.min.js" />
 /// <reference path="../jquery.validate.min.js" />
 /// <reference path="../jquery.validate.unobtrusive.min.js" />
-
 $(function () {
-	var dlg = $("#confirmDialog");
-	dlg.dialog({
-		autoOpen: false,
-		resizable: false,
-		height: 180,
-		width: 400,
-		buttons: {
-			"OK": function () {
-				dlg.dialog("close");
-				deleteComment();
-			},
-			Cancel: function () {
-				dlg.dialog("close");
-			}
-		}
-	});
-	var frm = $("form:first");
-	frm.submit(function (e) {
-		if (!frm.valid())
-			return false;
+
+	$(document).on('click', '#Submit_Comment', function (e) {
+		var frm = $("form:first");
 		e.preventDefault();
+
+		//if (!frm.valid())
+		//	return false;
 		var comment = {
 			FirstName: $("#FirstName").val(),
 			Email: $("#Email").val(),
 			Text: $("#Text").val(),
-			PostId: $("#PostID").val()
+			PostId: $("#PostId").val(),
+			CaptchaDeText: $("#CaptchaDeText").val(),
+			CaptchaInputText: $("#CaptchaInputText").val()
 		};
+		sendCmnt(comment, frm.attr("action"));
+		return false;
+	});
 
+
+
+	$(document).on('click', '#primary a.del_comment', function (e) {
+		var href = $(this).attr('href');
+		var dlg = $("#confirmDialog");
+		dlg.dialog({
+			resizable: false,
+			height: 180,
+			width: 400,
+			buttons: {
+				"OK": function () {
+					$(this).dialog("close");
+					deleteComment(href);
+				},
+				Cancel: function () {
+					$(this).dialog("close");
+				}
+			}
+		});
+		dlg.dialog("open");
+		return false;
+	});
+
+	function sendCmnt(comment, action) {
+		alert(action);
 		$.ajax({
-			url: frm.attr("action"),
+			url: action,
 			type: "POST",
 			data: JSON.stringify(comment),
 			dataType: "json",
 			contentType: "application/json; charset=utf-8",
 			success: function (data) {
 				if (data.indexOf('<') > -1) {
-					frm.each(function () {
-						$('ol.commentlist').append(data);
-						bindA();
-						this.reset();
-					});
+					$("form:first").each(function () { this.reset(); });
+					$('ol.commentlist').append(data);
 				} else
 					alert(data);
 			}
 		});
-	});
+	}
 
-	bindA();
+
+	function deleteComment(hrf) {
+		$.ajax({
+			url: hrf,
+			type: "POST",
+			dataType: "json",
+			contentType: "application/json; charset=utf-8",
+			success: function (data) {
+				if (data != false)
+					$('#li-comment-' + data).remove();
+				else
+					alert('Ошибка удаления.');
+			}
+		});
+	}
 });
-
-var btn;
-
-function bindA() {
-	$('a.del_comment').click(function (e) {
-		btn = $(this);
-		dlg.dialog('open');
-		return false;
-	});
-}
-
-function deleteComment() {
-	$.ajax({
-		url: btn.attr("href"),
-		type: "POST",
-		dataType: "json",
-		contentType: "application/json; charset=utf-8",
-		success: function (data) {
-			if (data != false)
-				$('#li-comment-' + data).remove();
-			else
-				alert('Ошибка удаления.');
-		}
-	});
-}
