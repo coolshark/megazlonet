@@ -9,7 +9,7 @@
 	SquishIt.JavaScript.Add("~/Scripts/jquery.validate.min.js");
 
 }*@
-<script type="text/javascript" src="~/Scripts/tiny_mce/jquery.tinymce.js"></script>
+<script type="text/javascript" src=@Url.Content("~/Scripts/tiny_mce/jquery.tinymce.js")></script>
 <script type="text/javascript">
 	$(function () {
 		$('textarea#Text').tinymce({
