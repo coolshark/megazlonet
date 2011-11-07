@@ -2,35 +2,30 @@
 @using megazlo.Code
 @Html.PageInfo(new { title = "Вход", value = Request.RawUrl })
 @using (Html.BeginForm()) {
-	<fieldset>
-		<legend>Вход</legend>
-		<div class="editor-label">
-			@Html.LabelFor(model => model.Login)
-		</div>
-		<div class="editor-field">
-			@Html.EditorFor(model => model.Login)
-			@Html.ValidationMessageFor(model => model.Login)
-		</div>
-		<div class="editor-label">
-			@Html.LabelFor(model => model.Password)
-		</div>
-		<div class="editor-field">
-			@Html.EditorFor(model => model.Password)
-			@Html.ValidationMessageFor(model => model.Password)
-		</div>
+	<div class="editor-label">
+		@Html.LabelFor(model => model.Login)
+	</div>
+	<div class="editor-field">
+		@Html.EditorFor(model => model.Login)
+		@Html.ValidationMessageFor(model => model.Login)
+	</div>
+	<div class="editor-label">
+		@Html.LabelFor(model => model.Password)
+	</div>
+	<div class="editor-field">
+		@Html.EditorFor(model => model.Password)
+		@Html.ValidationMessageFor(model => model.Password)
+	</div>
+	<br />
+	<div class="editor-field">
+		@Html.EditorFor(model => model.IsRemember)
+		@Html.LabelFor(model => model.IsRemember)
+	</div>
+	<input id="login_href" type="hidden" value="@Url.Action("LoginAjax", "Account")" />
+	<div class="editor-field" style="float: right; text-align: right; margin-top: -40px;">
+		@Html.ActionLink("Забыли пароль?", "RestorePassword")
 		<br />
-		<div class="editor-field">
-			@Html.EditorFor(model => model.IsRemember)
-			@Html.LabelFor(model => model.IsRemember)
-		</div>
-		<div class="editor-field">
-			<input type="submit" value="Вход" style="width: 85px; margin-top: 10px;" />
-		</div>
-		<div class="editor-field" style="float: right; text-align: right;">
-			@Html.ActionLink("Забыли пароль?", "RestorePassword")
-			<br />
-			@Html.ActionLink("Регистрация", "Regisrer")
-		</div>
-	</fieldset>
+		@Html.ActionLink("Регистрация", "Regisrer")
+	</div>
 }
 @Html.ValidationSummary(true)
