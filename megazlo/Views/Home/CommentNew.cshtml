@@ -1,6 +1,5 @@
 ﻿@model megazlo.Models.Comment
 @using CaptchaMVC.HtmlHelpers;
-<script src="../../Scripts/jquery.unobtrusive-ajax.min.js" type="text/javascript"></script>
 @using (Ajax.BeginForm("AddComment", "Home", null)) {
 	<fieldset>
 		<legend>Новый коментарий</legend>
@@ -26,8 +25,7 @@
 			@Html.ValidationMessageFor(m => m.Text)
 		</div>
 		<input type="hidden" id="PostId" value="@Model.PostId" name="PostId" />
+		<input id="Submit_Comment" type="submit" value="Запостить" style="margin: 38px 20px 0 0;" />
 		@Html.Captcha("Обновить", "Введите символы", 5)
-		<br />
-		<input id="Submit_Comment" type="submit" value="Запостить" />
 	</fieldset>
 }

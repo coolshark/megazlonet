@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using megazlo.Code;
 using megazlo.Models;
+using System.IO;
 
 namespace megazlo.Controllers {
 	public class AccountController : Controller {
@@ -47,26 +48,26 @@ namespace megazlo.Controllers {
 		}
 		#endregion
 
-		public ActionResult Login() {
-#if DEBUG
-			return View(new LoginUser() { Login = "admin", Password = "qwepoi" });
-#else
-			return View();
-#endif
+		[HttpPost]
+		public JsonResult GetLoginForm() {
+			JsonResult rez = new JsonResult();
+			rez.Data = RenderPartialViewToString("Login", new LoginUser());
+			return rez;
 		}
 
 		[HttpPost]
-		public ActionResult Login(LoginUser usr, string returnUrl) {
+		public JsonResult LoginAjax(LoginUser usr) {
+			JsonResult rez = new JsonResult();
 			if (ModelState.IsValid) {
 				User usrs = MembershipService.ValidateUser(usr.Login, usr.Password);
 				if (usrs != null) {
 					FormsService.SignIn(usr.Login, usr.IsRemember);
-					return Url.IsLocalUrl(returnUrl) ? Redirect(returnUrl) : Redirect("/");
+					rez.Data = true;
+					return rez;
 				}
 			}
-			usr.Password = string.Empty;
-			ModelState.AddModelError("", "Неверное имя пользователя или пароль.");
-			return View(usr);
+			rez.Data = "Неверное имя пользователя или пароль.";
+			return rez;
 		}
 
 		[Authorize]
@@ -104,6 +105,18 @@ namespace megazlo.Controllers {
 				}
 			}
 			return rez;
+		}
+
+		protected string RenderPartialViewToString(string viewName, object model) {
+			if (string.IsNullOrEmpty(viewName))
+				return string.Empty;
+			ViewData.Model = model;
+			using (StringWriter sw = new StringWriter()) {
+				ViewEngineResult viewResult = ViewEngines.Engines.FindPartialView(ControllerContext, viewName);
+				ViewContext viewContext = new ViewContext(ControllerContext, viewResult.View, ViewData, TempData, sw);
+				viewResult.View.Render(viewContext, sw);
+				return sw.GetStringBuilder().ToString();
+			}
 		}
 	}
 }

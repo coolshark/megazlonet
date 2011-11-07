@@ -15,11 +15,8 @@ namespace CaptchaMVC.HtmlHelpers {
 		#region Field
 
 		private const string CaptchaFormat = @"
-<br/>
-<img id=""CaptchaImage"" src=""{0}""/>
-{1}
-<br/>
-";
+<img id=""CaptchaImage"" src=""{0}"" style=""float: left;""/>
+{1}";
 		private const string DefaultName = "default";
 
 		private static string _nameGenerateImage;
@@ -64,7 +61,6 @@ namespace CaptchaMVC.HtmlHelpers {
 			return GenerateFullCaptcha(htmlHelper, "Refresh", "Input symbols:", length);
 		}
 
-
 		/// <summary>
 		/// Create full captcha
 		/// </summary>
@@ -82,10 +78,10 @@ namespace CaptchaMVC.HtmlHelpers {
 			var ajax = new AjaxHelper(htmlHelper.ViewContext, htmlHelper.ViewDataContainer);
 			var refresh = ajax.ActionLink(text, "NewCaptcha", "CaptchaImage", new { l = length },
 																		new AjaxOptions { UpdateTargetId = "CaptchaDeText", OnSuccess = "Success" });
-
-			return MvcHtmlString.Create(string.Format(CaptchaFormat, url, htmlHelper.Hidden("CaptchaDeText", encryptText)) +
-																	 refresh.ToHtmlString() + " <br/>" + inputText + "<br/>" +
-																	htmlHelper.TextBox("CaptchaInputText") + "<br/>" + htmlHelper.ValidationMessage("CaptchaInputText"));
+			string tgs = "<div style=\"float: left; margin-top: 5px;\">" + refresh.ToHtmlString() + " <br/>" + inputText + "<br/>" +
+				htmlHelper.TextBox("CaptchaInputText", "", new { data_val_required = "*", data_val = "true" }) +
+				htmlHelper.ValidationMessage("CaptchaInputText") + "</div>";
+			return MvcHtmlString.Create(tgs + string.Format(CaptchaFormat, url, htmlHelper.Hidden("CaptchaDeText", encryptText)));
 		}
 
 		/// <summary>

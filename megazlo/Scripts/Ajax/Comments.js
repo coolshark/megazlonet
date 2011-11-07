@@ -6,9 +6,9 @@ $(function () {
 	$(document).on('click', '#Submit_Comment', function (e) {
 		var frm = $("form:first");
 		e.preventDefault();
-
-		//if (!frm.valid())
-		//	return false;
+		$.validator.unobtrusive.parse('form:first');
+		if (!frm.valid())
+			return false;
 		var comment = {
 			FirstName: $("#FirstName").val(),
 			Email: $("#Email").val(),
@@ -20,8 +20,6 @@ $(function () {
 		sendCmnt(comment, frm.attr("action"));
 		return false;
 	});
-
-
 
 	$(document).on('click', '#primary a.del_comment', function (e) {
 		var href = $(this).attr('href');
@@ -45,7 +43,6 @@ $(function () {
 	});
 
 	function sendCmnt(comment, action) {
-		alert(action);
 		$.ajax({
 			url: action,
 			type: "POST",

@@ -53,11 +53,12 @@ namespace megazlo {
 				"~/Scripts/jquery-ui-1.8.16.custom.min.js",
 				"~/Scripts/Ajax/ajaxnavigation.js",
 				"~/Scripts/Ajax/Comments.js",
-				//"~/Scripts/jquery.validate.min.js",
-				//"~/Scripts/jquery.validate.unobtrusive.min.js",
+				"~/Scripts/jquery.unobtrusive-ajax.min.js",
 				"~/Scripts/jquery.vtip.js",
 				"~/Scripts/highlight/highlight.pack.js",
-				"~/Scripts/Slider/slides.min.jquery.js")
+				"~/Scripts/Slider/slides.min.jquery.js",
+				"~/Scripts/jquery.validate.min.js",
+				"~/Scripts/jquery.validate.unobtrusive.min.js")
 				.ForceRelease()
 				.AsNamed("main_js", "~/Upload/StyleScript/Site.min_#.js");
 		}

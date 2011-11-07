@@ -37,12 +37,7 @@
 				<div class="widget widget_categories">
 					<h2 class="widget-title">@DateTime.Now.ToString()</h2>
 					<div class="widget">
-						@if (Request.IsAuthenticated) {
-							<h2 class="widget-title">
-								Привет, <b>@User.Identity.Name</b>! [@Html.ActionLink("Выход", "LogOff", "Account")]</h2>
-							<br />
-							<img alt="" src="@Url.Content("~/Upload/Avatars/" + User.Identity.Name + ".jpg")" />						
-			}
+					@Html.Partial("_Login")						
 					</div>
 					<div class="widget">
 						<h2 class="widget-title">
