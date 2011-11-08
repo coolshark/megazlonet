@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using R = megazlo.Res.Model.Comment;
 
 namespace megazlo.Models {
 	public class Comment {
@@ -10,20 +11,20 @@ namespace megazlo.Models {
 		public int Id { get; set; }
 		public int ParentId { get; set; }
 		public bool IsAutor { get; set; }
-		[Display(Name = "Дата")]
+		[Display(Name = "DatePost", ResourceType = typeof(R))]
 		[DataType(DataType.DateTime)]
 		public DateTime DatePost { get; set; }
 		[Required]
-		[Display(Name = "Имя*")]
+		[Display(Name = "FirstName", ResourceType = typeof(R))]
 		[StringLength(50, MinimumLength = 3)]
 		public string FirstName { get; set; }
 		[Required]
-		[Display(Name = "Email*")]
+		[Display(Name = "Email", ResourceType = typeof(R))]
 		[DataType(DataType.EmailAddress)]
 		[RegularExpression(@"^([A-Za-z0-9]|[A-Za-z0-9](([a-zA-Z0-9,=\.!\-#|\$%\^&*\+/\?_`\{\}~]+)*)[a-zA-Z0-9,=!\-#|\$%\^&*\+/\?_`\{\}~])@(?:[0-9a-zA-Z-]+\.)+[a-zA-Z]{2,9}$", ErrorMessage = "Необходимо ввести email адрес")]
 		public string Email { get; set; }
 		[Required]
-		[Display(Name = "Текст*")]
+		[Display(Name = "Text", ResourceType = typeof(R))]
 		[DataType(DataType.MultilineText)]
 		[StringLength(1000, MinimumLength = 5, ErrorMessage = "Нефиг постить смайлики и поэмы.")]
 		public string Text { get; set; }

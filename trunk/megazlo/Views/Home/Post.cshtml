@@ -2,8 +2,10 @@
 @model megazlo.Models.Post
 @Html.PageInfo(new { title = Model.Title, value = @Url.RouteUrl("Post", new { id = Model.WebLink }) })
 <script type="text/javascript">
-	$('pre').each(function (i, e) { hljs.highlightBlock(e, '  ', true) });
-	gapi.plusone.render('pone-div');
+	$(function () {
+		$('pre').each(function (i, e) { hljs.highlightBlock(e, '  ', true) });
+		gapi.plusone.render('pone-div');
+	});
 </script>
 <div id="confirmDialog" title="Удалить" style="display: none;">
 	<p style="font-size: 14px;">
@@ -18,14 +20,12 @@
 	<div class="clearfix">
 		@if (Model.IsShowInfo) {
 			<div class="entry-meta entry-header">
-				<span class="published">Автор <strong>@Model.User.Name @Model.User.Family</strong></span>
-				<span class="published">От <strong>@Model.DatePost.ToShortDateString()</strong></span>
+				<span class="published">Автор <strong>@Model.User.Name @Model.User.Family</strong></span> <span class="published">От <strong>@Model.DatePost.ToShortDateString()</strong></span>
 				@if (Model.IsCommentable) {
 					<span class="comment-count">Комментарии <a href="@Url.RouteUrl("Post", new { id = Model.WebLink })#comments">
 						@Model.Comment.Count</a></span>
 		}
-				<span class="permalink">→ <a class="vtip" href="@Url.Action("Post", new { id = Model.WebLink })">
-					Ссылка</a></span>
+				<span class="permalink">→ <a class="vtip" href="@Url.Action("Post", new { id = Model.WebLink })">Ссылка</a></span>
 			</div>
 	}
 		<div class="@Html.GetClassPost(Model.IsShowInfo)">
@@ -61,7 +61,11 @@
 				Есть что сказать? <span class="continue-reading"><a href="#newcomm">Оставьте комментарий</a></span></p>
 		</div>
 		<div class="commentlist">
-			@Html.Partial("CommentNew", new megazlo.Models.Comment() { PostId = Model.Id })
+			@if (User.Identity.IsAuthenticated) {
+				@Html.Partial("CommentNew", new megazlo.Models.Comment() { PostId = Model.Id, IsAutor = true, Email = Model.User.Email, FirstName = (Model.User.Family + " " + Model.User.Name) })
+	 } else {
+				@Html.Partial("CommentNew", new megazlo.Models.Comment() { PostId = Model.Id })
+	 }
 			<ol class="commentlist">
 				@foreach (var item in Model.Comment) {
 					@Html.Partial("CommentRead", item)

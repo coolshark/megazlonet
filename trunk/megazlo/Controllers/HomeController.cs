@@ -30,11 +30,11 @@ namespace megazlo.Controllers {
 			ViewBag.Title = "Упс!";
 			ViewBag.ErrType = "";
 			ViewBag.Meaasge = "Упс, мы ее теряем!";
-			ViewBag.ImagePath = "~/Content/styles/images/404.png";
+			ViewBag.ImagePath = "~/Content/images/404.png";
 			if (id == "html5") {
 				ViewBag.ErrType = "html5";
 				ViewBag.Meaasge = "Устаревший браузер!";
-				ViewBag.ImagePath = "~/Content/styles/images/html5_1.png";
+				ViewBag.ImagePath = "~/Content/images/html5_1.png";
 			}
 			return View();
 		}
@@ -96,15 +96,12 @@ namespace megazlo.Controllers {
 		[HttpPost]
 		public JsonResult AddComment(Comment cmt) {
 			JsonResult rez = new JsonResult();
-			if (this.IsCaptchaVerify("Captcha is not valid")) {
-				rez.Data = "Валидная.";
-			}
-			if (User.Identity.IsAuthenticated) {
-				int cnt = con.Posts.Where(p => p.Id == cmt.PostId).Where(p => p.UserId == User.Identity.Name).Count();
-				if (cnt > 0)
-					cmt.IsAutor = true;
-			}
-			if (ModelState.IsValid) {
+			if (ModelState.IsValid && (User.Identity.IsAuthenticated || this.IsCaptchaVerify("Captcha is not valid"))) {
+				//if (User.Identity.IsAuthenticated) {
+				//  int cnt = con.Posts.Where(p => p.Id == cmt.PostId).Where(p => p.UserId == User.Identity.Name).Count();
+				//  if (cnt > 0)
+				//    cmt.IsAutor = true;
+				//}
 				try {
 					con.Comments.Add(cmt);
 					con.SaveChanges();
@@ -112,10 +109,11 @@ namespace megazlo.Controllers {
 				} catch (Exception e) {
 					rez.Data = e.Message;
 				}
-			} else
+			} else {
 				foreach (var item in ModelState.Keys)
 					for (int i = 0; i < ModelState[item].Errors.Count; i++)
 						rez.Data += ModelState[item].Errors[i].ErrorMessage + "\r\n";
+			}
 			return rez;
 		}
 

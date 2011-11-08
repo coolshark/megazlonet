@@ -3,20 +3,26 @@
 @using (Ajax.BeginForm("AddComment", "Home", null)) {
 	<fieldset>
 		<legend>Новый коментарий</legend>
-		<div class="editor-label">
-			@Html.LabelFor(m => m.Email)
-		</div>
-		<div class="editor-field">
-			@Html.EditorFor(m => m.Email)
-			@Html.ValidationMessageFor(m => m.Email)
-		</div>
-		<div class="editor-label">
-			@Html.LabelFor(m => m.FirstName)
-		</div>
-		<div class="editor-field">
-			@Html.EditorFor(m => m.FirstName)
-			@Html.ValidationMessageFor(m => m.FirstName)
-		</div>
+		@if (User.Identity.IsAuthenticated) {
+			@Html.HiddenFor(m => m.Email)
+			@Html.HiddenFor(m => m.FirstName)
+			@Html.HiddenFor(m => m.IsAutor)
+	} else {
+			<div class="editor-label">
+				@Html.LabelFor(m => m.Email)
+			</div>
+			<div class="editor-field">
+				@Html.EditorFor(m => m.Email)
+				@Html.ValidationMessageFor(m => m.Email)
+			</div>
+			<div class="editor-label">
+				@Html.LabelFor(m => m.FirstName)
+			</div>
+			<div class="editor-field">
+				@Html.EditorFor(m => m.FirstName)
+				@Html.ValidationMessageFor(m => m.FirstName)
+			</div>
+	}
 		<div class="editor-label">
 			@Html.LabelFor(m => m.Text)
 		</div>
@@ -25,7 +31,11 @@
 			@Html.ValidationMessageFor(m => m.Text)
 		</div>
 		<input type="hidden" id="PostId" value="@Model.PostId" name="PostId" />
-		<input id="Submit_Comment" type="submit" value="Запостить" style="margin: 38px 20px 0 0;" />
-		@Html.Captcha("Обновить", "Введите символы", 5)
+		@if (User.Identity.IsAuthenticated) {
+			<input id="Submit_Comment" type="submit" value="Запостить" />
+	} else { 
+			<input id="Submit_Comment" type="submit" value="Запостить" style="margin: 38px 20px 0 0;" />
+			@Html.Captcha("Обновить", "Введите символы", 5)
+	}
 	</fieldset>
 }

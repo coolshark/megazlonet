@@ -12,6 +12,7 @@ $(function () {
 		var comment = {
 			FirstName: $("#FirstName").val(),
 			Email: $("#Email").val(),
+			IsAutor: $("#IsAutor").val(),
 			Text: $("#Text").val(),
 			PostId: $("#PostId").val(),
 			CaptchaDeText: $("#CaptchaDeText").val(),
@@ -26,7 +27,7 @@ $(function () {
 		var dlg = $("#confirmDialog");
 		dlg.dialog({
 			resizable: false,
-			height: 180,
+			height: 160,
 			width: 400,
 			buttons: {
 				"OK": function () {

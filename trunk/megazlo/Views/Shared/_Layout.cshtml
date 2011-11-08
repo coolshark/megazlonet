@@ -10,7 +10,7 @@
 	<title>@ViewBag.Title</title>
 	<meta name="WebsiteSpark" content="8ULOjiq6zK" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link href="@Url.Content("~/Content/styles/images/favicon.ico")" rel="icon" type="image/ico" />
+	<link href="@Url.Content("~/Content/images/favicon.ico")" rel="icon" type="image/ico" />
 	@Html.Raw(Bundle.Css().RenderNamed("main_cs"))
 	<script type="text/javascript" src="/Scripts/jquery-1.7.min.js"></script>
 	@Html.Raw(Bundle.JavaScript().RenderNamed("main_js"))
@@ -22,7 +22,7 @@
 			<div id="upper-wrap" class="clearfix">
 				<div id="logo">
 					<a href="/">
-						<img src="@Url.Content("~/Content/styles/images/logoweb.jpg")" alt="megazlo" /></a>
+						<img src="@Url.Content("~/Content/images/logoweb.jpg")" alt="megazlo" /></a>
 				</div>
 				<div id="navigation" class="jqueryslidemenu">
 					@Html.Partial("_Menu")
@@ -37,7 +37,7 @@
 				<div class="widget widget_categories">
 					<h2 class="widget-title">@DateTime.Now.ToString()</h2>
 					<div class="widget">
-					@Html.Partial("_Login")						
+						@Html.Partial("_Login")
 					</div>
 					<div class="widget">
 						<h2 class="widget-title">
@@ -50,7 +50,7 @@
 	</div>
 	<div id="footer-container">
 		<div id="footer" class="clearfix">
-			<img style="float: left;" src="@Url.Content("~/Content/styles/images/mz-logo.png")"
+			<img style="float: left;" src="@Url.Content("~/Content/images/mz-logo.png")"
 	alt="logo" />
 			<p class="copyright">
 				&copy; Copyright 2011 megazlo
@@ -59,11 +59,11 @@
 			</p>
 			<p class="credit">
 				<a id="spark" href="http://www.microsoft.com/web/websitespark/" title="При поддержке">
-					<img src="@Url.Content("~/Content/styles/images/_spark_.png")"
+					<img src="@Url.Content("~/Content/images/_spark_.png")"
 	alt="WebSiteSpark" /></a> <a id="mvc" href="http://www.asp.net/mvc" title="Технологии">
-		<img src="@Url.Content("~/Content/styles/images/_asp-net-mvc-3_.gif")"
+		<img src="@Url.Content("~/Content/images/_asp-net-mvc-3_.gif")"
 	alt="ASP.NET MVC 3" /></a> <a id="html5" href="http://www.w3.org/html/" title="Технологии">
-		<img src="@Url.Content("~/Content/styles/images/_HTML5_Logo.png")"
+		<img src="@Url.Content("~/Content/images/_HTML5_Logo.png")"
 	alt="html5" /></a>
 			</p>
 		</div>

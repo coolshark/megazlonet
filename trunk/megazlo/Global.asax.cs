@@ -40,11 +40,11 @@ namespace megazlo {
 			RegisterRoutes(RouteTable.Routes);
 
 			Bundle.Css()
-				.Add("~/Content/styles/main.css",
-				"~/Content/styles/style.css",
-				"~/Scripts/Slider/global.css",
-				"~/Scripts/highlight/styles/vs.css",
-				"~/Content/redmond/jquery-ui-1.8.16.custom.css")
+				.Add("~/Content/main.css",
+				"~/Content/style.css",
+				"~/Content/slider.css",
+				"~/Content/jquery-ui-1.8.16.custom.css",
+				"~/Content/highlight_solarized_light.css")
 				.ForceRelease()
 				.AsNamed("main_cs", "~/Upload/StyleScript/Site.min_#.css");
 
@@ -55,8 +55,8 @@ namespace megazlo {
 				"~/Scripts/Ajax/Comments.js",
 				"~/Scripts/jquery.unobtrusive-ajax.min.js",
 				"~/Scripts/jquery.vtip.js",
-				"~/Scripts/highlight/highlight.pack.js",
-				"~/Scripts/Slider/slides.min.jquery.js",
+				"~/Scripts/highlight.pack.js",
+				"~/Scripts/jquery.slides.min.js",
 				"~/Scripts/jquery.validate.min.js",
 				"~/Scripts/jquery.validate.unobtrusive.min.js")
 				.ForceRelease()
