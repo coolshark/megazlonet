@@ -79,7 +79,7 @@ namespace CaptchaMVC.HtmlHelpers {
 			var refresh = ajax.ActionLink(text, "NewCaptcha", "CaptchaImage", new { l = length },
 																		new AjaxOptions { UpdateTargetId = "CaptchaDeText", OnSuccess = "Success" });
 			string tgs = "<div style=\"float: left; margin-top: 5px;\">" + refresh.ToHtmlString() + " <br/>" + inputText + "<br/>" +
-				htmlHelper.TextBox("CaptchaInputText", "", new { data_val_required = "*", data_val = "true" }) +
+				htmlHelper.TextBox("CaptchaInputText", "", new { data_val_required = "*", data_val = "true", data_val_length_min = "5", data_val_length_max = "5", data_val_length = "*" }) +
 				htmlHelper.ValidationMessage("CaptchaInputText") + "</div>";
 			return MvcHtmlString.Create(tgs + string.Format(CaptchaFormat, url, htmlHelper.Hidden("CaptchaDeText", encryptText)));
 		}

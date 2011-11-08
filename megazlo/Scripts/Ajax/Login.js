@@ -23,10 +23,13 @@ $(function () {
 		var dlg = $("#login_dial");
 		dlg.dialog({
 			resizable: false,
-			height: 280,
-			width: 320,
+			height: 205,
+			width: 400,
+			modal: true,
+			position: 'center',
+			draggable: false,
 			buttons: {
-				"OK": function () {
+				" OK ": function () {
 					$(this).dialog("close");
 					sendLogin($(this));
 				},
