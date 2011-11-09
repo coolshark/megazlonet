@@ -14,10 +14,10 @@ namespace megazlo.Models {
 		}
 		[Key]
 		public int Id { get; set; }
-		[Required]
+		[Required(ErrorMessageResourceName = "R_Title_E", ErrorMessageResourceType = typeof(R))]
 		[Display(Name = "Title", ResourceType = typeof(R))]
 		public string Title { get; set; }
-		[Required]
+		[Required(ErrorMessageResourceName = "R_Text_E", ErrorMessageResourceType = typeof(R))]
 		[MaxLength]
 		[AllowHtml]
 		[DataType(DataType.MultilineText)]

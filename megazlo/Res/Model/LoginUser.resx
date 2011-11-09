@@ -126,4 +126,16 @@
   <data name="Password" xml:space="preserve">
     <value>Пароль</value>
   </data>
+  <data name="R_Login_E" xml:space="preserve">
+    <value>Необходимо заполнить</value>
+  </data>
+  <data name="R_Password_E" xml:space="preserve">
+    <value>Необходимо заполнить</value>
+  </data>
+  <data name="SL_Login_E" xml:space="preserve">
+    <value>Длина должна быть от 2 до 100</value>
+  </data>
+  <data name="SL_Password_E" xml:space="preserve">
+    <value>Длина должна быть от 6 до 32</value>
+  </data>
 </root>

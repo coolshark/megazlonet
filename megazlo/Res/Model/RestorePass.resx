@@ -120,4 +120,10 @@
   <data name="Name" xml:space="preserve">
     <value>Введите логин для востановления</value>
   </data>
+  <data name="R_Name_E" xml:space="preserve">
+    <value>Необходимо заполнить</value>
+  </data>
+  <data name="SL_Name_E" xml:space="preserve">
+    <value>Длина должна быть от 5 до 50</value>
+  </data>
 </root>

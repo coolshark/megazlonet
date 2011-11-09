@@ -30,8 +30,12 @@ $(function () {
 			draggable: false,
 			buttons: {
 				" OK ": function () {
-					$(this).dialog("close");
-					sendLogin($(this));
+					var frm = $(this).find('form:first');
+					$.validator.unobtrusive.parse(frm);
+					if (frm.valid()) {
+						$(this).dialog("close");
+						sendLogin($(this));
+					}
 				},
 				Cancel: function () {
 					$(this).dialog("close");

@@ -120,6 +120,9 @@
   <data name="ConfirmPassWord" xml:space="preserve">
     <value>Подтверждение пароля</value>
   </data>
+  <data name="C_ConfirmPassWord_E" xml:space="preserve">
+    <value>Пароли не совпадают</value>
+  </data>
   <data name="DateBorn" xml:space="preserve">
     <value>Дата рождения</value>
   </data>
@@ -144,10 +147,46 @@
   <data name="LastName" xml:space="preserve">
     <value>Отчество</value>
   </data>
+  <data name="ML_Email_E" xml:space="preserve">
+    <value>Максимум 200</value>
+  </data>
+  <data name="ML_Family_E" xml:space="preserve">
+    <value>Максимум 100</value>
+  </data>
+  <data name="ML_LastName_E" xml:space="preserve">
+    <value>Максимум 100</value>
+  </data>
+  <data name="ML_Name_E" xml:space="preserve">
+    <value>Максимум 100</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Имя</value>
   </data>
   <data name="PassWord" xml:space="preserve">
     <value>Пароль</value>
+  </data>
+  <data name="RE_Email_E" xml:space="preserve">
+    <value>Неправильный email</value>
+  </data>
+  <data name="R_ConfirmPassWord_E" xml:space="preserve">
+    <value>Необходимо заполнить</value>
+  </data>
+  <data name="R_Email_E" xml:space="preserve">
+    <value>Необходимо заполнить</value>
+  </data>
+  <data name="R_Id_E" xml:space="preserve">
+    <value>Необходимо заполнить</value>
+  </data>
+  <data name="R_Name_E" xml:space="preserve">
+    <value>Необходимо заполнить</value>
+  </data>
+  <data name="R_PassWord_E" xml:space="preserve">
+    <value>Необходимо заполнить</value>
+  </data>
+  <data name="SL_Id_E" xml:space="preserve">
+    <value>Длина должна быть от 2 до 100</value>
+  </data>
+  <data name="SL_PassWord_E" xml:space="preserve">
+    <value>Длина должна быть от 6 до 32</value>
   </data>
 </root>
