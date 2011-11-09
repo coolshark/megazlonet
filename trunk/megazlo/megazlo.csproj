@@ -173,7 +173,6 @@
     <Content Include="Scripts\Ajax\Login.js" />
     <Content Include="Scripts\highlight.pack.js" />
     <Content Include="Content\highlight_solarized_light.css" />
-    <Content Include="Scripts\jquery-1.6.4.min.js" />
     <Content Include="Scripts\jquery-1.7.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.16.custom.min.js" />
     <Content Include="Scripts\jquery.ui.datepicker-ru.js" />
@@ -534,7 +533,7 @@
       <LastGenOutput>Post.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Res\Model\RestorePass.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RestorePass.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Res\Model\User.resx">

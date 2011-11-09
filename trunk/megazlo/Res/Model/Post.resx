@@ -132,6 +132,12 @@
   <data name="IsShowInfo" xml:space="preserve">
     <value>Отображать сведения</value>
   </data>
+  <data name="R_Text_E" xml:space="preserve">
+    <value>Необходимо заполнить</value>
+  </data>
+  <data name="R_Title_E" xml:space="preserve">
+    <value>Необходимо заполнить</value>
+  </data>
   <data name="Text" xml:space="preserve">
     <value>Текст</value>
   </data>

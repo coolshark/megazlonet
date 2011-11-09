@@ -126,6 +126,24 @@
   <data name="FirstName" xml:space="preserve">
     <value>Имя*</value>
   </data>
+  <data name="RE_Email_E" xml:space="preserve">
+    <value>Неправильный email</value>
+  </data>
+  <data name="R_Email_E" xml:space="preserve">
+    <value>Необходимо заполнить</value>
+  </data>
+  <data name="R_FirstName_E" xml:space="preserve">
+    <value>Необходимо заполнить</value>
+  </data>
+  <data name="R_Text_E" xml:space="preserve">
+    <value>Необходимо заполнить</value>
+  </data>
+  <data name="SL_FirstName_E" xml:space="preserve">
+    <value>Длина должна быть от 3 до 50</value>
+  </data>
+  <data name="SL_Text_E" xml:space="preserve">
+    <value>Длина должна быть от 5 до 1000</value>
+  </data>
   <data name="Text" xml:space="preserve">
     <value>Текст*</value>
   </data>

@@ -10,18 +10,18 @@ namespace megazlo.Models {
 			DateRegister = DateTime.Now;
 		}
 		[Key]
-		[Required]
-		[MaxLength(100)]
+		[Required(ErrorMessageResourceName = "R_Id_E", ErrorMessageResourceType = typeof(R))]
+		[StringLength(100, MinimumLength = 2, ErrorMessageResourceName = "SL_Id_E", ErrorMessageResourceType = typeof(R))]
 		[Display(Name = "Id", ResourceType = typeof(R))]
 		public string Id { get; set; }
-		[Required]
-		[MaxLength(100)]
+		[Required(ErrorMessageResourceName = "R_Name_E", ErrorMessageResourceType = typeof(R))]
+		[MaxLength(100, ErrorMessageResourceName = "ML_Name_E", ErrorMessageResourceType = typeof(R))]
 		[Display(Name = "Name", ResourceType = typeof(R))]
 		public string Name { get; set; }
-		[MaxLength(100)]
+		[MaxLength(100, ErrorMessageResourceName = "ML_Family_E", ErrorMessageResourceType = typeof(R))]
 		[Display(Name = "Family", ResourceType = typeof(R))]
 		public string Family { get; set; }
-		[MaxLength(100)]
+		[MaxLength(100, ErrorMessageResourceName = "ML_LastName_E", ErrorMessageResourceType = typeof(R))]
 		[Display(Name = "LastName", ResourceType = typeof(R))]
 		public string LastName { get; set; }
 		[DataType(DataType.Date)]
@@ -29,25 +29,25 @@ namespace megazlo.Models {
 		public DateTime DateBorn { get; set; }
 		[Display(Name = "DateRegister", ResourceType = typeof(R))]
 		public DateTime DateRegister { get; set; }
-		[Required]
+		[Required(ErrorMessageResourceName = "R_Email_E", ErrorMessageResourceType = typeof(R))]
 		[DataType(DataType.EmailAddress)]
 		[Display(Name = "Email", ResourceType = typeof(R))]
-		[MaxLength(200)]
-		[RegularExpression(@"^([A-Za-z0-9]|[A-Za-z0-9](([a-zA-Z0-9,=\.!\-#|\$%\^&*\+/\?_`\{\}~]+)*)[a-zA-Z0-9,=!\-#|\$%\^&*\+/\?_`\{\}~])@(?:[0-9a-zA-Z-]+\.)+[a-zA-Z]{2,9}$", ErrorMessage = "Необходимо ввести email адрес")]
+		[MaxLength(200, ErrorMessageResourceName = "ML_Email_E", ErrorMessageResourceType = typeof(R))]
+		[RegularExpression(@"^([A-Za-z0-9]|[A-Za-z0-9](([a-zA-Z0-9,=\.!\-#|\$%\^&*\+/\?_`\{\}~]+)*)[a-zA-Z0-9,=!\-#|\$%\^&*\+/\?_`\{\}~])@(?:[0-9a-zA-Z-]+\.)+[a-zA-Z]{2,9}$", ErrorMessageResourceName = "RE_Email_E", ErrorMessageResourceType = typeof(R))]
 		public string Email { get; set; }
 		[NotMapped]
 		[Display(Name = "HaveAvatar", ResourceType = typeof(R))]
 		public bool HaveAvatar { get; set; }
 		[Display(Name = "IsAdmin", ResourceType = typeof(R))]
 		public bool IsAdmin { get; set; }
-		[Required]
+		[Required(ErrorMessageResourceName = "R_PassWord_E", ErrorMessageResourceType = typeof(R))]
 		[DataType(DataType.Password)]
-		[StringLength(32, MinimumLength = 6)]
+		[StringLength(32, MinimumLength = 6, ErrorMessageResourceName = "SL_PassWord_E", ErrorMessageResourceType = typeof(R))]
 		[Display(Name = "PassWord", ResourceType = typeof(R))]
 		public string PassWord { get; set; }
-		[Required]
+		[Required(ErrorMessageResourceName = "R_ConfirmPassWord_E", ErrorMessageResourceType = typeof(R))]
 		[DataType(DataType.Password)]
-		[Compare("PassWord", ErrorMessage = "Пароль и подтверждение не совпадают!")]
+		[Compare("PassWord", ErrorMessageResourceName = "C_ConfirmPassWord_E", ErrorMessageResourceType = typeof(R))]
 		[NotMapped]
 		[Display(Name = "ConfirmPassWord", ResourceType = typeof(R))]
 		public string ConfirmPassWord { get; set; }

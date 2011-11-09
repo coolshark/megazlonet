@@ -120,6 +120,9 @@
   <data name="Por" xml:space="preserve">
     <value>Порядок</value>
   </data>
+  <data name="R_Name_E" xml:space="preserve">
+    <value>Необходимо заполнить</value>
+  </data>
   <data name="Title" xml:space="preserve">
     <value>Заголовок</value>
   </data>
