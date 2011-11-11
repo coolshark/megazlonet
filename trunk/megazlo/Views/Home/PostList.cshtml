@@ -1,6 +1,6 @@
 ﻿@using megazlo.Code;
 @model IEnumerable<megazlo.Models.Post>
-@Html.PageInfo(new { title = ViewBag.Title, value = @Url.Action("Category", new { id = ViewBag.Title, page = ViewBag.PageNum }) })
+@Html.PageInfo(new { title = ViewBag.Title, value = @Url.Action("Category", new { id = ViewBag.Title, page = ViewBag.PageNum == 0 ? null : ViewBag.PageNum }) })
 <script type="text/javascript">
 	$(document).ready(function () {
 		$('pre').each(function (i, e) { hljs.highlightBlock(e, '  ', true) });
@@ -9,12 +9,10 @@
 @foreach (var item in Model) {
 	<div class="post hentry">
 		<h2 class="entry-title">
-			<a href="@Url.RouteUrl("Post", new { id = item.WebLink })" class="ajax">@item.Title</a>
-			@*<a href="@Url.RouteUrl("Post", new RouteValueDictionary { { "id", item.WebLink } })" rel="bookmark">@item.Title</a>*@</h2>
+			<a href="@Url.RouteUrl("Post", new { id = item.WebLink })" class="ajax">@item.Title</a> @*<a href="@Url.RouteUrl("Post", new RouteValueDictionary { { "id", item.WebLink } })" rel="bookmark">@item.Title</a>*@</h2>
 		<div class="clearfix">
 			<div class="entry-meta entry-header">
-				<span class="published">Автор <strong>@item.User.Name @item.User.Family</strong></span>
-				<span class="published">От <strong>@item.DatePost.ToShortDateString()</strong></span>
+				<span class="published">Автор <strong>@item.User.Name @item.User.Family</strong></span> <span class="published">От <strong>@item.DatePost.ToShortDateString()</strong></span>
 				@if (item.IsCommentable) {
 					<span class="comment-count">Комментарии <a href="@Url.RouteUrl("Post", new { id = item.WebLink })#comments" class="ajax">
 						@item.Comment.Count</a></span>
@@ -25,8 +23,7 @@
 			<div class="entry-content">
 				@Html.Raw(item.TextPreview)
 				<p>
-					<a href="@Url.RouteUrl("Post", new { id = item.WebLink })" class="ajax more-link">
-						Полностью &rarr;</a></p>
+					<a href="@Url.RouteUrl("Post", new { id = item.WebLink })" class="ajax more-link">Полностью &rarr;</a></p>
 				@if (Request.IsAuthenticated /*User.IsInRole("Admin")*/) {
 					<div>
 						@Html.ActionLink("Редактировать", "EditNews", "Admin", new { id = item.Id }, new { Class = "title" })

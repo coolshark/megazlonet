@@ -1,14 +1,6 @@
 ﻿@model megazlo.Models.Post
-@*@{
-	SquishIt.Css.Add("~/Content/redmond/jquery-ui-1.8.16.custom.css");
-
-	SquishIt.JavaScript.Add("~/Scripts/Ajax/AdminPost.js");
-	SquishIt.JavaScript.Add("~/Scripts/tiny_mce/jquery.tinymce.js");
-	SquishIt.JavaScript.Add("~/Scripts/jquery-ui-1.8.16.custom.min.js");
-	SquishIt.JavaScript.Add("~/Scripts/jquery.validate.unobtrusive.min.js");
-	SquishIt.JavaScript.Add("~/Scripts/jquery.validate.min.js");
-
-}*@
+@using megazlo.Code
+@Html.PageInfo(new { title = "Редактирование", Request.UrlReferrer })
 <script type="text/javascript" src=@Url.Content("~/Scripts/tiny_mce/jquery.tinymce.js")></script>
 <script type="text/javascript">
 	$(function () {
@@ -72,5 +64,5 @@
 		</div>
 		@Html.ValidationSummary(true)
 	</fieldset>
-	<input id="sbmtform" type="submit" value=" @ViewBag.ButtonOk " />
+	<input id="sbmtform" type="submit" value="Сохранить" />
 }

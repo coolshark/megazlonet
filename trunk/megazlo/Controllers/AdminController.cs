@@ -5,6 +5,7 @@ using megazlo.Code;
 using megazlo.Models;
 using System.Configuration;
 using System.Web.Configuration;
+using System.IO;
 
 namespace megazlo.Controllers {
 
@@ -165,6 +166,18 @@ namespace megazlo.Controllers {
 				rez.Data = "тег изменен.";
 			} else rez.Data = "Такой тег не найден!";
 			return rez;
+		}
+
+		protected string RenderPartialViewToString(string viewName, object model) {
+			if (string.IsNullOrEmpty(viewName))
+				return string.Empty;
+			ViewData.Model = model;
+			using (StringWriter sw = new StringWriter()) {
+				ViewEngineResult viewResult = ViewEngines.Engines.FindPartialView(ControllerContext, viewName);
+				ViewContext viewContext = new ViewContext(ControllerContext, viewResult.View, ViewData, TempData, sw);
+				viewResult.View.Render(viewContext, sw);
+				return sw.GetStringBuilder().ToString();
+			}
 		}
 
 	}

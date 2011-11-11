@@ -2,13 +2,13 @@
 <ul id="menus">
 	<li><a class="home ajax" title="Главная" href="/">Главная</a></li>
 	@Html.GetMenu()
-	@if (Request.IsAuthenticated/*User.IsInRole("Admin")*/) {
+	@if (Request.IsAuthenticated/*User.IsInRole("Admin")*/) {		
 		<li><a href="/Admin">Admin</a>
 			<ul>
-				<li><a href="/Admin/AddNews">Добавить пост</a></li>
-				<li><a href="/Admin/AddCategory">Добавить категорию</a></li>
-				<li><a href="/Admin/CategoryList">Категории</a></li>
-				<li><a href="/Admin/TagList">Список тегов</a></li>
+				<li><a class="ajax" href="@Url.Action("AddNews", "Admin")">Добавить пост</a></li>
+				<li><a class="ajax" href="@Url.Action("AddCategory", "Admin")">Добавить категорию</a></li>
+				<li><a class="ajax" href="@Url.Action("CategoryList", "Admin")">Категории</a></li>
+				<li><a class="ajax" href="@Url.Action("TagList", "Admin")">Список тегов</a></li>
 			</ul>
 		</li>
  }
