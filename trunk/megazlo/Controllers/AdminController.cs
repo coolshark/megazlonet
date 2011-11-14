@@ -19,61 +19,71 @@ namespace megazlo.Controllers {
 			return View();
 		}
 
-		public ActionResult AddNews() {
-			ViewBag.Title = "Добавление статей";
-			ViewBag.ButtonOk = "Создать";
+		public ActionResult Post(string id) {
 			Post pst = new Post() { IsCommentable = true, IsShowInfo = true };
-			return View(view, pst);
+			if (id != null) {
+				int ids = int.Parse(id);
+				pst = con.Posts.Where(p => p.Id == ids).FirstOrDefault();
+			}
+			return View(pst);
 		}
 
 		[HttpPost]
-		public ActionResult AddNews(Post post) {
-			if (!ModelState.IsValid)
-				return View(view, post);
-			ViewBag.Title = "Добавление статей";
-			ViewBag.ButtonOk = "Создать";
-			post.Text = Uploader.Parce(post.Text);
-			post.WebLink = Uploader.ParceLink(post.Title);
-			post.UserId = User.Identity.Name;
-			con.Posts.Add(post);
-			con.SaveChanges();
-			if (post.InCatMenu)
-				MenuHelper.UpdateCache();
-			return RedirectToAction("Post", "Home", new { id = post.WebLink });
-		}
-
-		public ActionResult EditNews(int id) {
-			Post pst = con.Posts.Where(p => p.Id == id).First();
-			ViewBag.ButtonOk = "Изменить";
-			ViewBag.Title = "Редактирование статьи: " + pst.Title;
-			return View(view, pst);
+		public JsonResult Post(string id, string dop) {
+			JsonResult rez = new JsonResult();
+			Post pst = new Post() { IsCommentable = true, IsShowInfo = true };
+			if (id != null) {
+				int ids = int.Parse(id);
+				pst = con.Posts.Where(p => p.Id == ids).FirstOrDefault();
+			}
+			rez.Data = RenderPartialViewToString("Post", pst);
+			return rez;
 		}
 
 		[HttpPost]
-		public ActionResult EditNews(Post post) {
-			if (!ModelState.IsValid)
-				return View(view, post);
+		public JsonResult PostSave(Post post) {
+			JsonResult rez = new JsonResult();
+			if (!ModelState.IsValid) {
+				foreach (var item in ModelState.Keys)
+					for (int i = 0; i < ModelState[item].Errors.Count; i++)
+						rez.Data += ModelState[item].Errors[i].ErrorMessage + "<br />";
+				return rez;
+			}
 			post.Text = Uploader.Parce(post.Text);
 			post.WebLink = Uploader.ParceLink(post.Title);
 			post.UserId = User.Identity.Name;
-			con.Entry(post).State = System.Data.EntityState.Modified;
+			if (post.Id == 0)
+				con.Posts.Add(post);
+			else
+				con.Entry(post).State = System.Data.EntityState.Modified;
 			con.SaveChanges();
 			if (post.InCatMenu)
 				MenuHelper.UpdateCache();
-			ViewBag.ButtonOk = "Изменить";
-			ViewBag.Title = "Редактирование статьи: " + post.Title;
-			return RedirectToAction("Post", "Home", new { id = post.WebLink });
+			rez.Data = "Статья успешно сохранена.;" + post.Id;
+			return rez;
 		}
 
-		public ActionResult DeleteNews(int id) {
+		[HttpPost]
+		public JsonResult PostDelete(int id) {
+			JsonResult rez = new JsonResult();
 			Post post = con.Posts.Where(p => p.Id == id).FirstOrDefault();
 			con.Entry(post).State = System.Data.EntityState.Deleted;
 			con.SaveChanges();
-			ViewBag.Title = "Удалено";
 			if (post.InCatMenu)
 				MenuHelper.UpdateCache();
-			return RedirectToAction("Index");
+			rez.Data = "Статья успешно удалена.";
+			return rez;
 		}
+
+		//public ActionResult DeleteNews(int id) {
+		//  Post post = con.Posts.Where(p => p.Id == id).FirstOrDefault();
+		//  con.Entry(post).State = System.Data.EntityState.Deleted;
+		//  con.SaveChanges();
+		//  ViewBag.Title = "Удалено";
+		//  if (post.InCatMenu)
+		//    MenuHelper.UpdateCache();
+		//  return RedirectToAction("Index");
+		//}
 
 		public ActionResult AddCategory() {
 			ViewBag.Title = "Добавить категорию";

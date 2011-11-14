@@ -1,5 +1,7 @@
-﻿/// <reference path="../jquery-1.6.4.min.js" />
+﻿/// <reference path="../jquery-1.7.min.js" />
 /// <reference path="../jquery-ui-1.8.16.custom.min.js" />
+/// <reference path="ajaxnavigation.js" />
+
 var arr;
 $(function () {
 
@@ -51,12 +53,46 @@ $(function () {
 	}
 
 	$('#sbmtform').click(function (e) {
-		var tgs = $('input.fortags');
-		var strtag = '';
-		for (var i = 0; i < tgs.size(); i++)
-			strtag += tgs.eq(i).val() + ';';
-		strtag = strtag.substring(0, strtag.length - 1);
-		$('#TagList').val(strtag);
+		e.preventDefault();
+		$.validator.unobtrusive.parse('form:first');
+		if (!$('form:first').valid())
+			return false;
+		var post = {
+			Id: $("#Id").val(),
+			Title: $("#Title").val(),
+			CategoryId: $("#CategoryId").val(),
+			InCatMenu: $("#InCatMenu").val(),
+			Text: $("#Text").val(),
+			IsCommentable: $("#IsCommentable").val(),
+			IsShowInfo: $("#IsShowInfo").val()
+		}
+		$.ajax({
+			url: $('form:first').attr('action'),
+			type: "POST",
+			data: JSON.stringify(post),
+			dataType: "json",
+			contentType: "application/json; charset=utf-8",
+			success: showSaveDialog
+		});
+		return false;
 	});
+
+	function showSaveDialog(data) {
+		var arr = data.split(';');
+		var msg = arr[0];
+		$("#Id").val(arr[1]);
+		var dlg = $("#notedial");
+		dlg.html(msg);
+		dlg.dialog({
+			resizable: false,
+			width: 400,
+			buttons: {
+				"OK": function () {
+					$(this).dialog("close");
+				}
+			}
+		});
+		dlg.dialog("open");
+	}
 
 });

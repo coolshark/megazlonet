@@ -44,7 +44,7 @@
 	 }
 			@if (Request.IsAuthenticated /*User.IsInRole("Admin")*/) {
 				<div style="float: right;">
-					@Html.ActionLink("Редактировать", "EditNews", "Admin", new { id = Model.Id }, new { })
+					@Html.ActionLink("Редактировать", "Post", "Admin", new { id = Model.Id }, new { Class = "ajax" })
 					|
 					@Html.ActionLink("Удалить", "DeleteNews", "Admin", new { id = Model.Id }, new { })
 				</div>
