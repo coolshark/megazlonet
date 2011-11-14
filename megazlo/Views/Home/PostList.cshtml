@@ -7,7 +7,7 @@
 	});
 </script>
 @foreach (var item in Model) {
-	<div class="post hentry">
+	<div id="post_hentry-@item.Id" class="post hentry">
 		<h2 class="entry-title">
 			<a href="@Url.RouteUrl("Post", new { id = item.WebLink })" class="ajax">@item.Title</a> @*<a href="@Url.RouteUrl("Post", new RouteValueDictionary { { "id", item.WebLink } })" rel="bookmark">@item.Title</a>*@</h2>
 		<div class="clearfix">
@@ -26,9 +26,9 @@
 					<a href="@Url.RouteUrl("Post", new { id = item.WebLink })" class="ajax more-link">Полностью &rarr;</a></p>
 				@if (Request.IsAuthenticated /*User.IsInRole("Admin")*/) {
 					<div>
-						@Html.ActionLink("Редактировать", "EditNews", "Admin", new { id = item.Id }, new { Class = "title" })
+						@Html.ActionLink("Редактировать", "Post", "Admin", new { id = item.Id }, new { Class = "title ajax" })
 						|
-						@Html.ActionLink("Удалить", "DeleteNews", "Admin", new { id = item.Id }, new { Class = "title" })
+						@Html.ActionLink("Удалить", "PostDelete", "Admin", new { id = item.Id }, new { Class = "title del_post" })
 					</div>
 		}
 			</div>

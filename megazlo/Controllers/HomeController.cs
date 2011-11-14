@@ -97,11 +97,6 @@ namespace megazlo.Controllers {
 		public JsonResult AddComment(Comment cmt) {
 			JsonResult rez = new JsonResult();
 			if (ModelState.IsValid && (User.Identity.IsAuthenticated || this.IsCaptchaVerify("Captcha is not valid"))) {
-				//if (User.Identity.IsAuthenticated) {
-				//  int cnt = con.Posts.Where(p => p.Id == cmt.PostId).Where(p => p.UserId == User.Identity.Name).Count();
-				//  if (cnt > 0)
-				//    cmt.IsAutor = true;
-				//}
 				try {
 					con.Comments.Add(cmt);
 					con.SaveChanges();
@@ -131,7 +126,7 @@ namespace megazlo.Controllers {
 			return rez;
 		}
 
-		protected string RenderPartialViewToString(string viewName, object model) {
+		public string RenderPartialViewToString(string viewName, object model) {
 			if (string.IsNullOrEmpty(viewName))
 				return string.Empty;
 			ViewData.Model = model;

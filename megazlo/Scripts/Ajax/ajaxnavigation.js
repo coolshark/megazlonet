@@ -1,10 +1,10 @@
 ﻿/// <reference path="../jquery-1.7.min.js" />
 /// <reference path="../jquery-ui-1.8.16.custom.min.js" />
-
+var labl = '';
+var lin = '';
+var prim;
 $(function () {
-	var labl = '';
-	var lin = '';
-	var prim = $("#primary");
+	prim = $("#primary");
 	$(document).on('click', 'a.ajax', function (e) {
 		labl = $(this).attr('href');
 		setlin(labl);
@@ -28,16 +28,7 @@ $(function () {
 			lin = '';
 	}
 
-	function ajaxComplete(data) {
-		if (data != null)
-			prim.html(data);
-		var url = $('#pageInfo').attr('value').replace("&", "&");
-		window.history.pushState("ajax", document.title, url);
-		if (lin.length > 0)
-			$('html, body').scrollTop($(lin).offset().top);
-		$('#qrcode').attr('src', '/Help/QR?data=' + document.location);
-		document.title = $("#pageInfo").attr('title');
-	}
+
 
 	// Метод выполняется при загрузке документа
 	$(document).ready(function () {
@@ -54,3 +45,14 @@ $(function () {
 	});
 
 })
+
+function ajaxComplete(data) {
+	if (data != null)
+		prim.html(data);
+	var url = $('#pageInfo').attr('value').replace("&", "&");
+	window.history.pushState("ajax", document.title, url);
+	if (lin.length > 0)
+		$('html, body').scrollTop($(lin).offset().top);
+	$('#qrcode').attr('src', '/Help/QR?data=' + document.location);
+	document.title = $("#pageInfo").attr('title');
+}

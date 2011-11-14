@@ -170,6 +170,7 @@
     <Content Include="Scripts\Ajax\AdminTag.js" />
     <Content Include="Scripts\Ajax\ajaxnavigation.js" />
     <Content Include="Scripts\Ajax\Comments.js" />
+    <Content Include="Scripts\Ajax\HomePost.js" />
     <Content Include="Scripts\Ajax\Login.js" />
     <Content Include="Scripts\highlight.pack.js" />
     <Content Include="Content\highlight_solarized_light.css" />
