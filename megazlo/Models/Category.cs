@@ -9,6 +9,7 @@ namespace megazlo.Models {
 		[Required(ErrorMessageResourceName = "R_Name_E", ErrorMessageResourceType = typeof(R))]
 		[Display(Name = "Title", ResourceType = typeof(R))]
 		public string Title { get; set; }
+		[Required(ErrorMessageResourceName = "R_Por_E", ErrorMessageResourceType = typeof(R))]
 		[Display(Name = "Por", ResourceType = typeof(R))]
 		public int Por { get; set; }
 		public virtual ICollection<Post> Posts { get; set; }

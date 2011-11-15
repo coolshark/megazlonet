@@ -1,24 +1,30 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web.Mvc;
 using megazlo.Code;
 using megazlo.Models;
-using System.Configuration;
-using System.Web.Configuration;
-using System.IO;
 
 namespace megazlo.Controllers {
 
 	[Authorize]
 	public class AdminController : Controller {
-		string view = "Post";
 		ZloContext con = new ZloContext();
 
+		#region index
 		public ActionResult Index() {
-			ViewBag.Title = "Админка";
 			return View();
 		}
 
+		[HttpPost]
+		public JsonResult Index(string e) {
+			JsonResult rez = new JsonResult();
+			rez.Data = RenderPartialViewToString("Index", null);
+			return rez;
+		}
+		#endregion
+
+		#region Статьи
 		public ActionResult Post(string id) {
 			Post pst = new Post() { IsCommentable = true, IsShowInfo = true };
 			if (id != null) {
@@ -71,55 +77,60 @@ namespace megazlo.Controllers {
 			con.SaveChanges();
 			if (post.InCatMenu)
 				MenuHelper.UpdateCache();
-			rez.Data = "Статья успешно удалена.";
+			rez.Data = "Статья успешно удалена.;true";
+			return rez;
+		}
+		#endregion
+
+		#region Категории меню
+		[HttpPost]
+		public JsonResult CategoryForm(Category cat) {
+			JsonResult rez = new JsonResult();
+			rez.Data = RenderPartialViewToString("Category", cat);
 			return rez;
 		}
 
-		//public ActionResult DeleteNews(int id) {
-		//  Post post = con.Posts.Where(p => p.Id == id).FirstOrDefault();
-		//  con.Entry(post).State = System.Data.EntityState.Deleted;
-		//  con.SaveChanges();
-		//  ViewBag.Title = "Удалено";
-		//  if (post.InCatMenu)
-		//    MenuHelper.UpdateCache();
-		//  return RedirectToAction("Index");
-		//}
-
-		public ActionResult AddCategory() {
-			ViewBag.Title = "Добавить категорию";
-			return View("Category");
-		}
-
 		[HttpPost]
-		public ActionResult AddCategory(Category cat) {
-			ViewBag.Title = "Добавить категорию";
-			con.Categorys.Add(cat);
+		public JsonResult Category(Category cat) {
+			JsonResult rez = new JsonResult();
+			if (cat.Id == 0) {
+				con.Categorys.Add(cat);
+				rez.Data = RenderPartialViewToString("CategoryRow", cat);
+			} else {
+				con.Entry(cat).State = System.Data.EntityState.Modified;
+				rez.Data = "Внесены изменения в категорию.";
+			}
 			con.SaveChanges();
 			MenuHelper.UpdateCache();
-			return RedirectToAction("CategoryList");
-		}
-
-		public ActionResult EditCategory(int id) {
-			Category cat = con.Categorys.Where(p => p.Id == id).First();
-			ViewBag.ButtonOk = "Изменить";
-			ViewBag.Title = "Редактирование категории: " + cat.Title;
-			return View("Category", cat);
+			return rez;
 		}
 
 		public ActionResult CategoryList() {
-			ViewBag.Title = "Категории";
 			List<Category> mod = con.Categorys.OrderBy(c => c.Por).ToList();
 			return View(mod);
 		}
 
-		public ActionResult DeleteCat(int id) {
-			Category cat = new Category() { Id = id };
-			con.Entry(cat).State = System.Data.EntityState.Deleted;//.Categorys.Remove(cat);
-			con.SaveChanges();
-			MenuHelper.UpdateCache();
-			return RedirectToAction("CategoryList");
+		[HttpPost]
+		public JsonResult CategoryList(string e) {
+			JsonResult rez = new JsonResult();
+			List<Category> cats = con.Categorys.OrderBy(c => c.Por).ToList();
+			rez.Data = RenderPartialViewToString("CategoryList", cats);
+			return rez;
 		}
 
+		[HttpPost]
+		public JsonResult CategoryDelete(int id) {
+			JsonResult rez = new JsonResult();
+			Category cat = new Category() { Id = id };
+			con.Entry(cat).State = System.Data.EntityState.Deleted;
+			con.SaveChanges();
+			MenuHelper.UpdateCache();
+			rez.Data = "Категория меню удалена.;true";
+			return rez;
+		}
+		#endregion
+
+		#region Теги
 		public JsonResult LoadTags(string test) {
 			JsonResult rez = new JsonResult();
 			Tag[] tg = con.Tags.ToArray();
@@ -128,15 +139,6 @@ namespace megazlo.Controllers {
 				arr[i] = tg[i].Title;
 			rez.Data = arr;
 			return rez;
-		}
-
-		public ActionResult ShortUrl(string cod) {
-			// TODO: Short ru ССылки
-			// TODO: Короткие ru ССылки
-			Response.StatusCode = 301;
-			Response.StatusDescription = "Moved Permanently";
-			Response.AddHeader("Location", "/Home");
-			return null;
 		}
 
 		public ActionResult TagList() {
@@ -177,6 +179,27 @@ namespace megazlo.Controllers {
 			} else rez.Data = "Такой тег не найден!";
 			return rez;
 		}
+		#endregion
+
+		#region комент сру рендер
+		[HttpPost]
+		public JsonResult CommentDelete(int id) {
+			JsonResult rez = new JsonResult();
+			Comment cmn = new Comment() { Id = id };
+			con.Entry(cmn).State = System.Data.EntityState.Deleted;
+			con.SaveChanges();
+			rez.Data = "Коментарий удален.;true";
+			return rez;
+		}
+
+		public ActionResult ShortUrl(string cod) {
+			// TODO: Short ru ССылки
+			// TODO: Короткие ru ССылки
+			Response.StatusCode = 301;
+			Response.StatusDescription = "Moved Permanently";
+			Response.AddHeader("Location", "/Home");
+			return null;
+		}
 
 		protected string RenderPartialViewToString(string viewName, object model) {
 			if (string.IsNullOrEmpty(viewName))
@@ -189,6 +212,7 @@ namespace megazlo.Controllers {
 				return sw.GetStringBuilder().ToString();
 			}
 		}
+		#endregion
 
 	}
 }

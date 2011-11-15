@@ -1,11 +1,12 @@
 ﻿@model megazlo.Models.Comment
-<li id="li-comment-@Model.Id" class="comment even thread-even depth-1">
+<li id="li-comment-@Model.Id" class="comment even thread-even depth-1 parent-container">
 	<div id="comment-@Model.Id">
 		<div class="line">
 		</div>
 		<img class="avatar avatar-35 photo" width="35" height="35" src="@Url.Content("~/Content/images/usr_logo.jpg")" alt="" />
 		<div class="comment-author vcard">
-			<cite class="fn"><a class="url" rel="external nofollow" href="#comment-@Model.Id">@Model.FirstName</a> </cite><span class="says">says:</span>
+			<cite class="fn"><a class="url" rel="external nofollow" href="#comment-@Model.Id">@Model.FirstName</a> </cite><span class="says">
+				says:</span>
 			@if (Model.IsAutor) {
 				<span class="author-tag">(Author)</span>
 	 }
@@ -18,7 +19,7 @@
 		</div>
 		<div style="text-align: right;">
 			@if (User.Identity.IsAuthenticated) {
-				@Ajax.ActionLink("Удалить", "DelComment", "Home", new { id = @Model.Id }, new AjaxOptions(), new { Class = "del_comment" });
+				@Html.ActionLink("Удалить", "CommentDelete", "Admin", new { id = @Model.Id }, new { Class = "del_item" })
 	 }
 		</div>
 	</div>

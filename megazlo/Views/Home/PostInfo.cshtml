@@ -1,0 +1,9 @@
+﻿@model megazlo.Models.Post
+<div class="entry-meta entry-header">
+	<span class="published">Автор <strong>@Model.User.Name @Model.User.Family</strong></span> <span class="published">От <strong>@Model.DatePost.ToShortDateString()</strong></span>
+	@if (Model.IsCommentable) {
+		<span class="comment-count">Комментарии <a href="@Url.RouteUrl("Post", new { id = Model.WebLink })#comments">
+			@Model.Comment.Count</a></span>
+ }
+	<span class="permalink">→ <a class="vtip" href="@Url.Action("Post", new { id = Model.WebLink })">Ссылка</a></span>
+</div>

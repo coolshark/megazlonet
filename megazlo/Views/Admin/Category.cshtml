@@ -1,26 +1,17 @@
 ﻿@model megazlo.Models.Category
-@{
-	SquishIt.JavaScript.Add("~/Scripts/jquery.validate.unobtrusive.min.js");
-	SquishIt.JavaScript.Add("~/Scripts/jquery.validate.min.js");
-}
-@using (Html.BeginForm()) {
-	<fieldset>
-		<legend>@ViewBag.Title</legend>
-		<p class="editor-label">
-			@Html.LabelFor(model => model.Title)
-			<br />
-			@Html.EditorFor(model => model.Title)
-			@Html.ValidationMessageFor(model => model.Title)
-		</p>
-		<p class="editor-label">
-			@Html.LabelFor(model => model.Por)
-			<br />
-			@Html.EditorFor(model => model.Por)
-			@Html.ValidationMessageFor(model => model.Por)
-		</p>
-		@Html.ValidationSummary(true)
-	</fieldset>
-	<p>
-		<input type="submit" value="Создать" />
+@using (Html.BeginForm("Category", "Admin")) {
+	<p class="editor-label">
+		@Html.LabelFor(model => model.Title)
+		<br />
+		@Html.EditorFor(model => model.Title)
+		@Html.ValidationMessageFor(model => model.Title)
 	</p>
+	<p class="editor-label">
+		@Html.LabelFor(model => model.Por)
+		<br />
+		@Html.EditorFor(model => model.Por)
+		@Html.ValidationMessageFor(model => model.Por)
+	</p>
+	@Html.HiddenFor(m => m.Id)
+	@Html.ValidationSummary(true)
 }
