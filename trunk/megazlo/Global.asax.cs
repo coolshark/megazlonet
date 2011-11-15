@@ -52,7 +52,7 @@ namespace megazlo {
 				.Add("~/Scripts/jquery.slidemenu.js",
 				"~/Scripts/jquery-ui-1.8.16.custom.min.js",
 				"~/Scripts/Ajax/ajaxnavigation.js",
-				"~/Scripts/Ajax/Comments.js",
+				"~/Scripts/Ajax/HomePost.js",
 				"~/Scripts/jquery.unobtrusive-ajax.min.js",
 				"~/Scripts/jquery.vtip.js",
 				"~/Scripts/highlight.pack.js",

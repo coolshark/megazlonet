@@ -54,27 +54,27 @@ $(function () {
 
 	$('#sbmtform').click(function (e) {
 		e.preventDefault();
-		$.validator.unobtrusive.parse('form:first');
-		if (!$('form:first').valid())
+		var frm = $('form:first');
+		$.validator.unobtrusive.parse(frm);
+		if (!frm.valid())
 			return false;
 		var post = {
 			Id: $("#Id").val(),
 			Title: $("#Title").val(),
 			CategoryId: $("#CategoryId").val(),
-			InCatMenu: $("#InCatMenu").val(),
+			InCatMenu: $("#InCatMenu").attr('checked') == 'checked',
 			Text: $("#Text").val(),
-			IsCommentable: $("#IsCommentable").val(),
-			IsShowInfo: $("#IsShowInfo").val()
+			IsCommentable: $("#IsCommentable").attr('checked') == 'checked', //.val(),
+			IsShowInfo: $("#IsShowInfo").attr('checked') == 'checked'
 		}
 		$.ajax({
-			url: $('form:first').attr('action'),
+			url: frm.attr('action'),
 			type: "POST",
 			data: JSON.stringify(post),
 			dataType: "json",
 			contentType: "application/json; charset=utf-8",
 			success: showSaveDialog
 		});
-		return false;
 	});
 
 	function showSaveDialog(data) {

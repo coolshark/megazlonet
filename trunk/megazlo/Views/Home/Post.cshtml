@@ -7,70 +7,58 @@
 		gapi.plusone.render('pone-div');
 	});
 </script>
-<div id="confirmDialog" title="Удалить" style="display: none;">
-	<p style="font-size: 14px;">
-		Вы действительно хотите удалить коментарий?
-		<br />
-		<br />
-		После удаления его уже невозможно будет востановить!</p>
-</div>
-<div class="post hentry">
-	<h2 class="entry-title">
-		<a href="@Url.RouteUrl("Post", new { id = Model.WebLink })" class="ajax">@Model.Title</a></h2>
-	<div class="clearfix">
-		@if (Model.IsShowInfo) {
-			<div class="entry-meta entry-header">
-				<span class="published">Автор <strong>@Model.User.Name @Model.User.Family</strong></span> <span class="published">От <strong>@Model.DatePost.ToShortDateString()</strong></span>
-				@if (Model.IsCommentable) {
-					<span class="comment-count">Комментарии <a href="@Url.RouteUrl("Post", new { id = Model.WebLink })#comments">
-						@Model.Comment.Count</a></span>
-		}
-				<span class="permalink">→ <a class="vtip" href="@Url.Action("Post", new { id = Model.WebLink })">Ссылка</a></span>
-			</div>
-	}
-		<div class="@Html.GetClassPost(Model.IsShowInfo)">
-			@Html.Raw(Model.Text)
-			<div id="pone-div" style="float: left; width: 50px;">
-				<g:plusone></g:plusone>
-			</div>
-			@if (Model.Tags.Count > 0) {
-				<ul class="tags">
-					@for (int i = 0; i < Model.Tags.Count; i++) {
-						<li>Model.Tags[i].Title &nbsp;</li>
-		 }
-					<li><a>C# &nbsp;</a></li>
-					<li><a>Asp.net &nbsp;</a></li>
-				</ul>
+<div class="parent-container">
+	<div class="post hentry">
+		<h2 class="entry-title">
+			<a href="@Url.RouteUrl("Post", new { id = Model.WebLink })" class="ajax">@Model.Title</a></h2>
+		<div class="clearfix">
+			@if (Model.IsShowInfo) {
+				@Html.Partial("PostInfo", Model)
 	 }
-			@if (Request.IsAuthenticated /*User.IsInRole("Admin")*/) {
-				<div style="float: right;">
-					@Html.ActionLink("Редактировать", "Post", "Admin", new { id = Model.Id }, new { Class = "ajax" })
-					|
-					@Html.ActionLink("Удалить", "DeleteNews", "Admin", new { id = Model.Id }, new { })
+			<div class="@Html.GetClassPost(Model.IsShowInfo)">
+				@Html.Raw(Model.Text)
+				<div id="pone-div" style="float: left; width: 50px;">
+					<g:plusone></g:plusone>
 				</div>
-	 }
-		</div>
-	</div>
-</div>
-@if (Model.IsCommentable) {
-	<div id="comment-wrap" class="clearfix">
-		<div class="comments-sidebar">
-			<h3 id="comments">
-				Комментарии:</h3>
-			<p>
-				Есть что сказать? <span class="continue-reading"><a href="#newcomm">Оставьте комментарий</a></span></p>
-		</div>
-		<div class="commentlist">
-			@if (User.Identity.IsAuthenticated) {
-				@Html.Partial("CommentNew", new megazlo.Models.Comment() { PostId = Model.Id, IsAutor = true, Email = Model.User.Email, FirstName = (Model.User.Family + " " + Model.User.Name) })
-	 } else {
-				@Html.Partial("CommentNew", new megazlo.Models.Comment() { PostId = Model.Id })
-	 }
-			<ol class="commentlist">
-				@foreach (var item in Model.Comment) {
-					@Html.Partial("CommentRead", item)
+				@if (Model.Tags.Count > 0) {
+					<ul class="tags">
+						@for (int i = 0; i < Model.Tags.Count; i++) {
+							<li>Model.Tags[i].Title &nbsp;</li>
+			}
+						<li><a>C# &nbsp;</a></li>
+						<li><a>Asp.net &nbsp;</a></li>
+					</ul>
 		}
-			</ol>
+				@if (Request.IsAuthenticated /*User.IsInRole("Admin")*/) {				
+					<div style="float: right;">
+						@Html.ActionLink("Редактировать", "Post", "Admin", new { id = Model.Id }, new { Class = "ajax" })
+						|
+						@Html.ActionLink("Удалить", "PostDelete", "Admin", new { id = Model.Id }, new { Class = "del_item" })
+					</div>
+		}
+			</div>
 		</div>
 	</div>
-}
+	@if (Model.IsCommentable) {
+		<div id="comment-wrap" class="clearfix">
+			<div class="comments-sidebar">
+				<h3 id="comments">
+					Комментарии:</h3>
+				<p>
+					Есть что сказать? <span class="continue-reading"><a href="#newcomm">Оставьте комментарий</a></span></p>
+			</div>
+			<div class="commentlist">
+				@if (User.Identity.IsAuthenticated) {
+					@Html.Partial("CommentNew", new megazlo.Models.Comment() { PostId = Model.Id, IsAutor = true, Email = Model.User.Email, FirstName = (Model.User.Family + " " + Model.User.Name) })
+		} else {
+					@Html.Partial("CommentNew", new megazlo.Models.Comment() { PostId = Model.Id })
+		}
+				<ol class="commentlist">
+					@foreach (var item in Model.Comment) {
+						@Html.Partial("CommentRead", item)
+		 }
+				</ol>
+			</div>
+		</div>
+ }
+</div>

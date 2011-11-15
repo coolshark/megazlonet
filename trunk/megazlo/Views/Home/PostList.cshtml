@@ -7,28 +7,20 @@
 	});
 </script>
 @foreach (var item in Model) {
-	<div id="post_hentry-@item.Id" class="post hentry">
+	<div class="post hentry parent-container">
 		<h2 class="entry-title">
 			<a href="@Url.RouteUrl("Post", new { id = item.WebLink })" class="ajax">@item.Title</a> @*<a href="@Url.RouteUrl("Post", new RouteValueDictionary { { "id", item.WebLink } })" rel="bookmark">@item.Title</a>*@</h2>
 		<div class="clearfix">
-			<div class="entry-meta entry-header">
-				<span class="published">Автор <strong>@item.User.Name @item.User.Family</strong></span> <span class="published">От <strong>@item.DatePost.ToShortDateString()</strong></span>
-				@if (item.IsCommentable) {
-					<span class="comment-count">Комментарии <a href="@Url.RouteUrl("Post", new { id = item.WebLink })#comments" class="ajax">
-						@item.Comment.Count</a></span>
-		}
-				<span class="permalink">→ <a href="@Url.RouteUrl("Post", new RouteValueDictionary { { "id", item.WebLink } })" class="vtip" title="@item.Title">
-					Ссылка</a></span>
-			</div>
+			@Html.Partial("PostInfo", item)
 			<div class="entry-content">
 				@Html.Raw(item.TextPreview)
 				<p>
 					<a href="@Url.RouteUrl("Post", new { id = item.WebLink })" class="ajax more-link">Полностью &rarr;</a></p>
 				@if (Request.IsAuthenticated /*User.IsInRole("Admin")*/) {
 					<div>
-						@Html.ActionLink("Редактировать", "Post", "Admin", new { id = item.Id }, new { Class = "title ajax" })
+						@Html.ActionLink("Редактировать", "Post", "Admin", new { id = item.Id }, new { Class = "ajax" })
 						|
-						@Html.ActionLink("Удалить", "PostDelete", "Admin", new { id = item.Id }, new { Class = "title del_post" })
+						@Html.ActionLink("Удалить", "PostDelete", "Admin", new { id = item.Id }, new { Class = "del_item" })
 					</div>
 		}
 			</div>

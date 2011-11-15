@@ -112,20 +112,6 @@ namespace megazlo.Controllers {
 			return rez;
 		}
 
-		[HttpPost]
-		public JsonResult DelComment(int id) {
-			JsonResult rez = new JsonResult();
-			try {
-				Comment cmn = new Comment() { Id = id };
-				con.Entry(cmn).State = System.Data.EntityState.Deleted;
-				con.SaveChanges();
-				rez.Data = id;
-			} catch {
-				rez.Data = false;
-			}
-			return rez;
-		}
-
 		public string RenderPartialViewToString(string viewName, object model) {
 			if (string.IsNullOrEmpty(viewName))
 				return string.Empty;

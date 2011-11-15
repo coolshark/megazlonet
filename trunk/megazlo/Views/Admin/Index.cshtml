@@ -1,2 +1,10 @@
-﻿<h1 class="entry-title">
-	Админка</h1>
+﻿@using megazlo.Code
+@Html.PageInfo(new { title = "Администрирование", value = @Url.Action("/", "Admin") })
+<h1 class="entry-title">
+	Администрирование</h1>
+<hr />
+<ul style="font-size: 17px;">
+	<li><a class="ajax" href="@Url.Action("Post", "Admin")">Новая статья</a></li>
+	<li><a class="ajax" href="@Url.Action("CategoryList", "Admin")">Категории</a></li>
+	<li><a class="ajax" href="@Url.Action("TagList", "Admin")">Теги</a></li>
+</ul>

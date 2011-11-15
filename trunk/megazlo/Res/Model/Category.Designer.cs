@@ -79,6 +79,15 @@ namespace megazlo.Res.Model {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Необходимо заполнить.
+        /// </summary>
+        public static string R_Por_E {
+            get {
+                return ResourceManager.GetString("R_Por_E", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Заголовок.
         /// </summary>
         public static string Title {
