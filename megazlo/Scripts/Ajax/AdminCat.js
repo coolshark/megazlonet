@@ -4,7 +4,7 @@
 /// <reference path="../jquery.validate.unobtrusive.min.js" />
 
 $(function () {
-
+	var type;
 	$('a.edit_cat').on('click', function (e) {
 		e.preventDefault();
 		var itm = $(this).parent('td');

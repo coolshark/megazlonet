@@ -1,0 +1,11 @@
+﻿@model megazlo.Models.Tag
+<tr class="parent-container">
+	<td style="text-align: left;">@Model.Title
+	</td>
+	<td>
+		@Html.HiddenFor(m => m.Id)
+		@Html.HiddenFor(m => m.Title)
+		@Html.ActionLink("Редактировать", "TagForm", null, new { Class = "edit_cat", ent = "Tag" }) |
+		@Html.ActionLink("Удалить", "TagDelete", new { id = Model.Id }, new { Class = "del_item" })
+	</td>
+</tr>

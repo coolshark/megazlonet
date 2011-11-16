@@ -1,2 +1,8 @@
 ﻿@model megazlo.Models.Tag
-@Html.TextBoxFor(m => m.Title, new { Class = "fortags", id = "Tags_Title" })
+@using (Html.BeginForm("Tag", "Admin")) {
+	@Html.LabelFor(m => m.Title)
+	<br />
+	@Html.EditorFor(m => m.Title)
+	@Html.HiddenFor(m => m.Id)
+	@Html.ValidationMessageFor(m => m.Title)
+}
