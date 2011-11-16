@@ -49,7 +49,7 @@ $(function () {
 		var login = {
 			Login: $("#Login", dlg).val(),
 			Password: $("#Password", dlg).val(),
-			IsRemember: $("#IsRemember", dlg).val()
+			IsRemember: $("#IsRemember", dlg).attr('checked') == 'checked'
 		};
 		$.ajax({
 			url: $('#login_href', dlg).val(),

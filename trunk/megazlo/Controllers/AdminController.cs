@@ -131,6 +131,40 @@ namespace megazlo.Controllers {
 		#endregion
 
 		#region Теги
+		public ActionResult TagList() {
+			List<Tag> rez = con.Tags.ToList();
+			return View(rez);
+		}
+
+		[HttpPost]
+		public JsonResult TagList(string e) {
+			JsonResult rez = new JsonResult();
+			List<Tag> tags = con.Tags.ToList();
+			rez.Data = RenderPartialViewToString("TagList", tags);
+			return rez;
+		}
+
+		[HttpPost]
+		public JsonResult TagForm(Tag tg) {
+			JsonResult rez = new JsonResult();
+			rez.Data = RenderPartialViewToString("Tag", tg);
+			return rez;
+		}
+
+		[HttpPost]
+		public JsonResult Tag(Tag tg) {
+			JsonResult rez = new JsonResult();
+			if (tg.Id == 0) {
+				con.Tags.Add(tg);
+				rez.Data = RenderPartialViewToString("TagRow", tg);
+			} else {
+				con.Entry(tg).State = System.Data.EntityState.Modified;
+				rez.Data = "Внесены изменения в тег.";
+			}
+			con.SaveChanges();
+			return rez;
+		}
+
 		public JsonResult LoadTags(string test) {
 			JsonResult rez = new JsonResult();
 			Tag[] tg = con.Tags.ToArray();
@@ -141,42 +175,12 @@ namespace megazlo.Controllers {
 			return rez;
 		}
 
-		public ActionResult TagList() {
-			ViewBag.Title = "Список тегов";
-			List<Tag> rez = con.Tags.ToList();
-			return View(rez);
-		}
-
-		public JsonResult DelTag(int id) {
+		[HttpPost]
+		public JsonResult TagDelete(int id) {
 			JsonResult rez = new JsonResult();
 			con.Entry(new Tag() { Id = id }).State = System.Data.EntityState.Deleted;
 			con.SaveChanges();
 			rez.Data = "Тег удален";
-			return rez;
-		}
-
-		public JsonResult AddTag(string title) {
-			JsonResult rez = new JsonResult();
-			int cnt = con.Tags.Where(t => t.Title == title).Count();
-			if (cnt > 0)
-				rez.Data = "Такой тег уже существует";
-			else {
-				con.Tags.Add(new Tag() { Title = title });
-				con.SaveChanges();
-				rez.Data = "тег добавлен в базу.";
-			}
-			return rez;
-		}
-
-		public JsonResult AddTag(int id, string title) {
-			JsonResult rez = new JsonResult();
-			Tag tg = con.Tags.Where(t => t.Id == id).FirstOrDefault();
-			if (tg != null) {
-				tg.Title = title;
-				con.Entry(tg).State = System.Data.EntityState.Modified;
-				con.SaveChanges();
-				rez.Data = "тег изменен.";
-			} else rez.Data = "Такой тег не найден!";
 			return rez;
 		}
 		#endregion

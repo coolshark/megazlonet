@@ -1,7 +1,7 @@
 ﻿@model megazlo.Models.Category
 <tr class="parent-container">
 	<td style="text-align: left;">
-		@Model.Id
+		@Model.Por
 	</td>
 	<td style="text-align: left;">
 		@Html.ActionLink(Model.Title, "Category", "Home", new { id = Model.Title }, null)
@@ -10,7 +10,7 @@
 		@Html.HiddenFor(m => m.Id)
 		@Html.HiddenFor(m => m.Title)
 		@Html.HiddenFor(m => m.Por)
-		@Html.ActionLink("Редактировать", "CategoryForm", null, new { Class = "edit_cat" }) |
+		@Html.ActionLink("Редактировать", "CategoryForm", null, new { Class = "edit_cat", ent = "Category" }) |
 		@Html.ActionLink("Удалить", "CategoryDelete", new { id = Model.Id }, new { Class = "del_item" })
 	</td>
 </tr>
