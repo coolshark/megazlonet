@@ -39,24 +39,24 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AjaxMin">
-      <HintPath>..\libs\SquishIt-0.8.0\AjaxMin.dll</HintPath>
+      <HintPath>..\libs\SquishIt-0.8.2\AjaxMin.dll</HintPath>
     </Reference>
     <Reference Include="dotless.Core">
-      <HintPath>..\libs\SquishIt-0.8.0\dotless.Core.dll</HintPath>
+      <HintPath>..\libs\SquishIt-0.8.2\dotless.Core.dll</HintPath>
     </Reference>
     <Reference Include="EcmaScript.NET.modified">
-      <HintPath>..\libs\SquishIt-0.8.0\EcmaScript.NET.modified.dll</HintPath>
+      <HintPath>..\libs\SquishIt-0.8.2\EcmaScript.NET.modified.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libs\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Jurassic">
-      <HintPath>..\libs\SquishIt-0.8.0\Jurassic.dll</HintPath>
+      <HintPath>..\libs\SquishIt-0.8.2\Jurassic.dll</HintPath>
     </Reference>
     <Reference Include="SquishIt.Framework, Version=0.8.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libs\SquishIt-0.8.0\SquishIt.Framework.dll</HintPath>
+      <HintPath>..\libs\SquishIt-0.8.2\SquishIt.Framework.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
@@ -76,7 +76,7 @@
     <Reference Include="System.XML" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Yahoo.Yui.Compressor">
-      <HintPath>..\libs\SquishIt-0.8.0\Yahoo.Yui.Compressor.dll</HintPath>
+      <HintPath>..\libs\SquishIt-0.8.2\Yahoo.Yui.Compressor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
