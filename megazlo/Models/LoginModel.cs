@@ -40,7 +40,7 @@ namespace megazlo.Models {
 			string hash = Hash.CreateHash(password);
 			using (ZloContext cont = new ZloContext()) {
 				return cont.Users
-					.Where(u => u.Id == userName)
+					.Where(u => u.Login == userName)
 					.Where(u => u.PassWord == hash).FirstOrDefault();
 			}
 		}

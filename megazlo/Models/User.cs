@@ -10,10 +10,11 @@ namespace megazlo.Models {
 			DateRegister = DateTime.Now;
 		}
 		[Key]
-		[Required(ErrorMessageResourceName = "R_Id_E", ErrorMessageResourceType = typeof(R))]
-		[StringLength(100, MinimumLength = 2, ErrorMessageResourceName = "SL_Id_E", ErrorMessageResourceType = typeof(R))]
-		[Display(Name = "Id", ResourceType = typeof(R))]
-		public string Id { get; set; }
+		public int Id { get; set; }		
+		[Required(ErrorMessageResourceName = "R_Login_E", ErrorMessageResourceType = typeof(R))]
+		[StringLength(100, MinimumLength = 2, ErrorMessageResourceName = "SL_Login_E", ErrorMessageResourceType = typeof(R))]
+		[Display(Name = "Login", ResourceType = typeof(R))]
+		public string Login { get; set; }		
 		[Required(ErrorMessageResourceName = "R_Name_E", ErrorMessageResourceType = typeof(R))]
 		[MaxLength(100, ErrorMessageResourceName = "ML_Name_E", ErrorMessageResourceType = typeof(R))]
 		[Display(Name = "Name", ResourceType = typeof(R))]

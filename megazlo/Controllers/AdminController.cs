@@ -57,7 +57,8 @@ namespace megazlo.Controllers {
 			}
 			post.Text = Uploader.Parce(post.Text);
 			post.WebLink = Uploader.ParceLink(post.Title);
-			post.UserId = User.Identity.Name;
+			int id = con.Users.Where(u => u.Login == User.Identity.Name).FirstOrDefault().Id;
+			post.UserId = id;
 			if (post.Id == 0)
 				con.Posts.Add(post);
 			else

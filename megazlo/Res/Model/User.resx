@@ -174,7 +174,7 @@
   <data name="R_Email_E" xml:space="preserve">
     <value>Необходимо заполнить</value>
   </data>
-  <data name="R_Id_E" xml:space="preserve">
+  <data name="R_Login_E" xml:space="preserve">
     <value>Необходимо заполнить</value>
   </data>
   <data name="R_Name_E" xml:space="preserve">
@@ -183,7 +183,7 @@
   <data name="R_PassWord_E" xml:space="preserve">
     <value>Необходимо заполнить</value>
   </data>
-  <data name="SL_Id_E" xml:space="preserve">
+  <data name="SL_Login_E" xml:space="preserve">
     <value>Длина должна быть от 2 до 100</value>
   </data>
   <data name="SL_PassWord_E" xml:space="preserve">

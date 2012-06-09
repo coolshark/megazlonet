@@ -1,16 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
+# SharpDevelop 4.2.1.8805
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{27F12566-EEC1-4E92-966E-3DEBBF513E83}"
+	ProjectSection(SolutionItems) = preProject
+		libs\EntityFramework.dll = libs\EntityFramework.dll
+	EndProjectSection
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zxing", "zxing\zxing.csproj", "{45CB769A-712F-42FE-B23F-BFCB7E0AE6D9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "megazlo", "megazlo\megazlo.csproj", "{FBD4A2E1-A884-4007-B103-469DB66C3879}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnidecodeSharp", "UnidecodeSharp\UnidecodeSharp.csproj", "{B268B199-851B-4326-BB4C-F054FCFBA4D4}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{27F12566-EEC1-4E92-966E-3DEBBF513E83}"
-	ProjectSection(SolutionItems) = preProject
-		libs\EntityFramework.dll = libs\EntityFramework.dll
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaptchaMVC", "CaptchaMVC\CaptchaMVC.csproj", "{6F685F9E-6667-40B5-9502-CCBEE2021070}"
 EndProject

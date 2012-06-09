@@ -86,7 +86,7 @@ namespace megazlo.Controllers {
 			JsonResult rez = new JsonResult();
 			ViewBag.Title = "Востановление пароля";
 			if (ModelState.IsValid) {
-				IQueryable<User> usrs = con.Users.Where(u => u.Id == rest.Name);
+				IQueryable<User> usrs = con.Users.Where(u => u.Login == rest.Name);
 				if (usrs.Count() > 0) {
 					User usr = usrs.First();
 					Random rnd = new Random();
