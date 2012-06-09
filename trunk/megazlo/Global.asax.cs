@@ -43,22 +43,22 @@ namespace megazlo {
 				.Add("~/Content/main.css",
 				"~/Content/style.css",
 				"~/Content/slider.css",
-				"~/Content/jquery-ui-1.8.16.custom.css",
+				"~/Content/jquery-ui-1.8.21.custom.css",
 				"~/Content/highlight_solarized_light.css")
 				.ForceRelease()
 				.AsNamed("main_cs", "~/Upload/StyleScript/Site.min_#.css");
 
 			Bundle.JavaScript()
 				.Add("~/Scripts/jquery.slidemenu.js",
-				"~/Scripts/jquery-ui-1.8.16.custom.min.js",
+				"~/Scripts/jquery-ui-1.8.21.custom.min.js",
 				"~/Scripts/Ajax/ajaxnavigation.js",
 				"~/Scripts/Ajax/HomePost.js",
 				"~/Scripts/jquery.unobtrusive-ajax.min.js",
 				"~/Scripts/jquery.vtip.js",
-				"~/Scripts/highlight.pack.js",
-				"~/Scripts/jquery.slides.min.js",
 				"~/Scripts/jquery.validate.min.js",
-				"~/Scripts/jquery.validate.unobtrusive.min.js")
+				"~/Scripts/jquery.validate.unobtrusive.min.js",
+				"~/Scripts/highlight.pack.js",
+				"~/Scripts/slides.min.jquery.js")
 				.ForceRelease()
 				.AsNamed("main_js", "~/Upload/StyleScript/Site.min_#.js");
 		}

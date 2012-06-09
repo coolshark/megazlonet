@@ -1,13 +1,5 @@
 ﻿@model megazlo.Models.User
-@{	
-	ViewBag.Title = "Установка";
-	SquishIt.Css.Add("~/Content/redmond/jquery-ui-1.8.16.custom.css");
-
-	SquishIt.JavaScript.Add("~/Scripts/jquery-ui-1.8.16.custom.min.js");
-	SquishIt.JavaScript.Add("~/Scripts/jquery.ui.datepicker-ru.js");
-	SquishIt.JavaScript.Add("~/Scripts/jquery.validate.unobtrusive.min.js");
-	SquishIt.JavaScript.Add("~/Scripts/jquery.validate.min.js");
-}
+@ViewBag.Title = "Установка"
 <script type="text/javascript">
 	$(function () {
 		$('#DateBorn').attr('readonly', 'readonly').datepicker({
@@ -42,11 +34,11 @@
 		@Html.ValidationMessageFor(m => m.LastName)
 	</div>
 	<div class="editor-label">
-		@Html.LabelFor(m => m.Id)
+		@Html.LabelFor(m => m.Login)
 	</div>
 	<div class="editor-field">
-		@Html.EditorFor(m => m.Id)
-		@Html.ValidationMessageFor(m => m.Id)
+		@Html.EditorFor(m => m.Login)
+		@Html.ValidationMessageFor(m => m.Login)
 	</div>
 	<div class="editor-label">
 		@Html.LabelFor(m => m.DateBorn)

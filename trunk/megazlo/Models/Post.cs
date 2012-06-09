@@ -39,7 +39,7 @@ namespace megazlo.Models {
 		[Display(Name = "IsCommentable", ResourceType = typeof(R))]
 		public bool IsCommentable { get; set; }
 		public virtual ICollection<Comment> Comment { get; set; }
-		public string UserId { get; set; }
+		public int UserId { get; set; }
 		public virtual User User { get; set; }
 		public int? CategoryId { get; set; }
 		public virtual Category Category { get; set; }

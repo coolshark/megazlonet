@@ -23,7 +23,7 @@ $(function () {
 		var dlg = $("#login_dial");
 		dlg.dialog({
 			resizable: false,
-			height: 205,
+			height: 215,
 			width: 400,
 			modal: true,
 			position: 'center',

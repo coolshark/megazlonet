@@ -133,7 +133,7 @@ namespace megazlo.Controllers {
 				return RedirectToAction("Index");
 #endif
 #if(DEBUG)
-			User usr = new User() { IsAdmin = true, Id = "admin", Email = "paradoxfm@mail.ru", DateBorn = new DateTime(1984, 11, 11), Name = "Иван", Family = "Гуркин", LastName = "Александрович" };
+			User usr = new User() { IsAdmin = true, Login = "admin", Email = "paradoxfm@mail.ru", DateBorn = new DateTime(1984, 11, 11), Name = "Иван", Family = "Гуркин", LastName = "Александрович" };
 #else
 			User usr = new User() { IsAdmin = true, Id = "admin" };
 #endif
@@ -152,10 +152,10 @@ namespace megazlo.Controllers {
 				usr.ConfirmPassWord = usr.PassWord = Hash.CreateHash(usr.PassWord);
 				AvatarUploader upl = new AvatarUploader();
 				Thread t = new Thread(upl.LoadAvatar);
-				t.Start(new object[] { ava, usr.Id });
+				t.Start(new object[] { ava, usr.Login });
 				con.Users.Add(usr);
 				con.SaveChanges();
-				return RedirectToAction("Login", "Account");
+				return RedirectToAction("Index");
 			}
 			return View("Install", usr);
 		}
