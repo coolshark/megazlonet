@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>TinyMCE.MVC.JQuery</id>
+    <version>3.4.7</version>
+    <authors>Tugberk Ugurlu</authors>
+    <owners>Tugberk Ugurlu</owners>
+    <projectUrl>http://www.tugberkugurlu.com/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>MVC Partial Editor Templates For TinyMCE.JQuery HTML Text Editor</description>
+    <tags>HTMLEditor TinyMCE Tugberk JQuery</tags>
+    <dependencies>
+      <dependency id="TinyMCE.JQuery" version="3.4.7" />
+    </dependencies>
+  </metadata>
+</package>
